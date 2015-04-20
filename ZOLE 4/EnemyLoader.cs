@@ -110,8 +110,7 @@ namespace ZOLE_4
 			gb.WriteByte(e.damageDealt);
 			gb.WriteByte(e.health);
 			gb.BufferLocation = e.aiPointer;
-			gb.WriteByte((byte)e.aiFinal);
-			gb.WriteByte((byte)(e.aiFinal >> 8));
+			gb.WriteBytes(gb.Get2BytePointer(e.aiFinal));
 		}
 	}
 }
