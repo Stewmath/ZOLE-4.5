@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>addsetinteractionfactor   Adds a byte to interaction's range of 256 bytes (Dx##) [Address LB | Value]
+asm15                     Calls an assembly procedure in Bank 15. [Address]
+callscript                Calls a script. [Script]
+checkabutton              Waits for A button to be pressed.
+checkenemycount           Waits for all enemies to be defeated.
+checkitemflag             Stops script if room's item flag is set.
+checklinkxtoma            Compare Link's X location to the interaction's X location and writes result to DxMA. [Address LB
+checkmemory               Waits for memory value to equal specified value. [Address|Value]
+checkmemorybit            Waits for memory bit value to equal specified value. [Bit | Address]
+checkroomflag             ANDs the room's flag by the specified value and skips next command if set. [Value]
+checkspecialflag          Stops script if room's special flag is set.
+checktext                 Waits for text to disappear.
+checktile                 Waits for specified tile to match tile at location. [Tile YX | New Tile | (Jump Address)]
+createpuff                Creates a puff at the interaction's coordinates.
+createpuffnodelay         Creates a puff at the interaction's coordinates without a delay.
+disableinput              Disables input.
+enableinput               Enables input.
+forceend                  Stops script.
+giveitem                  Gives Link an item with Chest ID format. [## | ##]
+jump2byte                 Goes to somewhere in Bank 0C and executes code there. [Address Integer]
+jump3byte                 Goes to somewhere and executes code there. [Address]
+jump3bytemc               If memory address matches, goes to somewhere and does code. [Address, Value, GoTo Address]
+jumproomflag              If room flag is set, goes somewhere and executes code. [Flag, GoTo Address]
+jumproomflago             If room flag is set in specified room, goes somewhere and executes code. [Map | Group | Flag | GoTo Address]
+loadd6667                 Sets Dx66 and Dx77 with a value. [66 Value | 67 Value]
+loadrel                   Unknown. [Pointer 1 | Pointer 2]
+loadsprite                Sets interaction's sprite value. [Value]
+load100                   Loads 100 values into the RAM. [Value | Value | Value]
+maketorcheslightable      Makes unlit torches in the room lightable by ember seeds.
+ormemory                  Bitwise ORs memory value with value inputted and sets result. [Address | Value]
+playsound                 Plays a sound effect.  Use values between 4D and FF. [Sound ID]
+setcc8a                   Sets the memory address CC8A with the value. [Value]
+setcoords                 Sets the interaction's coordintes.  Useful for no-value interactions. [Y8 | X8]
+setdelay#                 # is a number from 0-12.  Pauses the script for a short time.
+setglobalflag             Sets global flag. [Value]
+setinteractionfactor      Sets a byte to interaction's range of 256 bytes (Dx##) [Address LB | Value]
+setinteraction72          Sets the sub ID of the 72 interaction. [ID]
+setmemory                 Sets the memory address with the value. [Address | Value]
+setmusic                  Sets music to play. Use 00-46. [Music ID]
+setroomflag               Sets the room flag. 40 = Item Flag, 80 = Special Flag [40 or 80]
+setvisible                Determines whether an interaction is visible or not. [00 or 01]
+settextid                 Sets a Text ID to show. [## | ##]
+settextidjp               Sets a Text ID to show, then jumps to script 305F0. [## | ##] 
+settile                   Sets the tile at the interaction's coordinates. [Tile ID]
+settilepos                Sets a tile somewhere. [YX | Tile ID]
+set45                     Sets the interaction's Dx45 value. ??? [Value]
+set49                     Sets the interaction's Dx49 value. ??? [Value]
+set49extra                Sets the interaction's Dx49 value then goes somewhere else (not specified?). ??? [Value]
+shakescreen               Shakes screen for amount of time in hexadecimal. FF is common.  [Time]
+showloadedtext            Shows the text set with settextid.
+showpasswordscreen        Shows the password screen with password. [Password]
+showtext                  Shows the text ID specified here. [## | ##]
+spawncommon               Spawns a double-value interaction. [## | ## | Y8 | X8]
+spawnenemy                Spawns a specific-position enemy interaction. [## | ## | Y8 | X8]
+spawnenemyhere            Spawns a specific-position enemy interaction at the interaction's coordinates. [## | ##]
+spawnitem                 Spawns an item at the interaction's coordinates. Chest ID format. [## | ##]
+unsetroomflag             Gets rid of the room flag. [40 or 80 | Map | Group]
+writelocation             Sets the ROM address where the script will take place. [Address]</value>
+  </data>
+</root>

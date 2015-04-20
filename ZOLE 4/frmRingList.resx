@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>33  2D22  Red Holy Ring
+34  ????  Snowshoe Ring
+35  2D1D  Roc's Ring
+36  2D0A  Quicksand Ring
+37  ????  Red Joy Ring
+38  ????  Blue Joy Ring
+39  2D16  Gold Joy Ring
+40  ????  Green Joy Ring
+41  2D04  Discovery Ring
+42  ????  Rang Ring L-2
+43  2D09  Octo Ring
+44  2D05  Moblin Ring
+45  2D28  Like Like Ring
+46  2D10  Subrosian Ring
+47  ????  First Gen Ring
+48  ????  Spin Ring
+49  ????  Bombproof Ring
+50  ????  Energy Ring
+51  2D18  Dbl. Edge Ring
+52  ????  GBA Nature Ring
+53  ????  Slayer's Ring
+54  ????  Rupee Ring
+55  ????  Victory Ring
+56  ????  Sign Ring
+57  ????  100th Ring
+58  2D23  Whisp Ring
+59  ????  Gasha Ring
+60  ????  Peace Ring
+61  ????  Peace Ring
+62  ????  Fist Ring
+63  2D25  Whimsical Ring
+64  ????  Protection Ring</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>01  ????  Friendship Ring
+02  2D0E  Power Ring L-1
+03  2D18  Power Ring L-2
+04  2D0F  Power Ring L-3
+05  2D17  Armor Ring L-1
+06  2D0B  Armor Ring L-2
+07  2D1F  Armor Ring L-3
+08  ????  Red Ring
+09  2D27  Blue Ring
+10  ????  Green Ring
+11  ????  Cursed Ring
+12  ????  Expert's Ring
+13  2D07  Blast Ring
+14  2D08  Rang Ring L-1
+15  ????  GBA Time Ring
+16  2D24  Maple's Ring
+17  2D06  Steadfast Ring
+18  2D1E  Pegasus Ring
+19  2D26  Toss Ring
+20  2D0D  Heart Ring L-1
+21  ????  Heart Ring L-2
+22  2D0C  Swimmer's Ring
+23  ????  Charge Ring
+24  2D19  Light Ring L-1
+25  ????  Light Ring L-2
+26  ????  Bomber's Ring
+27  2D20  Green Luck Ring
+28  2D1A  Blue Luck Ring
+29  2D1C  Gold Luck Ring
+30  2D11  Red Luck Ring
+31  2D21  Green Holy Ring
+32  ????  Blue Holy Ring</value>
+  </data>
+</root>
