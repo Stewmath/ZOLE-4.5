@@ -235,7 +235,7 @@ namespace ZOLE_4
 					s.SetBoxValues(0, "ID:", i.id, 65535);
 					break;
 				case 6:
-					s.SetVisibleBoxes(true, i.first, false, false, false);
+					s.SetVisibleBoxes(true, true, false, false, false);
 					s.SetBoxValues(0, "ID:", i.id, 65535);
 					s.SetBoxValues(1, "Quantity:", i.value8, 255);
 					//s.SetVisibleBoxes(true, true, false, false, false);
@@ -280,7 +280,7 @@ namespace ZOLE_4
 			bool b = false;
 			foreach (Interaction i in interactions)
 			{
-				if (i.opcode != lastOpcode || i.opcode == 0x3)
+				if (i.opcode != lastOpcode || i.opcode == 0x3 || i.opcode == 0x6)
 				{
 					g.WriteByte((byte)(0xF0 + i.opcode));
 					lastOpcode = (byte)i.opcode;
@@ -311,8 +311,7 @@ namespace ZOLE_4
 						g.WriteByte((byte)(i.id >> 8));
 						break;
 					case 6: //Unknown
-						if (b)
-							g.WriteByte(i.value8);
+						g.WriteByte(i.value8);
 						g.WriteByte((byte)(i.id >> 8));
 						g.WriteByte((byte)(i.id & 0xFF));
 						//g.WriteByte(i.value8);
@@ -375,7 +374,6 @@ namespace ZOLE_4
 				case 6:
 					i.id = s.GetBoxValue(0);
 					i.value8 = (byte)s.GetBoxValue(1);
-					//i.value8 = (byte)s.GetBoxValue(1);
 					break;
 				case 7:
 					i.id = s.GetBoxValue(0);
