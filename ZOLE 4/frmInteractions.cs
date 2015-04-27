@@ -36,7 +36,7 @@ namespace ZOLE_4
 		{
 			if (!interactionLoader.addInteraction((int)nType.Value, game))
 			{
-				MessageBox.Show("Not enough space. Try clearing out an unused spawn group.", "Not Enough Space");
+				MessageBox.Show("Not enough space. Try applying the \"Extra Interaction Bank\" patch if you haven't already.", "Not Enough Space");
 				return;
 			}
 		}

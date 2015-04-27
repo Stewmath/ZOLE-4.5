@@ -229,6 +229,7 @@
 			this.btnArrangeSeasons = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton25 = new System.Windows.Forms.ToolStripButton();
+			this.extraBankForInteractionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pMap = new ZOLE_4.GridBox();
 			this.pTileset = new ZOLE_4.GridBox();
 			this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
@@ -859,7 +860,8 @@
             this.x16OverworldToolStripMenuItem,
             this.aSMToolStripMenuItem,
             this.crystalSwitchesInAllDungeonsToolStripMenuItem,
-            this.chestsPerOverworldToolStripMenuItem});
+            this.chestsPerOverworldToolStripMenuItem,
+            this.extraBankForInteractionsToolStripMenuItem});
 			this.agesToolStripMenuItem.Name = "agesToolStripMenuItem";
 			this.agesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
 			this.agesToolStripMenuItem.Text = "Ages";
@@ -965,21 +967,21 @@
 			// zOSEToolStripMenuItem
 			// 
 			this.zOSEToolStripMenuItem.Name = "zOSEToolStripMenuItem";
-			this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+			this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.zOSEToolStripMenuItem.Text = "ZOSE";
 			this.zOSEToolStripMenuItem.Click += new System.EventHandler(this.zOSEToolStripMenuItem_Click);
 			// 
 			// zOTEToolStripMenuItem
 			// 
 			this.zOTEToolStripMenuItem.Name = "zOTEToolStripMenuItem";
-			this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+			this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.zOTEToolStripMenuItem.Text = "ZOTE";
 			this.zOTEToolStripMenuItem.Click += new System.EventHandler(this.zOTEToolStripMenuItem_Click);
 			// 
 			// zOCFToolStripMenuItem
 			// 
 			this.zOCFToolStripMenuItem.Name = "zOCFToolStripMenuItem";
-			this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+			this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.zOCFToolStripMenuItem.Text = "ZOCF";
 			this.zOCFToolStripMenuItem.Click += new System.EventHandler(this.zOCFToolStripMenuItem_Click);
 			// 
@@ -2219,6 +2221,13 @@
 			this.toolStripButton25.Text = "Re-Apply ASM Patches";
 			this.toolStripButton25.Click += new System.EventHandler(this.reApplyASMPatchesToolStripMenuItem_Click);
 			// 
+			// extraBankForInteractionsToolStripMenuItem
+			// 
+			this.extraBankForInteractionsToolStripMenuItem.Name = "extraBankForInteractionsToolStripMenuItem";
+			this.extraBankForInteractionsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+			this.extraBankForInteractionsToolStripMenuItem.Text = "Extra Interaction Bank";
+			this.extraBankForInteractionsToolStripMenuItem.Click += new System.EventHandler(this.extraBankForInteractionsToolStripMenuItem_Click);
+			// 
 			// pMap
 			// 
 			this.pMap.AllowMultiSelection = false;
@@ -2567,6 +2576,7 @@
         private System.Windows.Forms.ToolStripMenuItem zOTEValuesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memoryAddressesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mapGroupsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem extraBankForInteractionsToolStripMenuItem;
 	}
 }
 

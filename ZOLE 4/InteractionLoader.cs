@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace ZOLE_4
 {
@@ -14,6 +15,13 @@ namespace ZOLE_4
 		public int loadedMap;
 		public int loadedGroup;
 		public int noLocation = 0x49977;
+
+		bool[] stackableOpcode = {true,true,true,false,
+		false,true,false,true,
+		true,true,true,true,true,
+		true,true,true};
+
+		private bool extraInteractionBankEnabled = false;
 
 		public struct Interaction
 		{
@@ -27,9 +35,19 @@ namespace ZOLE_4
 			public bool first;
 		}
 
-		public InteractionLoader(GBHL.GBFile g)
+		public InteractionLoader(GBHL.GBFile g, Program.GameTypes game)
 		{
 			gb = g;
+			if (game == Program.GameTypes.Ages)
+			{
+				if (gb.ReadByte(0x54328) == 0xc3)
+					extraInteractionBankEnabled = true;
+			}
+		}
+
+		public void enableExtraInteractionBank()
+		{
+			extraInteractionBankEnabled = true;
 		}
 
 		public int getInteractionAddress(int mapIndex, int mapGroup, Program.GameTypes game)
@@ -40,7 +58,18 @@ namespace ZOLE_4
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + mapGroup * 2 + (game == Program.GameTypes.Ages ? 0x32B : 0x1B3B);
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
 			gb.BufferLocation += mapIndex * 2;
-			return (game == Program.GameTypes.Ages ? 0x12 : 0x11) * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
+
+			if (game == Program.GameTypes.Ages)
+			{
+				int pointer = gb.ReadByte() + (gb.ReadByte() << 8);
+				if ((pointer & 0x8000) != 0)
+					// If using the extra interaction bank, read from bank c6
+					return 0xc6 * 0x4000 + (pointer & 0x3fff);
+				else
+					return 0x12 * 0x4000 + (pointer & 0x3fff);
+			}
+			else // Seasons
+				return 0x11 * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
 		}
 
 		public void loadInteractions(int mapIndex, int mapGroup, Program.GameTypes game)
@@ -64,32 +93,38 @@ namespace ZOLE_4
 			}
 		}
 
-		public int getTypeSpace(int type)
+		public int getTypeSpace(int type, bool first)
 		{
+			int len = 0;
+			if (first || !stackableOpcode[type])
+				len++;
 			switch (type)
 			{
 				case 1:
-					return 2;
+					return len+2;
 				case 2:
-					return 4;
+					return len+4;
 				case 3:
-					return 2;
+					return len+2;
 				case 4:
-					return 2;
+					return len+2;
 				case 5:
-					return 2;
+					return len+2;
 				case 6:
-					return 3;
+					return len+3;
 				case 7:
-					return 5;
+					if (first)
+						return len + 5;
+					else
+						return len + 4;
 				case 8:
-					return 3;
+					return len+3;
 				case 9:
-					return 6;
+					return len+6;
 				case 0xA:
-					return 1;
+					return len+1;
 			}
-			return 0;
+			return len;
 		}
 
 		public void loadInteraction(int opcode, bool sOneTime)
@@ -122,19 +157,13 @@ namespace ZOLE_4
 					break;
 				case 6: //Random spawn
 					if (sOneTime)
-					{
-						i.first = true;
 						i.value8 = gb.ReadByte();
-					}
 					i.id = (ushort)((gb.ReadByte() << 8) + gb.ReadByte());
 					i.x = i.y = -1;
 					break;
-				case 7: //Non-returning interaction
+				case 7: //Specific position enemy
 					if (sOneTime)
-					{
-						i.first = true;
-						i.value8 = gb.ReadByte(); //Some byte that controls 
-					}
+						i.value8 = gb.ReadByte();
 					i.id = (ushort)((gb.ReadByte() << 8) + gb.ReadByte());
 					i.y = gb.ReadByte();
 					i.x = gb.ReadByte();
@@ -238,9 +267,6 @@ namespace ZOLE_4
 					s.SetVisibleBoxes(true, true, false, false, false);
 					s.SetBoxValues(0, "ID:", i.id, 65535);
 					s.SetBoxValues(1, "Quantity:", i.value8, 255);
-					//s.SetVisibleBoxes(true, true, false, false, false);
-					//s.SetBoxValues(0, "ID:", i.id, 65535);
-					//s.SetBoxValues(1, "Unkown:", i.value8, 255);
 					break;
 				case 7:
 					s.SetVisibleBoxes(true, true, true, i.first, false);
@@ -276,11 +302,11 @@ namespace ZOLE_4
 		public void saveInteractions(ref GBHL.GBFile g)
 		{
 			g.BufferLocation = interactionLocation;
-			byte lastOpcode = 0x0;
+			int lastOpcode = -1;
 			bool b = false;
 			foreach (Interaction i in interactions)
 			{
-				if (i.opcode != lastOpcode || i.opcode == 0x3 || i.opcode == 0x6)
+				if (i.opcode != lastOpcode || !stackableOpcode[i.opcode])
 				{
 					g.WriteByte((byte)(0xF0 + i.opcode));
 					lastOpcode = (byte)i.opcode;
@@ -288,21 +314,21 @@ namespace ZOLE_4
 				}
 				switch (i.opcode)
 				{
-					case 1: //Seems to have values for the last battles and Zelda's sprite in the coffin
+					case 1: //No-value
 						g.WriteByte((byte)(i.id >> 8));
 						g.WriteByte((byte)(i.id & 0xFF));
 						break;
-					case 2: //Most common
+					case 2: //Double-value
 						g.WriteByte((byte)(i.id >> 8));
 						g.WriteByte((byte)(i.id & 0xFF));
 						g.WriteByte((byte)(i.y));
 						g.WriteByte((byte)(i.x));
 						break;
-					case 3: //Common for enemy spawns
+					case 3: //Interaction pointer
 						g.WriteByte((byte)(i.id & 0xFF));
 						g.WriteByte((byte)(i.id >> 8));
 						break;
-					case 4: //Boss
+					case 4: //Boss interaction pointer
 						g.WriteByte((byte)(i.id & 0xFF));
 						g.WriteByte((byte)(i.id >> 8));
 						break;
@@ -310,13 +336,12 @@ namespace ZOLE_4
 						g.WriteByte((byte)(i.id & 0xFF));
 						g.WriteByte((byte)(i.id >> 8));
 						break;
-					case 6: //Unknown
+					case 6: //Random-position enemy
 						g.WriteByte(i.value8);
 						g.WriteByte((byte)(i.id >> 8));
 						g.WriteByte((byte)(i.id & 0xFF));
-						//g.WriteByte(i.value8);
 						break;
-					case 7: //Non-returning interaction
+					case 7: //Specific-position enemy
 						if (b)
 							g.WriteByte(i.value8);
 						g.WriteByte((byte)(i.id >> 8));
@@ -347,6 +372,8 @@ namespace ZOLE_4
 				b = false;
 			}
 			g.WriteByte(0xFF);
+
+			Debug.Print("Interaction real size: " + (gb.BufferLocation - interactionLocation));
 		}
 
 		public void writeInteractions(SpriteDefinitionBox s, int index)
@@ -406,7 +433,6 @@ namespace ZOLE_4
 		{
 			int found = 0;
 			gb.BufferLocation = bank * 0x4000;
-			bool warn = true;
 		FindSpace:
 			while (found < amount)
 			{
@@ -439,30 +465,15 @@ namespace ZOLE_4
 			{
 				found = 0;
 				gb.BufferLocation++;
-				if (!warn)
+				if (bank == 0xc6 && (bl & 0x3fff) == 0)
 				{
-					gb.BufferLocation += 2;
-					goto FindSpace;
+					return bl;
 				}
 				else
 				{
-					if (System.Windows.Forms.MessageBox.Show("Warning: The byte before the free space is not ended with interaction data ending.\nAdding interactions here may intercept and corrupt other data.\nDo you wish to continue anyway (If you say no, safe space will attempt to be found)?", "Warning", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-					{
-						return bl;
-					}
-					else
-					{
-						warn = false;
-						gb.BufferLocation++;
-						goto FindSpace;
-					}
+					gb.BufferLocation++;
+					goto FindSpace;
 				}
-			}
-			int i = gb.Buffer[bl - 1];
-			if (i < 0xFE)
-			{
-				gb.BufferLocation = bl + 1;
-				goto FindSpace;
 			}
 			return bl;
 		}
@@ -498,9 +509,16 @@ namespace ZOLE_4
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + loadedGroup * 2 + (game == Program.GameTypes.Ages ? 0x32B : 0x1B3B);
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
 			gb.BufferLocation += loadedMap * 2;
-			gb.WriteBytes(gb.Get2BytePointer(location));
+			if (game == Program.GameTypes.Ages && location / 0x4000 == 0xc6)
+			{
+				gb.WriteByte((byte)(location&0xff));
+				gb.WriteByte((byte)(((location >> 8) & 0x3f) + 0xc0));
+			}
+			else
+				gb.WriteBytes(gb.Get2BytePointer(location));
 		}
 
+		// Seems like nothing uses this function, but be wary, I don't think it'll work properly
 		public void deleteInteractions(Program.GameTypes game)
 		{
 			gb.BufferLocation = interactionLocation;
@@ -541,22 +559,26 @@ namespace ZOLE_4
 					gb.WriteByte((byte)(gb.BufferLocation / 0x4000));
 			}
 
-			int space = getTypeSpace(type);
+			int space = 0;
 			int lastOpcode = -1;
 			foreach (Interaction i in interactions)
 			{
-				if (i.opcode != lastOpcode)
-				{
-					space++;
-					lastOpcode = i.opcode;
-				}
-				space += getTypeSpace(i.opcode);
+				space += getTypeSpace(i.opcode, i.opcode != lastOpcode);
+				lastOpcode = i.opcode;
 			}
+			space += getTypeSpace(type, type != lastOpcode);
+			space++;
+			Debug.Print("Interaction calculated size: " + space);
+
 			int location = -1;
 			if (game == Program.GameTypes.Ages)
-				location = findFreeSpace(space + 2, 0x12);
+			{
+				location = findFreeSpace(space, 0x12);
+				if (location == -1 && extraInteractionBankEnabled)
+					location = findFreeSpace(space, 0xc6);
+			}
 			else
-				location = findFreeSpaceSeasons(space + 2, 0x11);
+				location = findFreeSpaceSeasons(space, 0x11);
 			if (location == -1)
 			{
 				gb.Buffer = prev;

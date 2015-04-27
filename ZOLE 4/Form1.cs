@@ -130,7 +130,7 @@ namespace ZOLE_4
 
 			paletteLoader = new PaletteLoader(gb);
 			minimapCreator = new MinimapCreator(gb);
-			interactionLoader = new InteractionLoader(gb);
+			interactionLoader = new InteractionLoader(gb, game);
 			staticObjectLoader = new StaticObjectLoader(gb);
 			transitionLoader = new TransitionLoader(gb);
 			enemyLoader = new EnemyLoader(gb);
@@ -2359,5 +2359,13 @@ namespace ZOLE_4
             frmMapGroups MG = new frmMapGroups();
             MG.Show();
         }
+
+		private void extraBankForInteractionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (mapLoader == null)
+				return;
+			Patches.ExtraInteractionBank(gb, game);
+			interactionLoader.enableExtraInteractionBank();
+		}
 	}
 }
