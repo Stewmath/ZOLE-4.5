@@ -2365,7 +2365,7 @@ namespace ZOLE_4
 			if (mapLoader == null)
 				return;
 			Patches.ExtraInteractionBank(gb, game);
-			interactionLoader.enableExtraInteractionBank();
+			interactionLoader.enableExtraInteractionBank(game);
 		}
 	}
 }

@@ -21,7 +21,7 @@ namespace ZOLE_4
 		true,true,true,true,true,
 		true,true,true};
 
-		private bool extraInteractionBankEnabled = false;
+		private byte extraInteractionBank = 0;
 
 		public struct Interaction
 		{
@@ -41,13 +41,14 @@ namespace ZOLE_4
 			if (game == Program.GameTypes.Ages)
 			{
 				if (gb.ReadByte(0x54328) == 0xc3)
-					extraInteractionBankEnabled = true;
+					enableExtraInteractionBank(game);
 			}
 		}
 
-		public void enableExtraInteractionBank()
+		public void enableExtraInteractionBank(Program.GameTypes game)
 		{
-			extraInteractionBankEnabled = true;
+			if (game == Program.GameTypes.Ages)
+				extraInteractionBank = 0xfa;
 		}
 
 		public int getInteractionAddress(int mapIndex, int mapGroup, Program.GameTypes game)
@@ -62,9 +63,9 @@ namespace ZOLE_4
 			if (game == Program.GameTypes.Ages)
 			{
 				int pointer = gb.ReadByte() + (gb.ReadByte() << 8);
-				if ((pointer & 0x8000) != 0)
-					// If using the extra interaction bank, read from bank c6
-					return 0xc6 * 0x4000 + (pointer & 0x3fff);
+				if (extraInteractionBank != 0 && (pointer & 0x8000) != 0)
+					// If using the extra interaction bank, read from its bank
+					return extraInteractionBank * 0x4000 + (pointer & 0x3fff);
 				else
 					return 0x12 * 0x4000 + (pointer & 0x3fff);
 			}
@@ -465,7 +466,7 @@ namespace ZOLE_4
 			{
 				found = 0;
 				gb.BufferLocation++;
-				if (bank == 0xc6 && (bl & 0x3fff) == 0)
+				if (bank == extraInteractionBank && (bl & 0x3fff) == 0)
 				{
 					return bl;
 				}
@@ -509,7 +510,7 @@ namespace ZOLE_4
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + loadedGroup * 2 + (game == Program.GameTypes.Ages ? 0x32B : 0x1B3B);
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
 			gb.BufferLocation += loadedMap * 2;
-			if (game == Program.GameTypes.Ages && location / 0x4000 == 0xc6)
+			if (game == Program.GameTypes.Ages && location / 0x4000 == extraInteractionBank)
 			{
 				gb.WriteByte((byte)(location&0xff));
 				gb.WriteByte((byte)(((location >> 8) & 0x3f) + 0xc0));
@@ -574,8 +575,8 @@ namespace ZOLE_4
 			if (game == Program.GameTypes.Ages)
 			{
 				location = findFreeSpace(space, 0x12);
-				if (location == -1 && extraInteractionBankEnabled)
-					location = findFreeSpace(space, 0xc6);
+				if (location == -1 && extraInteractionBank != 0)
+					location = findFreeSpace(space, extraInteractionBank);
 			}
 			else
 				location = findFreeSpaceSeasons(space, 0x11);
