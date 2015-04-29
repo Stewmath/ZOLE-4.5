@@ -101,6 +101,7 @@
 			this.aSMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.crystalSwitchesInAllDungeonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.chestsPerOverworldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.extraBankForInteractionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripMenuItem();
 			this.removeBeginningLocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem32 = new System.Windows.Forms.ToolStripMenuItem();
@@ -229,11 +230,11 @@
 			this.btnArrangeSeasons = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton25 = new System.Windows.Forms.ToolStripButton();
-			this.extraBankForInteractionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pMap = new ZOLE_4.GridBox();
 			this.pTileset = new ZOLE_4.GridBox();
 			this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
 			this.pMinimap = new ZOLE_4.GridBox();
+			this.extraInteractionBankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.toolAges.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nArea)).BeginInit();
@@ -909,12 +910,20 @@
 			this.chestsPerOverworldToolStripMenuItem.Text = "30 Chests Per Overworld";
 			this.chestsPerOverworldToolStripMenuItem.Click += new System.EventHandler(this.chestsPerOverworldToolStripMenuItem_Click);
 			// 
+			// extraBankForInteractionsToolStripMenuItem
+			// 
+			this.extraBankForInteractionsToolStripMenuItem.Name = "extraBankForInteractionsToolStripMenuItem";
+			this.extraBankForInteractionsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+			this.extraBankForInteractionsToolStripMenuItem.Text = "Extra Interaction Bank";
+			this.extraBankForInteractionsToolStripMenuItem.Click += new System.EventHandler(this.extraBankForInteractionsToolStripMenuItem_Click);
+			// 
 			// toolStripMenuItem22
 			// 
 			this.toolStripMenuItem22.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeBeginningLocksToolStripMenuItem,
             this.toolStripMenuItem32,
-            this.instantlyAwakeToolStripMenuItem});
+            this.instantlyAwakeToolStripMenuItem,
+            this.extraInteractionBankToolStripMenuItem});
 			this.toolStripMenuItem22.Name = "toolStripMenuItem22";
 			this.toolStripMenuItem22.Size = new System.Drawing.Size(183, 22);
 			this.toolStripMenuItem22.Text = "Seasons";
@@ -2221,13 +2230,6 @@
 			this.toolStripButton25.Text = "Re-Apply ASM Patches";
 			this.toolStripButton25.Click += new System.EventHandler(this.reApplyASMPatchesToolStripMenuItem_Click);
 			// 
-			// extraBankForInteractionsToolStripMenuItem
-			// 
-			this.extraBankForInteractionsToolStripMenuItem.Name = "extraBankForInteractionsToolStripMenuItem";
-			this.extraBankForInteractionsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-			this.extraBankForInteractionsToolStripMenuItem.Text = "Extra Interaction Bank";
-			this.extraBankForInteractionsToolStripMenuItem.Click += new System.EventHandler(this.extraBankForInteractionsToolStripMenuItem_Click);
-			// 
 			// pMap
 			// 
 			this.pMap.AllowMultiSelection = false;
@@ -2299,6 +2301,13 @@
 			this.pMinimap.TabIndex = 17;
 			this.pMinimap.TabStop = false;
 			this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
+			// 
+			// extraInteractionBankToolStripMenuItem
+			// 
+			this.extraInteractionBankToolStripMenuItem.Name = "extraInteractionBankToolStripMenuItem";
+			this.extraInteractionBankToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.extraInteractionBankToolStripMenuItem.Text = "Extra Interaction Bank";
+			this.extraInteractionBankToolStripMenuItem.Click += new System.EventHandler(this.extraInteractionBankToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -2577,6 +2586,7 @@
         private System.Windows.Forms.ToolStripMenuItem memoryAddressesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mapGroupsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem extraBankForInteractionsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem extraInteractionBankToolStripMenuItem;
 	}
 }
 

@@ -55,6 +55,9 @@ namespace ZOLE_4
 			}
 			else
 			{
+				if (gb.ReadByte(0x458dc) == 0xcd)
+					enableExtraInteractionBank(game);
+
 				noLocation = 0x4634b;
 			}
 		}
@@ -63,6 +66,8 @@ namespace ZOLE_4
 		{
 			if (game == Program.GameTypes.Ages)
 				extraInteractionBank = 0xfa;
+			else // Seasons
+				extraInteractionBank = 0x7f;
 		}
 
 		public int getInteractionAddress(int mapIndex, int mapGroup, Program.GameTypes game)

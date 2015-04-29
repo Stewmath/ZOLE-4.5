@@ -2360,7 +2360,17 @@ namespace ZOLE_4
             MG.Show();
         }
 
+		// Ages patch
 		private void extraBankForInteractionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (mapLoader == null)
+				return;
+			Patches.ExtraInteractionBank(gb, game);
+			interactionLoader.enableExtraInteractionBank(game);
+		}
+
+		// Seasons patch
+		private void extraInteractionBankToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (mapLoader == null)
 				return;
