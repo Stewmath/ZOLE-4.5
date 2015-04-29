@@ -1,0 +1,19 @@
+Update 1
+
+- Bugfix: Editing some enemies (such as 7000, the d1 miniboss) would cause 
+them to crash. This is fixed, all enemies should be editable now.
+
+- Bugfix: Using multiple random-enemy interactions in a row did not work 
+before and could cause the game to crash.
+
+Update 2
+
+- One of Lin's patches involving VRAM transfers has been modified, in order to 
+work properly on a real gameboy without graphical corruption. Click "Re-apply 
+ASM patches" to apply it to an already modified rom.
+
+- A new ASM patch, "Extra Interaction Bank", has been added for both Ages and 
+Seasons. If you encounter an error saying that there is no free space left
+when you try to add an interaction, apply this patch and you're good to go.
+
+- The freespace management for interactions has been improved in general.
