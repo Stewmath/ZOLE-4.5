@@ -230,11 +230,11 @@
 			this.btnArrangeSeasons = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripButton25 = new System.Windows.Forms.ToolStripButton();
+			this.extraInteractionBankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.pMap = new ZOLE_4.GridBox();
 			this.pTileset = new ZOLE_4.GridBox();
 			this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
 			this.pMinimap = new ZOLE_4.GridBox();
-			this.extraInteractionBankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.toolAges.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nArea)).BeginInit();
@@ -976,21 +976,21 @@
 			// zOSEToolStripMenuItem
 			// 
 			this.zOSEToolStripMenuItem.Name = "zOSEToolStripMenuItem";
-			this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
 			this.zOSEToolStripMenuItem.Text = "ZOSE";
 			this.zOSEToolStripMenuItem.Click += new System.EventHandler(this.zOSEToolStripMenuItem_Click);
 			// 
 			// zOTEToolStripMenuItem
 			// 
 			this.zOTEToolStripMenuItem.Name = "zOTEToolStripMenuItem";
-			this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
 			this.zOTEToolStripMenuItem.Text = "ZOTE";
 			this.zOTEToolStripMenuItem.Click += new System.EventHandler(this.zOTEToolStripMenuItem_Click);
 			// 
 			// zOCFToolStripMenuItem
 			// 
 			this.zOCFToolStripMenuItem.Name = "zOCFToolStripMenuItem";
-			this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
 			this.zOCFToolStripMenuItem.Text = "ZOCF";
 			this.zOCFToolStripMenuItem.Click += new System.EventHandler(this.zOCFToolStripMenuItem_Click);
 			// 
@@ -2230,6 +2230,13 @@
 			this.toolStripButton25.Text = "Re-Apply ASM Patches";
 			this.toolStripButton25.Click += new System.EventHandler(this.reApplyASMPatchesToolStripMenuItem_Click);
 			// 
+			// extraInteractionBankToolStripMenuItem
+			// 
+			this.extraInteractionBankToolStripMenuItem.Name = "extraInteractionBankToolStripMenuItem";
+			this.extraInteractionBankToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+			this.extraInteractionBankToolStripMenuItem.Text = "Extra Interaction Bank";
+			this.extraInteractionBankToolStripMenuItem.Click += new System.EventHandler(this.extraInteractionBankToolStripMenuItem_Click);
+			// 
 			// pMap
 			// 
 			this.pMap.AllowMultiSelection = false;
@@ -2302,13 +2309,6 @@
 			this.pMinimap.TabStop = false;
 			this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
 			// 
-			// extraInteractionBankToolStripMenuItem
-			// 
-			this.extraInteractionBankToolStripMenuItem.Name = "extraInteractionBankToolStripMenuItem";
-			this.extraInteractionBankToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-			this.extraInteractionBankToolStripMenuItem.Text = "Extra Interaction Bank";
-			this.extraInteractionBankToolStripMenuItem.Click += new System.EventHandler(this.extraInteractionBankToolStripMenuItem_Click);
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2338,7 +2338,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
-			this.Text = "ZOLE 4.5 Update 1 - Zelda Oracles Level Editor";
+			this.Text = "ZOLE 4.5 Update 2 - Zelda Oracles Level Editor";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
