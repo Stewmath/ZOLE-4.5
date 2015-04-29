@@ -792,7 +792,7 @@ namespace ZOLE_4
 			int season = (cboArea.SelectedIndex < 4 ? (cboArea.SelectedIndex & 7) : 0);
 			mapSaver.saveAreaData((int)nArea.Value, (int)nVRAM.Value, (int)nTileset.Value, (int)nUnique.Value, (int)nAnimation.Value, (int)nPalette.Value, season, game);
 			interactionLoader.gb = gb;
-			interactionLoader.saveInteractions(ref gb);
+			interactionLoader.saveInteractions(ref gb, game);
 
 			if (game == Program.GameTypes.Ages)
 			{
@@ -2255,7 +2255,7 @@ namespace ZOLE_4
 			interactionLoader.repointInteractions((int)f.nAddress.Value, game);
 			if (f.chkCopy.Checked)
 			{
-				interactionLoader.saveInteractions(ref gb);
+				interactionLoader.saveInteractions(ref gb, game);
 			}
 
 			interactionLoader.loadInteractions(interactionLoader.loadedMap, interactionLoader.loadedGroup, game);

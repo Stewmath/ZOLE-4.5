@@ -14,14 +14,21 @@ namespace ZOLE_4
 		public int interactionLocation;
 		public int loadedMap;
 		public int loadedGroup;
-		public int noLocation = 0x49977;
 
-		bool[] stackableOpcode = {true,true,true,false,
+		// Common address used for maps with no interaction data
+		private int noLocation;
+
+		// List of which op's can be "stacked" without adding another Fx byte
+		private bool[] stackableOpcode = {
+		true,true,true,false,
 		false,true,false,true,
-		true,true,true,true,true,
-		true,true,true};
+		true,true,true,true,
+		true,true,true,true};
 
+		// Bank which can be used for extra storage space for interaction data
+		// Requires the corresponding ASM patch
 		private byte extraInteractionBank = 0;
+
 
 		public struct Interaction
 		{
@@ -40,8 +47,15 @@ namespace ZOLE_4
 			gb = g;
 			if (game == Program.GameTypes.Ages)
 			{
+				// Check if patch has been applied
 				if (gb.ReadByte(0x54328) == 0xc3)
 					enableExtraInteractionBank(game);
+
+				noLocation = 0x49977;
+			}
+			else
+			{
+				noLocation = 0x4634b;
 			}
 		}
 
@@ -60,17 +74,16 @@ namespace ZOLE_4
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
 			gb.BufferLocation += mapIndex * 2;
 
+			int pointer = gb.ReadByte() + (gb.ReadByte() << 8);
+
+			if (extraInteractionBank != 0 && (pointer & 0x8000) != 0)
+				// If using the extra interaction bank, read from that bank
+				return extraInteractionBank * 0x4000 + (pointer & 0x3fff);
+
 			if (game == Program.GameTypes.Ages)
-			{
-				int pointer = gb.ReadByte() + (gb.ReadByte() << 8);
-				if (extraInteractionBank != 0 && (pointer & 0x8000) != 0)
-					// If using the extra interaction bank, read from its bank
-					return extraInteractionBank * 0x4000 + (pointer & 0x3fff);
-				else
-					return 0x12 * 0x4000 + (pointer & 0x3fff);
-			}
+				return 0x12 * 0x4000 + (pointer & 0x3fff);
 			else // Seasons
-				return 0x11 * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
+				return 0x11 * 0x4000 + (pointer & 0x3fff);
 		}
 
 		public void loadInteractions(int mapIndex, int mapGroup, Program.GameTypes game)
@@ -92,6 +105,9 @@ namespace ZOLE_4
 				loadInteraction(opcode, bb);
 				bb = false;
 			}
+
+			if (getDataSize() != (gb.BufferLocation - interactionLocation))
+				Debug.WriteLine("WARNING: calculated interaction size doesn't match actual size");
 		}
 
 		public int getTypeSpace(int type, bool first)
@@ -126,6 +142,19 @@ namespace ZOLE_4
 					return len+1;
 			}
 			return len;
+		}
+
+		public int getDataSize()
+		{
+			int space = 0;
+			int lastOpcode = -1;
+			foreach (Interaction i in interactions)
+			{
+				space += getTypeSpace(i.opcode, i.opcode != lastOpcode);
+				lastOpcode = i.opcode;
+			}
+
+			return space+1;
 		}
 
 		public void loadInteraction(int opcode, bool sOneTime)
@@ -300,7 +329,7 @@ namespace ZOLE_4
 			}
 		}
 
-		public void saveInteractions(ref GBHL.GBFile g)
+		public void saveInteractions(ref GBHL.GBFile g, Program.GameTypes game)
 		{
 			g.BufferLocation = interactionLocation;
 			int lastOpcode = -1;
@@ -430,8 +459,12 @@ namespace ZOLE_4
 			interactions[index] = i;
 		}
 
-		public int findFreeSpace(int amount, byte bank)
+		public int findFreeSpace(int amount, byte bank, Program.GameTypes game)
 		{
+			int blankByte = 0;
+			if (game == Program.GameTypes.Seasons && bank < 0x40)
+				blankByte = bank;
+
 			int found = 0;
 			gb.BufferLocation = bank * 0x4000;
 		FindSpace:
@@ -441,7 +474,7 @@ namespace ZOLE_4
 				{
 					return -1;
 				}
-				if (gb.ReadByte() != 0)
+				if (gb.ReadByte() != blankByte)
 				{
 					found = 0;
 					continue;
@@ -456,7 +489,7 @@ namespace ZOLE_4
 
 			int bl = gb.BufferLocation - found;
 			gb.BufferLocation = bl;
-			if (gb.ReadByte() != 0)
+			if (gb.ReadByte() != blankByte)
 			{
 				goto FindSpace;
 			}
@@ -479,109 +512,52 @@ namespace ZOLE_4
 			return bl;
 		}
 
-		public int findFreeSpaceSeasons(int amount, byte bank)
-		{
-			int found = 0;
-			gb.BufferLocation = bank * 0x4000;
-			while (found < amount)
-			{
-				if (gb.BufferLocation == gb.Buffer.Length - 1 || gb.BufferLocation == bank * 0x4000 + 0x3FFF)
-				{
-					return -1;
-				}
-				if (gb.ReadByte() != bank)
-				{
-					found = 0;
-					continue;
-				}
-				if (gb.BufferLocation == noLocation)
-				{
-					found = 0;
-					continue;
-				}
-				found++;
-			}
-
-			return gb.BufferLocation - found;
-		}
-
 		public void repointInteractions(int location, Program.GameTypes game)
 		{
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + loadedGroup * 2 + (game == Program.GameTypes.Ages ? 0x32B : 0x1B3B);
 			gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x15 : 0x11) * 0x4000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
 			gb.BufferLocation += loadedMap * 2;
-			if (game == Program.GameTypes.Ages && location / 0x4000 == extraInteractionBank)
+			if (location / 0x4000 == extraInteractionBank)
 			{
 				gb.WriteByte((byte)(location&0xff));
 				gb.WriteByte((byte)(((location >> 8) & 0x3f) + 0xc0));
 			}
 			else
 				gb.WriteBytes(gb.Get2BytePointer(location));
-		}
 
-		// Seems like nothing uses this function, but be wary, I don't think it'll work properly
-		public void deleteInteractions(Program.GameTypes game)
-		{
-			gb.BufferLocation = interactionLocation;
-			if (interactions.Count == 0)
-				return;
-			byte b;
-			while ((b = gb.ReadByte()) != 0xFF && b != 0xFE)
-			{
-				gb.BufferLocation--;
-				gb.WriteByte(0);
-			}
-			gb.BufferLocation--;
-			gb.WriteByte(0);
-			repointInteractions(noLocation, game);
+			interactionLocation = location;
 		}
 
 		public bool addInteraction(int type, Program.GameTypes game)
 		{
-			byte[] prev = new byte[(game == Program.GameTypes.Ages ? 0x400000 : 0x200000)];
+			// Backup state of ROM in case of failure
+			byte[] prev = new byte[gb.Buffer.Length];
 			Array.Copy(gb.Buffer, prev, gb.Buffer.Length);
 
-			//Clear the old ones
-			if (interactionLocation != noLocation && interactions.Count > 0)
-			{
-				gb.BufferLocation = interactionLocation;
-				while (gb.ReadByte() < 0xFE)
-				{
-					gb.BufferLocation--;
-					if (game == Program.GameTypes.Ages)
-						gb.WriteByte(0);
-					else
-						gb.WriteByte((byte)(gb.BufferLocation / 0x4000));
-				}
-				gb.BufferLocation--;
-				if (game == Program.GameTypes.Ages)
-					gb.WriteByte(0);
-				else
-					gb.WriteByte((byte)(gb.BufferLocation / 0x4000));
-			}
+			// Delete old interaction data
+			clearInteractionSpace(game);
+			
+			// Put new interaction into the list
+			Interaction it = new Interaction();
+			it.opcode = type;
+			it.x = it.y = 0;
+			interactions.Add(it);
 
-			int space = 0;
-			int lastOpcode = -1;
-			foreach (Interaction i in interactions)
-			{
-				space += getTypeSpace(i.opcode, i.opcode != lastOpcode);
-				lastOpcode = i.opcode;
-			}
-			space += getTypeSpace(type, type != lastOpcode);
-			space++;
-			Debug.Print("Interaction calculated size: " + space);
-
+			// Find free space
+			int dataSize = getDataSize();
 			int location = -1;
 			if (game == Program.GameTypes.Ages)
-			{
-				location = findFreeSpace(space, 0x12);
-				if (location == -1 && extraInteractionBank != 0)
-					location = findFreeSpace(space, extraInteractionBank);
-			}
+				location = findFreeSpace(dataSize, 0x12, game);
 			else
-				location = findFreeSpaceSeasons(space, 0x11);
+				location = findFreeSpace(dataSize, 0x11, game);
+			if (location == -1 && extraInteractionBank > 0)
+				location = findFreeSpace(dataSize, extraInteractionBank, game);
+
 			if (location == -1)
 			{
+				// No suitable location found
+				interactions.RemoveAt(interactions.Count - 1);
+				// Revert the state of the ROM
 				gb.Buffer = prev;
 				return false;
 			}
@@ -589,43 +565,34 @@ namespace ZOLE_4
 			interactionLocation = location;
 			repointInteractions(interactionLocation, game);
 
-			//Something to set its position
-			Interaction it = new Interaction();
-			it.opcode = type;
-
-			int temp = gb.BufferLocation;
-			loadInteraction(type, false);
-			it.x = interactions[interactions.Count - 1].x;
-			it.y = interactions[interactions.Count - 1].y;
-			interactions.RemoveAt(interactions.Count - 1);
-			if (it.x != -1 || it.y != -1)
-				it.x = it.y = 0;
-			interactions.Add(it);
-
-			saveInteractions(ref gb);
+			saveInteractions(ref gb, game);
 			loadInteractions(loadedMap, loadedGroup, game);
 			return true;
 		}
 
 		public void deleteInteraction(int index, Program.GameTypes game)
 		{
-			gb.BufferLocation = interactionLocation;
-			while (gb.ReadByte() < 0xFE)
-			{
-				gb.BufferLocation--;
-				if (game == Program.GameTypes.Ages)
-					gb.WriteByte(0);
-				else
-					gb.WriteByte((byte)(gb.BufferLocation / 0x4000));
-			}
-			gb.BufferLocation--;
-
-			if (game == Program.GameTypes.Ages)
-				gb.WriteByte(0);
-			else
-				gb.WriteByte((byte)(gb.BufferLocation / 0x4000));
+			clearInteractionSpace(game);
 			interactions.RemoveAt(index);
-			saveInteractions(ref gb);
+			saveInteractions(ref gb, game);
+		}
+
+		// Clears out the data at interactionLocation
+		// The amount it clears out is based on getDataSize() so make sure the interaction list is accurate before calling
+		private void clearInteractionSpace(Program.GameTypes game)
+		{
+			if (interactionLocation == noLocation)
+				return;
+			gb.BufferLocation = interactionLocation;
+			int oldDataSize = getDataSize();
+			for (int i = 0; i < oldDataSize; i++)
+			{
+				byte bank = (byte)(interactionLocation / 0x4000);
+				if (game == Program.GameTypes.Seasons && bank < 0x40)
+					gb.WriteByte(bank);
+				else
+					gb.WriteByte(0);
+			}
 		}
 	}
 }
