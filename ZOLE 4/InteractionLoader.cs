@@ -21,7 +21,7 @@ namespace ZOLE_4
 		// List of which op's can be "stacked" without adding another Fx byte
 		private bool[] stackableOpcode = {
 		true,true,true,false,
-		false,true,false,true,
+		false,false,false,true,
 		true,true,true,true,
 		true,true,true,true};
 
@@ -36,9 +36,9 @@ namespace ZOLE_4
 			public int x;
 			public int y;
 			public int opcode;
-			public ushort value16;
 			public byte value8;
-			public byte value8s;
+            public byte position;
+            public byte type;
 			public bool first;
 		}
 
@@ -143,8 +143,11 @@ namespace ZOLE_4
 					return len+3;
 				case 9:
 					return len+6;
-				case 0xA:
-					return len+1;
+                case 0xA:
+                    if (first)
+                        return len+3;
+                    else
+					    return len+2;
 			}
 			return len;
 		}
@@ -191,8 +194,7 @@ namespace ZOLE_4
 					i.x = i.y = -1;
 					break;
 				case 6: //Random spawn
-					if (sOneTime)
-						i.value8 = gb.ReadByte();
+					i.value8 = gb.ReadByte();
 					i.id = (ushort)((gb.ReadByte() << 8) + gb.ReadByte());
 					i.x = i.y = -1;
 					break;
@@ -211,21 +213,20 @@ namespace ZOLE_4
 					i.y = (locByte >> 4) * 16 + 8;
 					break;
 				case 9: //Used for texts after dungeons
-					/*i.value8 = gb.ReadByte();
-					byte temp = gb.ReadByte();
-					i.value8s = gb.ReadByte();
-					
-					i.id = (ushort)(temp + (gb.ReadByte() << 8));
-					i.x = i.y = -1;*/
+                    i.type = gb.ReadByte();
 					i.id = (ushort)((gb.ReadByte() << 8) + gb.ReadByte());
 					i.value8 = gb.ReadByte();
-					i.value8s = gb.ReadByte();
 					i.y = gb.ReadByte();
 					i.x = gb.ReadByte();
 					break;
-				case 0xA: //???
-					i.id = gb.ReadByte();
-					i.x = i.y = -1;
+                case 0xA: // Item drops
+                    if (sOneTime)
+                        i.value8 = gb.ReadByte();
+                    i.id = gb.ReadByte();
+                    i.position = gb.ReadByte();
+
+                    i.y = (i.position & 0xf0) + 8;
+                    i.x = ((i.position << 4) & 0xf0) + 8;
 					break;
 				default:
 					gb.ReadByte(); //To make it advance
@@ -267,7 +268,7 @@ namespace ZOLE_4
 				case 7: return "Specific Position Enemy";
 				case 8: return "Owl Statue/Trigger/Switch";
 				case 9: return "Quadrouple-Value Interaction";
-				case 0xA: return "Unknown";
+				case 0xA: return "Item Drop";
 			}
 			return "Unknown Type " + (0xF0 + opcode).ToString("X");
 		}
@@ -321,15 +322,17 @@ namespace ZOLE_4
 					s.SetBoxValues(1, "Unknown:", i.value8, 255);
 					s.SetBoxValues(2, "Text Set:", i.value8s, 255);*/
 					s.SetVisibleBoxes(true, true, true, true, true);
-					s.SetBoxValues(0, "ID:", i.id, 65535);
-					s.SetBoxValues(1, "Effect:", i.value8, 255);
-					s.SetBoxValues(2, "Unknown:", i.value8s, 255);
+					s.SetBoxValues(0, "Type:", i.type, 255);
+					s.SetBoxValues(1, "ID:", i.id, 65535);
+					s.SetBoxValues(2, "Unknown:", i.value8, 255);
 					s.SetBoxValues(3, "X:", (ushort)i.x, 255);
 					s.SetBoxValues(4, "Y:", (ushort)i.y, 255);
 					break;
 				case 0xA:
-					s.SetVisibleBoxes(true, false, false, false, false);
-					s.SetBoxValues(0, "ID:", i.id, 255);
+					s.SetVisibleBoxes(i.first, true, true, false, false);
+					s.SetBoxValues(0, "Flags:", i.value8, 255);
+                    s.SetBoxValues(1, "Item:", i.id, 255);
+                    s.SetBoxValues(2, "Position:", i.position, 255);
 					break;
 			}
 		}
@@ -339,6 +342,7 @@ namespace ZOLE_4
 			g.BufferLocation = interactionLocation;
 			int lastOpcode = -1;
 			bool b = false;
+
 			foreach (Interaction i in interactions)
 			{
 				if (i.opcode != lastOpcode || !stackableOpcode[i.opcode])
@@ -347,6 +351,7 @@ namespace ZOLE_4
 					lastOpcode = (byte)i.opcode;
 					b = true;
 				}
+
 				switch (i.opcode)
 				{
 					case 1: //No-value
@@ -390,18 +395,17 @@ namespace ZOLE_4
 						g.WriteByte(i.value8);
 						break;
 					case 9: //Used for texts after dungeons
-						/*g.WriteByte(i.value8);
-						g.WriteByte((byte)(i.id & 0xFF));
-						g.WriteByte(i.value8s);
-						g.WriteByte((byte)(i.id >> 8));*/
+                        g.WriteByte(i.type);
 						g.WriteWord(i.id);
 						g.WriteByte(i.value8);
-						g.WriteByte(i.value8s);
 						g.WriteByte((byte)i.y);
 						g.WriteByte((byte)i.x);
 						break;
-					case 0xA: //???
-						g.WriteByte((byte)i.id);
+					case 0xA: //Item drop
+                        if (b)
+                            g.WriteByte((byte)i.value8);
+                        g.WriteByte((byte)i.id);
+                        g.WriteByte((byte)i.position);
 						break;
 				}
 				b = false;
@@ -450,15 +454,19 @@ namespace ZOLE_4
 					i.x = (i.value8 & 0xF) * 16;
 					i.y = (i.value8 >> 4) * 16;
 					break;
-				case 9:
-					i.id = s.GetBoxValue(0);
-					i.value8 = (byte)s.GetBoxValue(1);
-					i.value8s = (byte)s.GetBoxValue(2);
+                case 9:
+                    i.type = (byte)s.GetBoxValue(0);
+                    i.id = s.GetBoxValue(1);
+					i.value8 = (byte)s.GetBoxValue(2);
 					i.x = (byte)s.GetBoxValue(3);
 					i.y = (byte)s.GetBoxValue(4);
 					break;
-				case 0xA:
-					i.id = (byte)s.GetBoxValue(0);
+                case 0xA:
+                    i.value8 = (byte)s.GetBoxValue(0);
+                    i.id = (byte)s.GetBoxValue(1);
+                    i.position = (byte)s.GetBoxValue(2);
+                    i.x = (i.position & 0xF) * 16;
+                    i.y = (i.position >> 4) * 16;
 					break;
 			}
 			interactions[index] = i;
@@ -479,12 +487,13 @@ namespace ZOLE_4
 				{
 					return -1;
 				}
-				if (gb.ReadByte() != blankByte)
+				if (gb.BufferLocation == noLocation)
 				{
+					gb.ReadByte();
 					found = 0;
 					continue;
 				}
-				if (gb.BufferLocation == noLocation)
+				if (gb.ReadByte() != blankByte)
 				{
 					found = 0;
 					continue;
@@ -500,7 +509,7 @@ namespace ZOLE_4
 			}
 			gb.BufferLocation = bl - 1;
 
-			if (gb.ReadByte() < 0xFE)
+			if (gb.ReadByte() < 0xFE) // Try to make sure it'll be put right next to other interaction data
 			{
 				found = 0;
 				gb.BufferLocation++;
