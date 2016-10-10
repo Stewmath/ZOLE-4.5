@@ -17,3 +17,10 @@ Seasons. If you encounter an error saying that there is no free space left
 when you try to add an interaction, apply this patch and you're good to go.
 
 - The freespace management for interactions has been improved in general.
+
+Update 3
+
+- Quadruple-value interactions have their values labelled correctly now (their
+ID field was previously wrong)
+- Item drops (interaction $a) have their values labelled correctly. To use one,
+create it and put it over a bush or pot to make a guaranteed item drop.
