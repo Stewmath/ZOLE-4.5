@@ -1,4 +1,8 @@
-Update 1
+ZOLE 4: Written by Lin
+ZOLE 4.5: UI Improvement of ZOLE 4 by BigTarantula aka Xyspade
+ZOLE 4.5 Update series: Made by Drenn mainly to add bugfixes
+
+ZOLE 4.5 Update 1:
 
 - Bugfix: Editing some enemies (such as 7000, the d1 miniboss) would cause 
 them to crash. This is fixed, all enemies should be editable now.
@@ -6,11 +10,13 @@ them to crash. This is fixed, all enemies should be editable now.
 - Bugfix: Using multiple random-enemy interactions in a row did not work 
 before and could cause the game to crash.
 
-Update 2
+ZOLE 4.5 Update 2:
 
 - One of Lin's patches involving VRAM transfers has been modified, in order to 
 work properly on a real gameboy without graphical corruption. Click "Re-apply 
-ASM patches" to apply it to an already modified rom.
+ASM patches" to apply it to an already modified rom. If your rom has random
+crashes, or the screen turns into complete garbage at random times, this may fix
+it.
 
 - A new ASM patch, "Extra Interaction Bank", has been added for both Ages and 
 Seasons. If you encounter an error saying that there is no free space left
@@ -18,9 +24,10 @@ when you try to add an interaction, apply this patch and you're good to go.
 
 - The freespace management for interactions has been improved in general.
 
-Update 3
+ZOLE 4.5 Update 3:
 
 - Quadruple-value interactions have their values labelled correctly now (their
 ID field was previously wrong)
+
 - Item drops (interaction $a) have their values labelled correctly. To use one,
 create it and put it over a bush or pot to make a guaranteed item drop.
