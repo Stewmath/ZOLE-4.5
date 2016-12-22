@@ -21,5 +21,20 @@ namespace ZOLE_4
 			p.StartInfo = new System.Diagnostics.ProcessStartInfo("http://zeldahacking.ulmb.com/");
 			p.Start();
 		}
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
 	}
 }
