@@ -518,7 +518,7 @@
 			this.addRemoveInteractionsToolStripMenuItem.Name = "addRemoveInteractionsToolStripMenuItem";
 			this.addRemoveInteractionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
 			this.addRemoveInteractionsToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
-			this.addRemoveInteractionsToolStripMenuItem.Text = "Add Interactions";
+			this.addRemoveInteractionsToolStripMenuItem.Text = "Add Objects";
 			this.addRemoveInteractionsToolStripMenuItem.Click += new System.EventHandler(this.addRemoveInteractionsToolStripMenuItem_Click);
 			// 
 			// chestEditorToolStripMenuItem
@@ -714,7 +714,7 @@
 			// 
 			this.toolStripMenuItem39.Name = "toolStripMenuItem39";
 			this.toolStripMenuItem39.Size = new System.Drawing.Size(291, 22);
-			this.toolStripMenuItem39.Text = "Repoint Interactions...";
+			this.toolStripMenuItem39.Text = "Repoint Objects...";
 			this.toolStripMenuItem39.Click += new System.EventHandler(this.toolStripMenuItem39_Click);
 			// 
 			// toolStripMenuItem34
@@ -765,7 +765,7 @@
 			this.toolStripMenuItem24.Name = "toolStripMenuItem24";
 			this.toolStripMenuItem24.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
 			this.toolStripMenuItem24.Size = new System.Drawing.Size(221, 22);
-			this.toolStripMenuItem24.Text = "Add Interactions";
+			this.toolStripMenuItem24.Text = "Add Objects";
 			this.toolStripMenuItem24.Click += new System.EventHandler(this.addRemoveInteractionsToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem25
@@ -914,7 +914,7 @@
 			// 
 			this.extraBankForInteractionsToolStripMenuItem.Name = "extraBankForInteractionsToolStripMenuItem";
 			this.extraBankForInteractionsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-			this.extraBankForInteractionsToolStripMenuItem.Text = "Extra Interaction Bank";
+			this.extraBankForInteractionsToolStripMenuItem.Text = "Extra Object Bank";
 			this.extraBankForInteractionsToolStripMenuItem.Click += new System.EventHandler(this.extraBankForInteractionsToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem22
@@ -1054,7 +1054,7 @@
 			// 
 			this.multipleObjectsInOneTilesetToolStripMenuItem.Name = "multipleObjectsInOneTilesetToolStripMenuItem";
 			this.multipleObjectsInOneTilesetToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-			this.multipleObjectsInOneTilesetToolStripMenuItem.Text = "Multiple Objects in One Tileset";
+			this.multipleObjectsInOneTilesetToolStripMenuItem.Text = "Multiple Tiles in One Tileset";
 			this.multipleObjectsInOneTilesetToolStripMenuItem.Click += new System.EventHandler(this.multipleObjectsInOneTilesetToolStripMenuItem_Click);
 			// 
 			// musicToolStripMenuItem
@@ -1252,7 +1252,7 @@
 			this.btnInteractions.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnInteractions.Name = "btnInteractions";
 			this.btnInteractions.Size = new System.Drawing.Size(23, 22);
-			this.btnInteractions.Text = "Add Interactions";
+			this.btnInteractions.Text = "Add Objects";
 			this.btnInteractions.Click += new System.EventHandler(this.addRemoveInteractionsToolStripMenuItem_Click);
 			// 
 			// toolStripButton1
@@ -1725,7 +1725,7 @@
 			this.groupBox2.Size = new System.Drawing.Size(243, 234);
 			this.groupBox2.TabIndex = 18;
 			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Interactions";
+			this.groupBox2.Text = "Objects";
 			// 
 			// button1
 			// 
@@ -2146,7 +2146,7 @@
 			this.toolStripButton23.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton23.Name = "toolStripButton23";
 			this.toolStripButton23.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButton23.Text = "Add Interactions";
+			this.toolStripButton23.Text = "Add Objects";
 			this.toolStripButton23.Click += new System.EventHandler(this.addRemoveInteractionsToolStripMenuItem_Click);
 			// 
 			// toolStripButton24
@@ -2234,7 +2234,7 @@
 			// 
 			this.extraInteractionBankToolStripMenuItem.Name = "extraInteractionBankToolStripMenuItem";
 			this.extraInteractionBankToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-			this.extraInteractionBankToolStripMenuItem.Text = "Extra Interaction Bank";
+			this.extraInteractionBankToolStripMenuItem.Text = "Extra Object Bank";
 			this.extraInteractionBankToolStripMenuItem.Click += new System.EventHandler(this.extraInteractionBankToolStripMenuItem_Click);
 			// 
 			// pMap

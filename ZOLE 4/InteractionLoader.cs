@@ -147,13 +147,13 @@ namespace ZOLE_4
 				case 0: return "Condition";
 				case 1: return "No-Value Interaction";
 				case 2: return "Double-Value Interaction";
-				case 3: return "Interaction Pointer";
-				case 4: return "Boss Interaction Pointer";
-				case 5: return "Anti-Boss Interaction Pointer";
+				case 3: return "Object Pointer";
+				case 4: return "Boss Object Pointer";
+				case 5: return "Anti-Boss Object Pointer";
 				case 6: return "Random Position Enemy";
 				case 7: return "Specific Position Enemy";
 				case 8: return "Owl Statue/Trigger/Switch (\"Part\")";
-				case 9: return "Quadruple-Value Interaction";
+				case 9: return "Quadruple-Value Object";
 				case 0xA: return "Item Drop";
 			}
 			return "Unknown Type " + (0xF0 + opcode).ToString("X");
@@ -400,7 +400,7 @@ namespace ZOLE_4
 		{
 			// Reallocate if another map's interaction data overlaps with this one
 			if (checkInteractionOverlap()) {
-				Console.WriteLine("Reallocating");
+				Debug.WriteLine("Reallocating");
 				// TODO: check for failure here...?
 				reallocateInteractions();
 			}

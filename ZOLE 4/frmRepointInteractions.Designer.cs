@@ -74,7 +74,7 @@
             this.chkCopy.Name = "chkCopy";
             this.chkCopy.Size = new System.Drawing.Size(134, 17);
             this.chkCopy.TabIndex = 2;
-            this.chkCopy.Text = "Copy Over Interactions";
+            this.chkCopy.Text = "Copy Over Objects";
             this.chkCopy.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -102,7 +102,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Repoint Interactions";
+            this.Text = "Repoint Objects";
             ((System.ComponentModel.ISupportInitialize)(this.nAddress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

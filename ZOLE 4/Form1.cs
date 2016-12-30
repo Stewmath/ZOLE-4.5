@@ -291,7 +291,7 @@ namespace ZOLE_4
 			transitionLoader.LoadTransitions(minimapCreator.getRealMapGroup(group, game));
 
 			lblMap.Text = "Map: 0x" + mapLoader.room.dataLocation.ToString("X") + " (" + (mapLoader.room.compressionType == 2 ? "16" : mapLoader.room.compressionType == 1 ? "8" : "0") + ")";
-            lblInteraction.Text = "Interactions: 0x" + interactionLoader.getInteractionLocation().ToString("X");
+            lblInteraction.Text = "Objects: 0x" + interactionLoader.getInteractionLocation().ToString("X");
 			lockAreaUpdates = false;
 		}
 
@@ -1116,7 +1116,7 @@ namespace ZOLE_4
 				selectInteraction(-1);
 				updateMap();
 			}
-            lblInteraction.Text = "Interactions: 0x" + interactionLoader.getInteractionLocation().ToString("X");
+            lblInteraction.Text = "Object: 0x" + interactionLoader.getInteractionLocation().ToString("X");
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -1547,7 +1547,7 @@ namespace ZOLE_4
 			gb.BufferLocation--;
 			gb.WriteByte(0);
 
-			MessageBox.Show("Group " + value.ToString("X") + " cleared. Be sure to delete the previous interaction.\nThe game will crash if you don't.", "Success");
+			MessageBox.Show("Group " + value.ToString("X") + " cleared. Be sure to delete the previous object.\nThe game will crash if you don't.", "Success");
 		}
 
 		private void toolStripMenuItem7_Click(object sender, EventArgs e)
@@ -2147,7 +2147,7 @@ namespace ZOLE_4
 				return;
 			Patches.removeStartLock(gb, game);
 			if (game == Program.GameTypes.Seasons)
-				MessageBox.Show("Note: You must remove the type 1 interaction in map 97 for this patch to work.", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("Note: You must remove the type 1 object in map 97 for this patch to work.", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void toolStripMenuItem32_Click(object sender, EventArgs e)
@@ -2259,7 +2259,7 @@ namespace ZOLE_4
 			}
 
 			interactionLoader.loadInteractions(interactionLoader.loadedMap, interactionLoader.loadedGroup);
-            lblInteraction.Text = "Interactions: 0x" + interactionLoader.getInteractionLocation().ToString("X");
+            lblInteraction.Text = "Objects: 0x" + interactionLoader.getInteractionLocation().ToString("X");
 			nInteraction.Maximum = interactionLoader.interactions.Count - 1;
 			selectInteraction(-1);
 			updateMap();
