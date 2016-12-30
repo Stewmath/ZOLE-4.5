@@ -15,7 +15,7 @@ namespace ZOLE_4
         private Color selectedColor = Color.Red;
         private Size selectionSize = new Size(12, 10);
         private int selectedMap = 0;
-        private bool canSelect = true;
+        public bool canSelect = true;
         private bool hoverBox = true;
         private bool allowMultiSelection = false;
         private Rectangle selectionRectangle = new Rectangle(0, 0, 1, 1);
@@ -205,12 +205,15 @@ namespace ZOLE_4
 
         private void GridBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if (canSelect && hoverIndex != -1)
+            if (e.Button == MouseButtons.Left)
             {
-                startSelection = hoverIndex;
-                selectionRectangle = new Rectangle((e.X / selectionSize.Width), (e.Y / selectionSize.Height), 1, 1);
-                selectedMap = hoverIndex;
-                this.Invalidate();
+                if (canSelect && hoverIndex != -1)
+                {
+                    startSelection = hoverIndex;
+                    selectionRectangle = new Rectangle((e.X / selectionSize.Width), (e.Y / selectionSize.Height), 1, 1);
+                    selectedMap = hoverIndex;
+                    this.Invalidate();
+                }
             }
         }
 

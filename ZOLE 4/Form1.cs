@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 
+//using System.Runtime.InteropServices;
+
 namespace ZOLE_4
 {
     public partial class Form1 : Form
@@ -28,6 +30,22 @@ namespace ZOLE_4
         TransitionLoader transitionLoader;
         EnemyLoader enemyLoader;
 
+        bool mapZoom = true;
+        int mapWidth = 0;
+        int mapHeight = 0;
+        int mouseX = 0;
+        int mouseY = 0;
+        int windowX = 0;
+        int windowY = 0;
+        /*
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        */
         string filename = "";
         string exportToFilename;
         int exportGroupIndex;
@@ -40,7 +58,7 @@ namespace ZOLE_4
         SolidBrush[] specialBrushes = new SolidBrush[] { new SolidBrush(Color.FromArgb(100, 255, 0, 0)), new SolidBrush(Color.FromArgb(100, 0, 0, 255)) };
         Point lastMapHoverPoint = new Point(-1, -1);
 
-        string[] agesGroupNames = new string[] { "Present Overworld", "Past Overworld", "Present Underwater", "Past Underwater", "Present Maku Path", "Past Maku Path", "Level 1 1F", "Level 2 B1", "Level 2 1F", "Level 3 B1", "Level 3 1F", "Level 4 B1", "Level 4 1F", "Level 5 B1", "Level 5 1F", "Hero's Cave B1", "Hero's Cave 1F", "Black Tower", "Level 6 Present 1F", "Level 6 Past B1", "Level 6 Past 1F", "Level 7 1F", "Level 7 2F", "Level 7 3F", "Level 8 B3", "Level 8 B2", "Level 8 B1", "Level 8 1F", "Indoor Big", "Final Dungeon", "Unmapped", "Unmapped" };
+        string[] agesGroupNames = new string[] { "Overworld Present", "Overworld Past", "Underwater Present", "Underwater Past", "Maku Path Present", "Maku Path Past", "Level 1 1F", "Level 2 B1", "Level 2 1F", "Level 3 B1", "Level 3 1F", "Level 4 B1", "Level 4 1F", "Level 5 B1", "Level 5 1F", "Hero's Cave B1", "Hero's Cave 1F", "Black Tower", "Level 6 Present 1F", "Level 6 Past B1", "Level 6 Past 1F", "Level 7 1F", "Level 7 2F", "Level 7 3F", "Level 8 B3", "Level 8 B2", "Level 8 B1", "Level 8 1F", "Indoor Big", "Ganon's Dungeon", "Unmapped", "Unmapped" };
         string[] seasonsGroupNames = new string[] { "Overworld Spring", "Overworld Summer", "Overworld Fall", "Overworld Winter", "Subrosia", "Hero's Cave", "Level 1 1F", "Level 2 1F", "Level 3 1F", "Level 3 2F", "Level 4 B2", "Level 4 B1", "Level 4 1F", "Level 5 1F", "Level 6 1F", "Level 6 2F", "Level 6 3F", "Level 6 4F", "Level 6 5F", "Hero's Cave", "Level 7 B2", "Level 7 B1", "Level 7 1F", "Level 8 B1", "Level 8 1F", "Final Dungeon", "Ganon's Dungeon", "Unmapped", "Unmapped" };
 
         public Form1()
@@ -147,7 +165,7 @@ namespace ZOLE_4
             {
                 foreach (string s in seasonsGroupNames)
                     cboArea.Items.Add(s);
-                MessageBox.Show("Note: Seasons support is still pretty early. Don't be surprised if things don't load properly or the program locks up.", "Warning");
+                MessageBox.Show("Not only was seasons support never finished by the original creator, I've also created a whole bunch of UI bugs that only affect seasons. It's probably an idea to quit while your ahead.", "Warning");
             }
 
             cboArea.SelectedIndex = 0;
@@ -357,9 +375,9 @@ namespace ZOLE_4
             {
                 frmExport = new frmExportMaps();
                 if (game == Program.GameTypes.Seasons)
-                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 5 ? 256 : 64);
+                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 5 ? 512 : 64);
                 else
-                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 4 ? 256 : 64);
+                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 4 ? 512 : 64);
                 frmExport.Text = "Generating Map";
                 //exportToFilename = "";
                 exportGroupIndex = cboArea.SelectedIndex;
@@ -375,26 +393,73 @@ namespace ZOLE_4
             Bitmap b;
             while (bigMaps[cboArea.SelectedIndex] == null) ;
             Bitmap src = bigMaps[cboArea.SelectedIndex];
-            if (game == Program.GameTypes.Ages)
-                b = new Bitmap((cboArea.SelectedIndex < 4 ? 160 : 240), (cboArea.SelectedIndex < 4 ? 128 : 176));
+            if (game == Program.GameTypes.Ages && mapZoom == true)
+                b = new Bitmap((cboArea.SelectedIndex < 4 ? 1280 : 720), (cboArea.SelectedIndex < 4 ? 1024 : 528));
+            else if (game == Program.GameTypes.Ages && mapZoom == false)
+                b = new Bitmap((cboArea.SelectedIndex < 4 ? 320 : 240), (cboArea.SelectedIndex < 4 ? 256 : 176));
+            else if (game == Program.GameTypes.Seasons && mapZoom == true)
+                b = new Bitmap((cboArea.SelectedIndex < 5 ? 1280 : 720), (cboArea.SelectedIndex < 5 ? 1024 : 528));
             else
-                b = new Bitmap((cboArea.SelectedIndex < 5 ? 160 : 240), (cboArea.SelectedIndex < 5 ? 128 : 176));
+                b = new Bitmap((cboArea.SelectedIndex < 5 ? 320 : 240), (cboArea.SelectedIndex < 5 ? 256 : 176));
             Graphics g = Graphics.FromImage(b);
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             if (game == Program.GameTypes.Seasons)
-                g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 5 ? 160 : 240), (cboArea.SelectedIndex < 5 ? 128 : 176));
-            else
-                g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 4 ? 160 : 240), (cboArea.SelectedIndex < 4 ? 128 : 176));
+                if (mapZoom == true)
+                    {
+                        g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 5 ? 1280 : 720), (cboArea.SelectedIndex < 5 ? 1024 : 528));
+                        if (cboArea.SelectedIndex < 4)
+                        {
+                            mapWidth = 1280;
+                            mapHeight = 1024;
+                            this.pMinimap.Size = new System.Drawing.Size(1280, 1024);
+                        }
+                    }
+                    else
+                    {
+                        g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 5 ? 320 : 240), (cboArea.SelectedIndex < 5 ? 256 : 176));
+                        if (cboArea.SelectedIndex < 4)
+                        {
+                            mapWidth = 320;
+                            mapHeight = 256;
+                            pMinimap.Size = new System.Drawing.Size(mapWidth, mapHeight);
+                        }
+                        else
+                        {
+                            mapWidth = 1280;
+                            mapHeight = 1024;
+                        }
+                    }
+                else
+                if (mapZoom == true)
+                {
+                    g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 4 ? 1280 : 720), (cboArea.SelectedIndex < 4 ? 1024 : 528));
+                }
+                else
+                {
+                    g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 4 ? 320 : 240), (cboArea.SelectedIndex < 4 ? 256 : 176));
+                }
             pMinimap.Image = b;
-            if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex < 4) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex < 5))
+            if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex < 4 && mapZoom == true) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex < 5 && mapZoom == true))
             {
-                pMinimap.BoxSize = new Size(10, 8);
-                pMinimap.CanvasSize = new Size(160, 128);
+                pMinimap.BoxSize = new Size(80, 64);
+                pMinimap.CanvasSize = new Size(1280, 1024);
+                pMap.CanvasSize = new Size(1280, 1024);
             }
-            else
+            else if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex < 4 && mapZoom == false) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex < 5 && mapZoom == false))
+            {
+                pMinimap.BoxSize = new Size(20, 16);
+                pMinimap.CanvasSize = new Size(320, 256);
+                pMap.CanvasSize = new Size(160, 128);
+            }
+            else if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex > 4 && mapZoom == false) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex > 5 && mapZoom == false))
             {
                 pMinimap.BoxSize = new Size(30, 22);
                 pMinimap.CanvasSize = new Size(240, 176);
+            }
+            else
+            {
+                pMinimap.BoxSize = new Size(90, 66);
+                pMinimap.CanvasSize = new Size(720, 528);
             }
             if (cboArea.SelectedIndex < (game == Program.GameTypes.Ages ? 4 : 5))
             {
@@ -662,10 +727,17 @@ namespace ZOLE_4
 
         private void pMinimap_MouseDown(object sender, MouseEventArgs e)
         {
-            if (game == Program.GameTypes.Ages)
-                LoadMap((cboArea.SelectedIndex < 4 ? pMinimap.SelectedIndex : minimapCreator.formationIndexes[pMinimap.SelectedIndex]), cboArea.SelectedIndex);
-            else
-                LoadMap((cboArea.SelectedIndex < 5 ? pMinimap.SelectedIndex : minimapCreator.formationIndexes[pMinimap.SelectedIndex]), cboArea.SelectedIndex);
+            if (e.Button == MouseButtons.Left)
+            {
+                if (game == Program.GameTypes.Ages)
+                    LoadMap((cboArea.SelectedIndex < 4 ? pMinimap.SelectedIndex : minimapCreator.formationIndexes[pMinimap.SelectedIndex]), cboArea.SelectedIndex);
+                else
+                    LoadMap((cboArea.SelectedIndex < 5 ? pMinimap.SelectedIndex : minimapCreator.formationIndexes[pMinimap.SelectedIndex]), cboArea.SelectedIndex);
+            }
+        }
+        private void pMinimap_MouseUp(object sender, MouseEventArgs e)
+        {
+            
         }
 
         private void pMap_Paint(object sender, PaintEventArgs e)
@@ -822,113 +894,113 @@ namespace ZOLE_4
 
         private void pMap_MouseDown(object sender, MouseEventArgs e)
         {
-            lblHoverPos.Text = "X: " + (e.X / 16).ToString("X") + " Y: " + (e.Y / 16).ToString("X");
-            /*if (chkInteractions.Checked)
-            {
-                int ind = 0;
-                int bi = 0;
-                for(bi = interactionLoader.interactions.Count - 1; bi > -1; bi--)
+                lblHoverPos.Text = "X: " + (e.X / 16).ToString("X") + " Y: " + (e.Y / 16).ToString("X");
+                /*if (chkInteractions.Checked)
                 {
-                    InteractionLoader.Interaction i = interactionLoader.interactions[bi];
-                    if ((i.x + ((i.x & 8) != 0 ? 8 : 0)) / 16 == e.X / 16 && (i.y + ((i.y & 8) != 0 ? 8 : 0)) / 16 == e.Y / 16)
+                    int ind = 0;
+                    int bi = 0;
+                    for(bi = interactionLoader.interactions.Count - 1; bi > -1; bi--)
                     {
-                        selectInteraction(bi);
-                        return;
-                    }
-                    else if(i.x == -1 && i.y == -1)
-                    {
-                        if (e.X / 16 == (ind % 16) && e.Y / 16 == (ind / 16))
+                        InteractionLoader.Interaction i = interactionLoader.interactions[bi];
+                        if ((i.x + ((i.x & 8) != 0 ? 8 : 0)) / 16 == e.X / 16 && (i.y + ((i.y & 8) != 0 ? 8 : 0)) / 16 == e.Y / 16)
                         {
                             selectInteraction(bi);
                             return;
                         }
-                        ind++;
+                        else if(i.x == -1 && i.y == -1)
+                        {
+                            if (e.X / 16 == (ind % 16) && e.Y / 16 == (ind / 16))
+                            {
+                                selectInteraction(bi);
+                                return;
+                            }
+                            ind++;
+                        }
                     }
-                }
-                selectInteraction(-1);
-            }*/
-            if (pMap.Image == null || e.X < 0 || e.Y < 0 || e.X >= pMap.CanvasSize.Width || e.Y >= pMap.CanvasSize.Height || chkInteractions.Checked || chkStaticObjects.Checked)
-                return;
-            if (e.Button == MouseButtons.Right)
-            {
-                if (pMap.Image.Width == 160)
-                {
-                    selectTile(mapLoader.room.decompressed[e.X / 16 + (e.Y / 16) * 10]);
-                }
-                else
-                {
-                    selectTile(mapLoader.room.decompressed[((e.X / 16) % 15) + ((e.Y / 16) * 16)]);
-                }
-                lastMapHoverPoint = new Point(-1, -1);
-                return;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                if (lastMapHoverPoint.X == e.X / 16 && lastMapHoverPoint.Y == e.Y / 16)
+                    selectInteraction(-1);
+                }*/
+                if (pMap.Image == null || e.X < 0 || e.Y < 0 || e.X >= pMap.CanvasSize.Width || e.Y >= pMap.CanvasSize.Height || chkInteractions.Checked || chkStaticObjects.Checked)
                     return;
-                Graphics g = Graphics.FromImage(pMap.Image);
-                if (pTileset.SelectionRectangle.Width == 1 && pTileset.SelectionRectangle.Height == 1)
+                if (e.Button == MouseButtons.Right)
                 {
-                    g.DrawImage(pTileset.Image, new Rectangle(e.X / 16 * 16, e.Y / 16 * 16, 16, 16), (selectedTile % 16) * 16, (selectedTile / 16) * 16, 16, 16, GraphicsUnit.Pixel);
                     if (pMap.Image.Width == 160)
                     {
-                        int i = ((e.X / 16) % 10) + ((e.Y / 16) * 10);
-                        mapLoader.room.overworld[i].id = selectedTile;
-                        mapLoader.room.decompressed[i] = selectedTile;
+                        selectTile(mapLoader.room.decompressed[e.X / 16 + (e.Y / 16) * 10]);
                     }
                     else
                     {
-                        int i = ((e.X / 16) % 15) + ((e.Y / 16) * 16);
-                        mapLoader.room.dungeon[i].id = selectedTile;
-                        mapLoader.room.decompressed[i] = selectedTile;
+                        selectTile(mapLoader.room.decompressed[((e.X / 16) % 15) + ((e.Y / 16) * 16)]);
                     }
+                    lastMapHoverPoint = new Point(-1, -1);
+                    return;
                 }
-                else
+                else if (e.Button == MouseButtons.Left)
                 {
-                    int mwidth = (pMap.Image.Width == 160 ? 10 : 15);
-                    int mheight = (pMap.Image.Width == 160 ? 8 : 11);
-                    int xx = e.X / 16;
-                    int yy = e.Y / 16;
-                    for (int y = 0; y < pTileset.SelectionRectangle.Height; y++)
+                    if (lastMapHoverPoint.X == e.X / 16 && lastMapHoverPoint.Y == e.Y / 16)
+                        return;
+                    Graphics g = Graphics.FromImage(pMap.Image);
+                    if (pTileset.SelectionRectangle.Width == 1 && pTileset.SelectionRectangle.Height == 1)
                     {
-                        for (int x = 0; x < pTileset.SelectionRectangle.Width; x++)
+                        g.DrawImage(pTileset.Image, new Rectangle(e.X / 16 * 16, e.Y / 16 * 16, 16, 16), (selectedTile % 16) * 16, (selectedTile / 16) * 16, 16, 16, GraphicsUnit.Pixel);
+                        if (pMap.Image.Width == 160)
                         {
-                            if (x + xx >= mwidth)
-                                break;
-                            if (y + yy >= mheight)
-                                break;
-                            g.DrawImage(pTileset.Image, new Rectangle(e.X / 16 * 16 + x * 16, e.Y / 16 * 16 + y * 16, 16, 16), ((selectedTile % 16) + x) * 16, ((selectedTile / 16) + y) * 16, 16, 16, GraphicsUnit.Pixel);
-                            if (pMap.Image.Width == 160)
+                            int i = ((e.X / 16) % 10) + ((e.Y / 16) * 10);
+                            mapLoader.room.overworld[i].id = selectedTile;
+                            mapLoader.room.decompressed[i] = selectedTile;
+                        }
+                        else
+                        {
+                            int i = ((e.X / 16) % 15) + ((e.Y / 16) * 16);
+                            mapLoader.room.dungeon[i].id = selectedTile;
+                            mapLoader.room.decompressed[i] = selectedTile;
+                        }
+                    }
+                    else
+                    {
+                        int mwidth = (pMap.Image.Width == 160 ? 10 : 15);
+                        int mheight = (pMap.Image.Width == 160 ? 8 : 11);
+                        int xx = e.X / 16;
+                        int yy = e.Y / 16;
+                        for (int y = 0; y < pTileset.SelectionRectangle.Height; y++)
+                        {
+                            for (int x = 0; x < pTileset.SelectionRectangle.Width; x++)
                             {
-                                int i = (((e.X / 16) % 10) + x) + (((e.Y / 16 + y) * 10));
-                                mapLoader.room.overworld[i].id = (byte)(selectedTile + x + (y * 16));
-                                mapLoader.room.decompressed[i] = (byte)(selectedTile + x + (y * 16));
-                            }
-                            else
-                            {
-                                int i = (((e.X / 16) % 15) + x) + ((e.Y / 16 + y) * 16);
-                                mapLoader.room.dungeon[i].id = (byte)(selectedTile + x + (y * 16));
-                                mapLoader.room.decompressed[i] = (byte)(selectedTile + x + (y * 16));
+                                if (x + xx >= mwidth)
+                                    break;
+                                if (y + yy >= mheight)
+                                    break;
+                                g.DrawImage(pTileset.Image, new Rectangle(e.X / 16 * 16 + x * 16, e.Y / 16 * 16 + y * 16, 16, 16), ((selectedTile % 16) + x) * 16, ((selectedTile / 16) + y) * 16, 16, 16, GraphicsUnit.Pixel);
+                                if (pMap.Image.Width == 160)
+                                {
+                                    int i = (((e.X / 16) % 10) + x) + (((e.Y / 16 + y) * 10));
+                                    mapLoader.room.overworld[i].id = (byte)(selectedTile + x + (y * 16));
+                                    mapLoader.room.decompressed[i] = (byte)(selectedTile + x + (y * 16));
+                                }
+                                else
+                                {
+                                    int i = (((e.X / 16) % 15) + x) + ((e.Y / 16 + y) * 16);
+                                    mapLoader.room.dungeon[i].id = (byte)(selectedTile + x + (y * 16));
+                                    mapLoader.room.decompressed[i] = (byte)(selectedTile + x + (y * 16));
+                                }
                             }
                         }
                     }
+                    lastMapHoverPoint = new Point(e.X / 16, e.Y / 16);
+                    pMap.Invalidate();
                 }
-                lastMapHoverPoint = new Point(e.X / 16, e.Y / 16);
-                pMap.Invalidate();
-            }
-            else if (e.Button == MouseButtons.Middle)
-            {
-                byte search;
-                Rectangle p = pTileset.SelectionRectangle;
-                p.Width = p.Height = 1;
-                pTileset.SelectionRectangle = p;
-                if (pMap.Image.Width == 160)
-                    search = mapLoader.room.decompressed[e.X / 16 + (e.Y / 16) * 10];
-                else
-                    search = mapLoader.room.decompressed[((e.X / 16) % 15) + ((e.Y / 16) * 16)];
-                fillTile(((e.X / 16) % 15), ((e.Y / 16)), search, (pMap.Image.Width != 160));
-                updateMap();
-            }
+                else if (e.Button == MouseButtons.Middle)
+                {
+                    byte search;
+                    Rectangle p = pTileset.SelectionRectangle;
+                    p.Width = p.Height = 1;
+                    pTileset.SelectionRectangle = p;
+                    if (pMap.Image.Width == 160)
+                        search = mapLoader.room.decompressed[e.X / 16 + (e.Y / 16) * 10];
+                    else
+                        search = mapLoader.room.decompressed[((e.X / 16) % 15) + ((e.Y / 16) * 16)];
+                    fillTile(((e.X / 16) % 15), ((e.Y / 16)), search, (pMap.Image.Width != 160));
+                    updateMap();
+                }
         }
 
         private bool checkBlock(int x, int y, byte search)
@@ -1005,16 +1077,19 @@ namespace ZOLE_4
 
         private void pMap_MouseMove(object sender, MouseEventArgs e)
         {
-            if (pMap.Image == null)
-                return;
-            if (pMap.Image.Width != 160 && (lastMapHoverPoint.X != e.X / 16 || lastMapHoverPoint.Y != e.Y / 16))
+            if (e.Button == MouseButtons.Left)
             {
-                pMap.Refresh();
-                Application.DoEvents(); //Needed so the control doesn't repaint right away
-                Graphics g = pMap.CreateGraphics();
-                int index = (e.X / 16) + ((e.Y / 16) * 16);
-                g.FillRectangle((mapLoader.room.dungeon[index].type == 0 ? specialBrushes[1] : specialBrushes[0]), mapLoader.room.dungeon[index].x * 16, mapLoader.room.dungeon[index].y * 16, 16, 16);
-                lastMapHoverPoint = new Point(e.X / 16, e.Y / 16);
+                if (pMap.Image == null)
+                    return;
+                if (pMap.Image.Width != 160 && (lastMapHoverPoint.X != e.X / 16 || lastMapHoverPoint.Y != e.Y / 16))
+                {
+                    pMap.Refresh();
+                    Application.DoEvents(); //Needed so the control doesn't repaint right away
+                    Graphics g = pMap.CreateGraphics();
+                    int index = (e.X / 16) + ((e.Y / 16) * 16);
+                    g.FillRectangle((mapLoader.room.dungeon[index].type == 0 ? specialBrushes[1] : specialBrushes[0]), mapLoader.room.dungeon[index].x * 16, mapLoader.room.dungeon[index].y * 16, 16, 16);
+                    lastMapHoverPoint = new Point(e.X / 16, e.Y / 16);
+                }
             }
         }
 
@@ -2360,6 +2435,22 @@ namespace ZOLE_4
             MG.Show();
         }
 
+        private void mapZoom_Click(object sender, EventArgs e)
+        {
+            if (mapZoom == true)
+            {
+                mapZoom = false;
+            }
+            else
+            {
+                mapZoom = true;
+            }
+            if (mapLoader == null)
+                return;
+            bigMaps[cboArea.SelectedIndex] = null;
+            cboArea_SelectedIndexChanged(null, null);
+        }
+
         // Ages patch
         private void extraBankForInteractionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2376,6 +2467,29 @@ namespace ZOLE_4
                 return;
             Patches.ExtraInteractionBank(gb, game);
             interactionLoader.enableExtraInteractionBank();
+        }
+
+        private void pMinimap_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                windowX = windowX + (mouseX - Cursor.Position.X);
+                windowY = windowY + (mouseY - Cursor.Position.Y);
+
+                mouseX = Cursor.Position.X;
+                mouseY = Cursor.Position.Y;
+                if (windowX < 0) { windowX = 0; }
+                if (windowY < 0) { windowY = 0; }
+
+                if (windowX > pMinimap.Width - (panel1.Width - 52)) { windowX = pMinimap.Width - (panel1.Width - 52); }
+                if (windowY > pMinimap.Height - (panel1.Height - 52)) { windowY = pMinimap.Height - (panel1.Height - 52); }
+                panel1.AutoScrollPosition = new Point(windowX, windowY);
+            }
+            else 
+            {
+                mouseX = Cursor.Position.X;
+                mouseY = Cursor.Position.Y;
+            }
         }
     }
 }
