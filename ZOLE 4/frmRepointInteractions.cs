@@ -25,7 +25,8 @@ namespace ZOLE_4
 			this.group=group;
 			this.game = game;
 
-			nAddress.Value = i.getInteractionAddress(map, group, game);
+            i.loadInteractions(map, group);
+            nAddress.Value = i.getInteractionLocation();
 		}
 
 		private void button1_Click(object sender, EventArgs e)

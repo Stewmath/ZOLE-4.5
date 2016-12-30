@@ -195,7 +195,7 @@ namespace ZOLE_4
 			int season = (group < 4 ? (group & 7) : 0);
 			mapLoader.loadMap(index, minimapCreator.getRealMapGroup(group, game), season, true, game);
 			lblRealGroup.Text = "Real Map Group: " + minimapCreator.getRealMapGroup(group, game).ToString("X");
-			interactionLoader.loadInteractions(index, minimapCreator.getRealMapGroup(group, game), game);
+			interactionLoader.loadInteractions(index, minimapCreator.getRealMapGroup(group, game));
 
 			Bitmap b;
 			if ((game == Program.GameTypes.Ages && cachedAreas[mapLoader.room.area.index] == null) || (game == Program.GameTypes.Seasons && cachedSeasons[mapLoader.room.area.index, season] == null))
@@ -291,7 +291,7 @@ namespace ZOLE_4
 			transitionLoader.LoadTransitions(minimapCreator.getRealMapGroup(group, game));
 
 			lblMap.Text = "Map: 0x" + mapLoader.room.dataLocation.ToString("X") + " (" + (mapLoader.room.compressionType == 2 ? "16" : mapLoader.room.compressionType == 1 ? "8" : "0") + ")";
-			lblInteraction.Text = "Interactions: 0x" + interactionLoader.interactionLocation.ToString("X");
+            lblInteraction.Text = "Interactions: 0x" + interactionLoader.getInteractionLocation().ToString("X");
 			lockAreaUpdates = false;
 		}
 
@@ -792,7 +792,7 @@ namespace ZOLE_4
 			int season = (cboArea.SelectedIndex < 4 ? (cboArea.SelectedIndex & 7) : 0);
 			mapSaver.saveAreaData((int)nArea.Value, (int)nVRAM.Value, (int)nTileset.Value, (int)nUnique.Value, (int)nAnimation.Value, (int)nPalette.Value, season, game);
 			interactionLoader.gb = gb;
-			interactionLoader.saveInteractions(ref gb, game);
+			interactionLoader.saveInteractions();
 
 			if (game == Program.GameTypes.Ages)
 			{
@@ -1116,7 +1116,7 @@ namespace ZOLE_4
 				selectInteraction(-1);
 				updateMap();
 			}
-			lblInteraction.Text = "Interactions: 0x" + interactionLoader.interactionLocation.ToString("X");
+            lblInteraction.Text = "Interactions: 0x" + interactionLoader.getInteractionLocation().ToString("X");
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -1124,7 +1124,7 @@ namespace ZOLE_4
 			if (interactionLoader == null || nInteraction.Value == -1)
 				return;
 			int i = (int)nInteraction.Value;
-			interactionLoader.deleteInteraction((int)nInteraction.Value, game);
+			interactionLoader.deleteInteraction((int)nInteraction.Value);
 			nInteraction.Maximum = interactionLoader.interactions.Count - 1;
 			selectInteraction(i - 1);
 			pMap.Invalidate();
@@ -2249,17 +2249,17 @@ namespace ZOLE_4
 			if (f.ShowDialog() != DialogResult.OK)
 				return;
 
-			if ((int)f.nAddress.Value == interactionLoader.interactionLocation)
+            if ((int)f.nAddress.Value == interactionLoader.getInteractionLocation())
 				return;
 
-			interactionLoader.repointInteractions((int)f.nAddress.Value, game);
+			interactionLoader.repointInteractions((int)f.nAddress.Value);
 			if (f.chkCopy.Checked)
 			{
-				interactionLoader.saveInteractions(ref gb, game);
+				interactionLoader.saveInteractions();
 			}
 
-			interactionLoader.loadInteractions(interactionLoader.loadedMap, interactionLoader.loadedGroup, game);
-			lblInteraction.Text = "Interactions: 0x" + interactionLoader.interactionLocation.ToString("X");
+			interactionLoader.loadInteractions(interactionLoader.loadedMap, interactionLoader.loadedGroup);
+            lblInteraction.Text = "Interactions: 0x" + interactionLoader.getInteractionLocation().ToString("X");
 			nInteraction.Maximum = interactionLoader.interactions.Count - 1;
 			selectInteraction(-1);
 			updateMap();
@@ -2366,7 +2366,7 @@ namespace ZOLE_4
 			if (mapLoader == null)
 				return;
 			Patches.ExtraInteractionBank(gb, game);
-			interactionLoader.enableExtraInteractionBank(game);
+			interactionLoader.enableExtraInteractionBank();
 		}
 
 		// Seasons patch
@@ -2375,7 +2375,7 @@ namespace ZOLE_4
 			if (mapLoader == null)
 				return;
 			Patches.ExtraInteractionBank(gb, game);
-			interactionLoader.enableExtraInteractionBank(game);
+			interactionLoader.enableExtraInteractionBank();
 		}
 	}
 }

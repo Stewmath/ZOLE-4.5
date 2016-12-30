@@ -34,7 +34,7 @@ namespace ZOLE_4
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (!interactionLoader.addInteraction((int)nType.Value, game))
+			if (!interactionLoader.addInteraction((int)nType.Value))
 			{
 				MessageBox.Show("Not enough space. Try applying the \"Extra Interaction Bank\" patch if you haven't already.", "Not Enough Space");
 				return;
