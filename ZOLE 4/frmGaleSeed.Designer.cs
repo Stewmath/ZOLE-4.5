@@ -1,33 +1,33 @@
 ﻿namespace ZOLE_4
 {
-	partial class frmGaleSeed
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class frmGaleSeed
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.rbPresent = new System.Windows.Forms.RadioButton();
             this.rbPast = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -273,25 +273,25 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.RadioButton rbPresent;
-		private System.Windows.Forms.RadioButton rbPast;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.NumericUpDown nIndex;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.NumericUpDown nMap;
-		private System.Windows.Forms.NumericUpDown nPos;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.NumericUpDown nUnknown;
-		private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RadioButton rbPresent;
+        private System.Windows.Forms.RadioButton rbPast;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown nIndex;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown nMap;
+        private System.Windows.Forms.NumericUpDown nPos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown nUnknown;
+        private System.Windows.Forms.Label label4;
         private GridBox pMap;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-	}
+    }
 }

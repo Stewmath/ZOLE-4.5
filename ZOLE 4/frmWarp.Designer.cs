@@ -1,33 +1,33 @@
 ﻿namespace ZOLE_4
 {
-	partial class frmWarp
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class frmWarp
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.label1 = new System.Windows.Forms.Label();
             this.nMap = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -764,50 +764,50 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.NumericUpDown nType;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.NumericUpDown nDestGroup;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.NumericUpDown nWarp;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.NumericUpDown nSrcMap;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.NumericUpDown nEntrance;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.NumericUpDown nPointer;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.NumericUpDown nFMap;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.NumericUpDown nFType;
-		private System.Windows.Forms.Label label12;
-		public System.Windows.Forms.NumericUpDown nMap;
-		public System.Windows.Forms.ComboBox cboArea;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.NumericUpDown nSIndex;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.NumericUpDown nSMap;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.NumericUpDown nX;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.NumericUpDown nSEntrance;
-		private System.Windows.Forms.Label label14;
-		private System.Windows.Forms.NumericUpDown nSGroup;
-		private System.Windows.Forms.Label label15;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.Button button6;
-		private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown nType;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown nDestGroup;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nWarp;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown nSrcMap;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown nEntrance;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.NumericUpDown nPointer;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown nFMap;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown nFType;
+        private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.NumericUpDown nMap;
+        public System.Windows.Forms.ComboBox cboArea;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.NumericUpDown nSIndex;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown nSMap;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown nX;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown nSEntrance;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown nSGroup;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
@@ -821,5 +821,5 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
-	}
+    }
 }
