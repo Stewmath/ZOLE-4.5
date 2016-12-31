@@ -99,6 +99,15 @@ namespace ZOLE_4
             {
                 if (gb.Buffer.Length == 0x100000)
                 {
+                    var response = MessageBox.Show(
+                        "The ROM you selected will now be expanded for editing.",
+                        "Patching ROM",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Information);
+
+                    if (response != DialogResult.OK)
+                        return;
+
                     mapSaver.expandROM();
                     //mapSaver.decompressGroup(0, mapLoader, game);
                     mapSaver.decompressAllGroups(mapLoader, game);
@@ -131,6 +140,15 @@ namespace ZOLE_4
             {
                 if (gb.Buffer.Length == 0x100000)
                 {
+                    var response = MessageBox.Show(
+                        "The ROM you selected will now be expanded for editing.",
+                        "Patching ROM",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Information);
+
+                    if (response != DialogResult.OK)
+                        return;
+
                     mapSaver.expandSeasonsROM();
                     //mapSaver.decompressGroup(0, mapLoader, game);
                     mapSaver.decompressAllGroups(mapLoader, game);
@@ -711,8 +729,7 @@ namespace ZOLE_4
 
         private bool isDungeonLoaded()
         {
-            int group = cboArea.SelectedIndex;
-            return minimapCreator.dungeon(minimapCreator.getRealMapGroup(group, game), game);
+            return minimapCreator.dungeon(cboArea.SelectedIndex, game);
         }
 
         private void pMinimap_MouseDown(object sender, MouseEventArgs e)
@@ -1539,7 +1556,24 @@ namespace ZOLE_4
         {
             if (mapLoader == null || minimapCreator == null)
                 return;
-            frmDungeonRooms f = new frmDungeonRooms(gb, minimapCreator.formationIndexes, pMinimap.Image);
+
+            int mapWidth, mapHeight;
+            if (isDungeonLoaded())
+            {
+                mapWidth = 240;
+                mapHeight = 176;
+            }
+            else {
+                mapWidth = 320;
+                mapHeight = 256;
+            }
+
+            Bitmap b = new Bitmap(mapWidth, mapHeight);
+            Graphics g = Graphics.FromImage(b);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, mapWidth, mapHeight);
+
+            frmDungeonRooms f = new frmDungeonRooms(gb, minimapCreator.formationIndexes, b);
             if (f.ShowDialog() != DialogResult.OK)
                 return;
             int fl = minimapCreator.getFloor(cboArea.SelectedIndex, game);
@@ -2301,7 +2335,23 @@ namespace ZOLE_4
             if (mapLoader == null)
                 return;
 
-            frmDungeonMinimapEditor f = new frmDungeonMinimapEditor(gb, pMinimap.Image, minimapCreator.formationIndexes, minimapCreator.getRealMapGroup(cboArea.SelectedIndex, game));
+            int mapWidth, mapHeight;
+            if (isDungeonLoaded())
+            {
+                mapWidth = 240;
+                mapHeight = 176;
+            }
+            else {
+                mapWidth = 320;
+                mapHeight = 256;
+            }
+
+            Bitmap b = new Bitmap(mapWidth, mapHeight);
+            Graphics g = Graphics.FromImage(b);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, mapWidth, mapHeight);
+
+            frmDungeonMinimapEditor f = new frmDungeonMinimapEditor(gb, b, minimapCreator.formationIndexes, minimapCreator.getRealMapGroup(cboArea.SelectedIndex, game));
             if (f.ShowDialog() != DialogResult.OK)
                 return;
         }
