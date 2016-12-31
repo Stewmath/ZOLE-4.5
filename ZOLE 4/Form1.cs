@@ -68,7 +68,6 @@ namespace ZOLE_4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show("You are running a beta version of ZOLE.", "Notice");
         }
 
         private void openROMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2437,14 +2436,7 @@ namespace ZOLE_4
 
         private void mapZoom_Click(object sender, EventArgs e)
         {
-            if (mapZoom == true)
-            {
-                mapZoom = false;
-            }
-            else
-            {
-                mapZoom = true;
-            }
+            mapZoom = !mapZoom;
             if (mapLoader == null)
                 return;
             bigMaps[cboArea.SelectedIndex] = null;
@@ -2473,23 +2465,14 @@ namespace ZOLE_4
         {
             if (e.Button == MouseButtons.Right)
             {
-                windowX = windowX + (mouseX - Cursor.Position.X);
-                windowY = windowY + (mouseY - Cursor.Position.Y);
-
-                mouseX = Cursor.Position.X;
-                mouseY = Cursor.Position.Y;
-                if (windowX < 0) { windowX = 0; }
-                if (windowY < 0) { windowY = 0; }
-
-                if (windowX > pMinimap.Width - (panel1.Width - 52)) { windowX = pMinimap.Width - (panel1.Width - 52); }
-                if (windowY > pMinimap.Height - (panel1.Height - 52)) { windowY = pMinimap.Height - (panel1.Height - 52); }
-                panel1.AutoScrollPosition = new Point(windowX, windowY);
+                panel1.AutoScrollPosition = new Point(
+                    -panel1.AutoScrollPosition.X + (mouseX - Cursor.Position.X),
+                    -panel1.AutoScrollPosition.Y + (mouseY - Cursor.Position.Y)
+                );
             }
-            else 
-            {
-                mouseX = Cursor.Position.X;
-                mouseY = Cursor.Position.Y;
-            }
+
+            mouseX = Cursor.Position.X;
+            mouseY = Cursor.Position.Y;
         }
     }
 }
