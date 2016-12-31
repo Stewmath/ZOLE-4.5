@@ -2382,8 +2382,18 @@ namespace ZOLE_4
 
         private void goToZeldaHackingNETToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmZeldaHacking ZH = new frmZeldaHacking();
-            ZH.Show();
+            try
+            {
+                System.Diagnostics.Process.Start("http://wiki.zeldahacking.net/");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "The web browser failed to open.\n\nTry typing \"wiki.zeldahacking.net\" into the address bar.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void toolStripButton32_Click(object sender, EventArgs e)

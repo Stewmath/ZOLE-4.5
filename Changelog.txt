@@ -1,6 +1,6 @@
 ZOLE 4: Written by Lin
 ZOLE 4.5: UI Improvement of ZOLE 4 by BigTarantula aka Xyspade
-ZOLE 4.5 Update series: Made by Drenn mainly to add bugfixes
+ZOLE 4.5 Update series and 4.6: Made by Drenn mainly to add bugfixes
 
 ZOLE 4.5 Update 1:
 
@@ -31,3 +31,14 @@ ID field was previously wrong)
 
 - Item drops (interaction $a) have their values labelled correctly. To use one,
 create it and put it over a bush or pot to make a guaranteed item drop.
+
+ZOLE 4.6.00:
+
+- "Interactions" have been renamed to "Objects" (at least, in the interface).
+
+- A bug with adding objects in Maku Path has been fixed. The edge-case
+where multiple maps reference the same object data should now work properly.
+
+- A zoom button has been added to the minimap by YourLocalCultist.
+
+- Object editing has been moved into a separate tab.

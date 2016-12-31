@@ -128,7 +128,6 @@
             this.zOTEValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memoryAddressesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolAges = new System.Windows.Forms.ToolStrip();
@@ -246,6 +245,7 @@
             this.toolStripButton33 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton35 = new System.Windows.Forms.ToolStripButton();
             this.pMap = new ZOLE_4.GridBox();
+            this.wikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolAges.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -1002,21 +1002,21 @@
             // zOSEToolStripMenuItem
             // 
             this.zOSEToolStripMenuItem.Name = "zOSEToolStripMenuItem";
-            this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zOSEToolStripMenuItem.Text = "ZOSE";
             this.zOSEToolStripMenuItem.Click += new System.EventHandler(this.zOSEToolStripMenuItem_Click);
             // 
             // zOTEToolStripMenuItem
             // 
             this.zOTEToolStripMenuItem.Name = "zOTEToolStripMenuItem";
-            this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zOTEToolStripMenuItem.Text = "ZOTE";
             this.zOTEToolStripMenuItem.Click += new System.EventHandler(this.zOTEToolStripMenuItem_Click);
             // 
             // zOCFToolStripMenuItem
             // 
             this.zOCFToolStripMenuItem.Name = "zOCFToolStripMenuItem";
-            this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zOCFToolStripMenuItem.Text = "ZOCF";
             this.zOCFToolStripMenuItem.Click += new System.EventHandler(this.zOCFToolStripMenuItem_Click);
             // 
@@ -1044,7 +1044,7 @@
             this.zOTEValuesToolStripMenuItem,
             this.memoryAddressesToolStripMenuItem1});
             this.listsToolStripMenuItem.Name = "listsToolStripMenuItem";
-            this.listsToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.listsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.listsToolStripMenuItem.Text = "Lists";
             // 
             // chestIDsToolStripMenuItem
@@ -1132,31 +1132,24 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem1,
+            this.wikiToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.creditsToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // helpToolStripMenuItem1
-            // 
-            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
-            this.helpToolStripMenuItem1.Text = "Help";
-            this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click_1);
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // creditsToolStripMenuItem
             // 
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.creditsToolStripMenuItem.Text = "Credits";
             this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
             // 
@@ -2463,6 +2456,13 @@
             this.pMap.MouseLeave += new System.EventHandler(this.pMap_MouseLeave);
             this.pMap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMap_MouseDown);
             // 
+            // wikiToolStripMenuItem
+            // 
+            this.wikiToolStripMenuItem.Name = "wikiToolStripMenuItem";
+            this.wikiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wikiToolStripMenuItem.Text = "Wiki";
+            this.wikiToolStripMenuItem.Click += new System.EventHandler(this.goToZeldaHackingNETToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2677,7 +2677,6 @@
         private System.Windows.Forms.ToolStripMenuItem listsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zOTEToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem chestIDsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enemyIDsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memoryAddressesToolStripMenuItem;
@@ -2754,6 +2753,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton34;
         private System.Windows.Forms.ToolStripButton toolStripButton35;
         public GridBox pMinimap;
+        private System.Windows.Forms.ToolStripMenuItem wikiToolStripMenuItem;
     }
 }
 
