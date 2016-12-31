@@ -211,6 +211,7 @@
             this.lblInteractionType = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
             this.lblSelectedTile = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.nStaticFactor = new System.Windows.Forms.NumericUpDown();
@@ -232,8 +233,10 @@
             this.pnlMap = new System.Windows.Forms.Panel();
             this.tabsSecondary = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pTileset = new ZOLE_4.GridBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pMinimap = new ZOLE_4.GridBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripSaveMap = new System.Windows.Forms.ToolStripButton();
@@ -242,9 +245,6 @@
             this.toolStripButton34 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton33 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton35 = new System.Windows.Forms.ToolStripButton();
-            this.pMinimap = new ZOLE_4.GridBox();
-            this.pTileset = new ZOLE_4.GridBox();
-            this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
             this.pMap = new ZOLE_4.GridBox();
             this.menuStrip1.SuspendLayout();
             this.toolAges.SuspendLayout();
@@ -274,12 +274,12 @@
             this.pnlMap.SuspendLayout();
             this.tabsSecondary.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
             this.panel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).BeginInit();
             this.SuspendLayout();
             // 
@@ -517,7 +517,7 @@
             this.toolStripMenuItem34,
             this.createBackupToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // warpEditorToolStripMenuItem
@@ -763,7 +763,7 @@
             this.toolStripMenuItem35,
             this.toolStripMenuItem36});
             this.menuToolsSeasons.Name = "menuToolsSeasons";
-            this.menuToolsSeasons.Size = new System.Drawing.Size(47, 20);
+            this.menuToolsSeasons.Size = new System.Drawing.Size(48, 20);
             this.menuToolsSeasons.Text = "&Tools";
             this.menuToolsSeasons.Visible = false;
             // 
@@ -1050,82 +1050,82 @@
             // chestIDsToolStripMenuItem
             // 
             this.chestIDsToolStripMenuItem.Name = "chestIDsToolStripMenuItem";
-            this.chestIDsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.chestIDsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.chestIDsToolStripMenuItem.Text = "Chest IDs";
             this.chestIDsToolStripMenuItem.Click += new System.EventHandler(this.chestIDsToolStripMenuItem_Click);
             // 
             // enemyIDsToolStripMenuItem
             // 
             this.enemyIDsToolStripMenuItem.Name = "enemyIDsToolStripMenuItem";
-            this.enemyIDsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.enemyIDsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.enemyIDsToolStripMenuItem.Text = "Enemy IDs";
             this.enemyIDsToolStripMenuItem.Click += new System.EventHandler(this.enemyIDsToolStripMenuItem_Click);
             // 
             // mapGroupsToolStripMenuItem
             // 
             this.mapGroupsToolStripMenuItem.Name = "mapGroupsToolStripMenuItem";
-            this.mapGroupsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.mapGroupsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mapGroupsToolStripMenuItem.Text = "Map Groups";
             this.mapGroupsToolStripMenuItem.Click += new System.EventHandler(this.mapGroupsToolStripMenuItem_Click);
             // 
             // memoryAddressesToolStripMenuItem
             // 
             this.memoryAddressesToolStripMenuItem.Name = "memoryAddressesToolStripMenuItem";
-            this.memoryAddressesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.memoryAddressesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.memoryAddressesToolStripMenuItem.Text = "Memory Addresses";
             this.memoryAddressesToolStripMenuItem.Click += new System.EventHandler(this.memoryAddressesToolStripMenuItem_Click);
             // 
             // multipleObjectsInOneTilesetToolStripMenuItem
             // 
             this.multipleObjectsInOneTilesetToolStripMenuItem.Name = "multipleObjectsInOneTilesetToolStripMenuItem";
-            this.multipleObjectsInOneTilesetToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.multipleObjectsInOneTilesetToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.multipleObjectsInOneTilesetToolStripMenuItem.Text = "Multiple Tiles in One Tileset";
             this.multipleObjectsInOneTilesetToolStripMenuItem.Click += new System.EventHandler(this.multipleObjectsInOneTilesetToolStripMenuItem_Click);
             // 
             // musicToolStripMenuItem
             // 
             this.musicToolStripMenuItem.Name = "musicToolStripMenuItem";
-            this.musicToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.musicToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.musicToolStripMenuItem.Text = "Music";
             this.musicToolStripMenuItem.Click += new System.EventHandler(this.musicToolStripMenuItem_Click);
             // 
             // ringsToolStripMenuItem
             // 
             this.ringsToolStripMenuItem.Name = "ringsToolStripMenuItem";
-            this.ringsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.ringsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.ringsToolStripMenuItem.Text = "Rings";
             this.ringsToolStripMenuItem.Click += new System.EventHandler(this.ringsToolStripMenuItem_Click);
             // 
             // soundEffectsToolStripMenuItem
             // 
             this.soundEffectsToolStripMenuItem.Name = "soundEffectsToolStripMenuItem";
-            this.soundEffectsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.soundEffectsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.soundEffectsToolStripMenuItem.Text = "Sound Effects";
             this.soundEffectsToolStripMenuItem.Click += new System.EventHandler(this.soundEffectsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem40
             // 
             this.toolStripMenuItem40.Name = "toolStripMenuItem40";
-            this.toolStripMenuItem40.Size = new System.Drawing.Size(233, 6);
+            this.toolStripMenuItem40.Size = new System.Drawing.Size(217, 6);
             // 
             // zOSECommandsToolStripMenuItem
             // 
             this.zOSECommandsToolStripMenuItem.Name = "zOSECommandsToolStripMenuItem";
-            this.zOSECommandsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.zOSECommandsToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.zOSECommandsToolStripMenuItem.Text = "ZOSE Commands";
             this.zOSECommandsToolStripMenuItem.Click += new System.EventHandler(this.zOSECommandsToolStripMenuItem_Click);
             // 
             // zOTEValuesToolStripMenuItem
             // 
             this.zOTEValuesToolStripMenuItem.Name = "zOTEValuesToolStripMenuItem";
-            this.zOTEValuesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.zOTEValuesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.zOTEValuesToolStripMenuItem.Text = "ZOTE Values";
             this.zOTEValuesToolStripMenuItem.Click += new System.EventHandler(this.zOTEValuesToolStripMenuItem_Click);
             // 
             // memoryAddressesToolStripMenuItem1
             // 
             this.memoryAddressesToolStripMenuItem1.Name = "memoryAddressesToolStripMenuItem1";
-            this.memoryAddressesToolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.memoryAddressesToolStripMenuItem1.Size = new System.Drawing.Size(220, 22);
             this.memoryAddressesToolStripMenuItem1.Text = "Memory Addresses";
             this.memoryAddressesToolStripMenuItem1.Click += new System.EventHandler(this.memoryAddressesToolStripMenuItem1_Click);
             // 
@@ -1696,7 +1696,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 23);
+            this.label1.Location = new System.Drawing.Point(10, 305);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 2;
@@ -1704,7 +1704,7 @@
             // 
             // nArea
             // 
-            this.nArea.Location = new System.Drawing.Point(68, 21);
+            this.nArea.Location = new System.Drawing.Point(71, 303);
             this.nArea.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1737,7 +1737,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 75);
+            this.label7.Location = new System.Drawing.Point(7, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 16;
@@ -1746,7 +1746,7 @@
             // nVRAM
             // 
             this.nVRAM.Enabled = false;
-            this.nVRAM.Location = new System.Drawing.Point(70, 47);
+            this.nVRAM.Location = new System.Drawing.Point(70, 19);
             this.nVRAM.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1765,7 +1765,7 @@
             // nTileset
             // 
             this.nTileset.Enabled = false;
-            this.nTileset.Location = new System.Drawing.Point(70, 73);
+            this.nTileset.Location = new System.Drawing.Point(70, 45);
             this.nTileset.Maximum = new decimal(new int[] {
             512,
             0,
@@ -1779,7 +1779,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 49);
+            this.label6.Location = new System.Drawing.Point(7, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 14;
@@ -1788,7 +1788,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 101);
+            this.label3.Location = new System.Drawing.Point(7, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 18;
@@ -1797,7 +1797,7 @@
             // nUnique
             // 
             this.nUnique.Enabled = false;
-            this.nUnique.Location = new System.Drawing.Point(70, 99);
+            this.nUnique.Location = new System.Drawing.Point(70, 71);
             this.nUnique.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1811,7 +1811,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 127);
+            this.label4.Location = new System.Drawing.Point(7, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 20;
@@ -1819,7 +1819,7 @@
             // 
             // nAnimation
             // 
-            this.nAnimation.Location = new System.Drawing.Point(70, 125);
+            this.nAnimation.Location = new System.Drawing.Point(70, 97);
             this.nAnimation.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1833,7 +1833,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 153);
+            this.label5.Location = new System.Drawing.Point(7, 125);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 22;
@@ -1841,7 +1841,7 @@
             // 
             // nPalette
             // 
-            this.nPalette.Location = new System.Drawing.Point(70, 151);
+            this.nPalette.Location = new System.Drawing.Point(70, 123);
             this.nPalette.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1855,22 +1855,18 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.nPalette);
-            this.groupBox1.Controls.Add(this.nMusic);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.nAnimation);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.nUnique);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.nTileset);
-            this.groupBox1.Controls.Add(this.nArea);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.nVRAM);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(3, 269);
+            this.groupBox1.Location = new System.Drawing.Point(6, 329);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 216);
+            this.groupBox1.Size = new System.Drawing.Size(209, 147);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Area Information";
@@ -1878,7 +1874,7 @@
             // nMusic
             // 
             this.nMusic.Hexadecimal = true;
-            this.nMusic.Location = new System.Drawing.Point(68, 177);
+            this.nMusic.Location = new System.Drawing.Point(71, 277);
             this.nMusic.Maximum = new decimal(new int[] {
             255,
             0,
@@ -1891,7 +1887,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 179);
+            this.label12.Location = new System.Drawing.Point(10, 279);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 13);
             this.label12.TabIndex = 0;
@@ -1900,7 +1896,7 @@
             // pTile
             // 
             this.pTile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pTile.Location = new System.Drawing.Point(218, 277);
+            this.pTile.Location = new System.Drawing.Point(237, 270);
             this.pTile.Name = "pTile";
             this.pTile.Size = new System.Drawing.Size(20, 20);
             this.pTile.TabIndex = 14;
@@ -2011,12 +2007,21 @@
             this.groupBox2.Size = new System.Drawing.Size(243, 234);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Interactions";
+            this.groupBox2.Text = "Objects";
+            // 
+            // interactionBox
+            // 
+            this.interactionBox.Location = new System.Drawing.Point(11, 65);
+            this.interactionBox.Name = "interactionBox";
+            this.interactionBox.Size = new System.Drawing.Size(226, 140);
+            this.interactionBox.TabIndex = 8;
+            this.interactionBox.Visible = false;
+            this.interactionBox.ValueChanged += new ZOLE_4.SpriteDefinitionBox.valueChanged(this.interactionBox_ValueChanged);
             // 
             // lblSelectedTile
             // 
             this.lblSelectedTile.AutoSize = true;
-            this.lblSelectedTile.Location = new System.Drawing.Point(218, 300);
+            this.lblSelectedTile.Location = new System.Drawing.Point(237, 293);
             this.lblSelectedTile.Name = "lblSelectedTile";
             this.lblSelectedTile.Size = new System.Drawing.Size(19, 13);
             this.lblSelectedTile.TabIndex = 20;
@@ -2261,19 +2266,43 @@
             this.tabsSecondary.SelectedIndex = 0;
             this.tabsSecondary.Size = new System.Drawing.Size(274, 521);
             this.tabsSecondary.TabIndex = 2;
+            this.tabsSecondary.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabsSecondary_Selected);
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.pTileset);
+            this.tabPage3.Controls.Add(this.nMusic);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.pTile);
+            this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.lblSelectedTile);
+            this.tabPage3.Controls.Add(this.nArea);
+            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(266, 495);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Map Editor";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pTileset
+            // 
+            this.pTileset.AllowMultiSelection = true;
+            this.pTileset.BoxSize = new System.Drawing.Size(16, 16);
+            this.pTileset.CanvasSize = new System.Drawing.Size(256, 256);
+            this.pTileset.HoverBox = true;
+            this.pTileset.HoverColor = System.Drawing.Color.White;
+            this.pTileset.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pTileset.Location = new System.Drawing.Point(3, 4);
+            this.pTileset.Name = "pTileset";
+            this.pTileset.Selectable = true;
+            this.pTileset.SelectedIndex = -2;
+            this.pTileset.SelectionColor = System.Drawing.Color.Red;
+            this.pTileset.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
+            this.pTileset.Size = new System.Drawing.Size(260, 260);
+            this.pTileset.TabIndex = 9;
+            this.pTileset.TabStop = false;
+            this.pTileset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTileset_MouseDown);
             // 
             // tabPage1
             // 
@@ -2296,6 +2325,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(336, 271);
             this.panel1.TabIndex = 31;
+            // 
+            // pMinimap
+            // 
+            this.pMinimap.AllowMultiSelection = false;
+            this.pMinimap.BoxSize = new System.Drawing.Size(10, 8);
+            this.pMinimap.CanvasSize = new System.Drawing.Size(160, 128);
+            this.pMinimap.HoverBox = true;
+            this.pMinimap.HoverColor = System.Drawing.Color.White;
+            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pMinimap.Location = new System.Drawing.Point(0, 0);
+            this.pMinimap.MaximumSize = new System.Drawing.Size(1280, 1024);
+            this.pMinimap.Name = "pMinimap";
+            this.pMinimap.Selectable = true;
+            this.pMinimap.SelectedIndex = -1;
+            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
+            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-1, 0, 1, 1);
+            this.pMinimap.Size = new System.Drawing.Size(16, 16);
+            this.pMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pMinimap.TabIndex = 17;
+            this.pMinimap.TabStop = false;
+            this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
+            this.pMinimap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseMove);
+            this.pMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseUp);
             // 
             // panel2
             // 
@@ -2389,57 +2441,6 @@
             this.toolStripButton35.Text = "Zoom";
             this.toolStripButton35.Click += new System.EventHandler(this.mapZoom_Click);
             // 
-            // pMinimap
-            // 
-            this.pMinimap.AllowMultiSelection = false;
-            this.pMinimap.BoxSize = new System.Drawing.Size(10, 8);
-            this.pMinimap.CanvasSize = new System.Drawing.Size(160, 128);
-            this.pMinimap.HoverBox = true;
-            this.pMinimap.HoverColor = System.Drawing.Color.White;
-            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pMinimap.Location = new System.Drawing.Point(0, 0);
-            this.pMinimap.MaximumSize = new System.Drawing.Size(1280, 1024);
-            this.pMinimap.Name = "pMinimap";
-            this.pMinimap.Selectable = true;
-            this.pMinimap.SelectedIndex = -1;
-            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
-            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-1, 0, 1, 1);
-            this.pMinimap.Size = new System.Drawing.Size(16, 16);
-            this.pMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pMinimap.TabIndex = 17;
-            this.pMinimap.TabStop = false;
-            this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
-            this.pMinimap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseMove);
-            this.pMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseUp);
-            // 
-            // pTileset
-            // 
-            this.pTileset.AllowMultiSelection = true;
-            this.pTileset.BoxSize = new System.Drawing.Size(16, 16);
-            this.pTileset.CanvasSize = new System.Drawing.Size(256, 256);
-            this.pTileset.HoverBox = true;
-            this.pTileset.HoverColor = System.Drawing.Color.White;
-            this.pTileset.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pTileset.Location = new System.Drawing.Point(3, 4);
-            this.pTileset.Name = "pTileset";
-            this.pTileset.Selectable = true;
-            this.pTileset.SelectedIndex = -2;
-            this.pTileset.SelectionColor = System.Drawing.Color.Red;
-            this.pTileset.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
-            this.pTileset.Size = new System.Drawing.Size(260, 260);
-            this.pTileset.TabIndex = 9;
-            this.pTileset.TabStop = false;
-            this.pTileset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTileset_MouseDown);
-            // 
-            // interactionBox
-            // 
-            this.interactionBox.Location = new System.Drawing.Point(11, 65);
-            this.interactionBox.Name = "interactionBox";
-            this.interactionBox.Size = new System.Drawing.Size(226, 140);
-            this.interactionBox.TabIndex = 8;
-            this.interactionBox.Visible = false;
-            this.interactionBox.ValueChanged += new ZOLE_4.SpriteDefinitionBox.valueChanged(this.interactionBox_ValueChanged);
-            // 
             // pMap
             // 
             this.pMap.AllowMultiSelection = false;
@@ -2469,7 +2470,6 @@
             this.ClientSize = new System.Drawing.Size(600, 593);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlMap);
-            this.Controls.Add(this.toolSeasons);
             this.Controls.Add(this.pMap);
             this.Controls.Add(this.nMap);
             this.Controls.Add(this.label8);
@@ -2478,11 +2478,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toolAges);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.toolSeasons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "ZOLE 4.5 YLC";
+            this.Text = "ZOLE 4.6.00";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -2520,15 +2521,15 @@
             this.tabsSecondary.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -136,7 +136,7 @@
             this.Name = "frmInteractions";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Interactions";
+            this.Text = "Add Objects";
             this.Load += new System.EventHandler(this.frmInteractions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pInteractionColor)).EndInit();

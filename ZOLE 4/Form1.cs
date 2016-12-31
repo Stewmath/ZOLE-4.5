@@ -30,13 +30,9 @@ namespace ZOLE_4
         TransitionLoader transitionLoader;
         EnemyLoader enemyLoader;
 
-        bool mapZoom = true;
-        int mapWidth = 0;
-        int mapHeight = 0;
+        bool mapZoom = false;
         int mouseX = 0;
         int mouseY = 0;
-        int windowX = 0;
-        int windowY = 0;
         /*
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -164,7 +160,7 @@ namespace ZOLE_4
             {
                 foreach (string s in seasonsGroupNames)
                     cboArea.Items.Add(s);
-                MessageBox.Show("Not only was seasons support never finished by the original creator, I've also created a whole bunch of UI bugs that only affect seasons. It's probably an idea to quit while your ahead.", "Warning");
+                MessageBox.Show("Seasons isn't as well supported as Ages. There may be missing or unwanted features (bugs).");
             }
 
             cboArea.SelectedIndex = 0;
@@ -392,83 +388,72 @@ namespace ZOLE_4
             Bitmap b;
             while (bigMaps[cboArea.SelectedIndex] == null) ;
             Bitmap src = bigMaps[cboArea.SelectedIndex];
-            if (game == Program.GameTypes.Ages && mapZoom == true)
-                b = new Bitmap((cboArea.SelectedIndex < 4 ? 1280 : 720), (cboArea.SelectedIndex < 4 ? 1024 : 528));
-            else if (game == Program.GameTypes.Ages && mapZoom == false)
-                b = new Bitmap((cboArea.SelectedIndex < 4 ? 320 : 240), (cboArea.SelectedIndex < 4 ? 256 : 176));
-            else if (game == Program.GameTypes.Seasons && mapZoom == true)
-                b = new Bitmap((cboArea.SelectedIndex < 5 ? 1280 : 720), (cboArea.SelectedIndex < 5 ? 1024 : 528));
+
+            int mapWidth, mapHeight;
+
+            if (mapZoom)
+            {
+                if (isDungeonLoaded())
+                {
+                    mapWidth = 720;
+                    mapHeight = 528;
+                }
+                else
+                {
+                    mapWidth = 1280;
+                    mapHeight = 1024;
+                }
+            }
             else
-                b = new Bitmap((cboArea.SelectedIndex < 5 ? 320 : 240), (cboArea.SelectedIndex < 5 ? 256 : 176));
+            {
+                if (isDungeonLoaded())
+                {
+                    mapWidth = 240;
+                    mapHeight = 176;
+                }
+                else {
+                    mapWidth = 320;
+                    mapHeight = 256;
+                }
+            }
+
+            b = new Bitmap(mapWidth, mapHeight);
+
             Graphics g = Graphics.FromImage(b);
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            if (game == Program.GameTypes.Seasons)
-                if (mapZoom == true)
-                    {
-                        g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 5 ? 1280 : 720), (cboArea.SelectedIndex < 5 ? 1024 : 528));
-                        if (cboArea.SelectedIndex < 4)
-                        {
-                            mapWidth = 1280;
-                            mapHeight = 1024;
-                            this.pMinimap.Size = new System.Drawing.Size(1280, 1024);
-                        }
-                    }
-                    else
-                    {
-                        g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 5 ? 320 : 240), (cboArea.SelectedIndex < 5 ? 256 : 176));
-                        if (cboArea.SelectedIndex < 4)
-                        {
-                            mapWidth = 320;
-                            mapHeight = 256;
-                            pMinimap.Size = new System.Drawing.Size(mapWidth, mapHeight);
-                        }
-                        else
-                        {
-                            mapWidth = 1280;
-                            mapHeight = 1024;
-                        }
-                    }
-                else
-                if (mapZoom == true)
-                {
-                    g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 4 ? 1280 : 720), (cboArea.SelectedIndex < 4 ? 1024 : 528));
-                }
-                else
-                {
-                    g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, (cboArea.SelectedIndex < 4 ? 320 : 240), (cboArea.SelectedIndex < 4 ? 256 : 176));
-                }
+            g.DrawImage(bigMaps[cboArea.SelectedIndex], 0, 0, mapWidth, mapHeight);
+
             pMinimap.Image = b;
-            if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex < 4 && mapZoom == true) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex < 5 && mapZoom == true))
+            pMinimap.CanvasSize = new Size(mapWidth, mapHeight);
+
+            if (isDungeonLoaded())
             {
-                pMinimap.BoxSize = new Size(80, 64);
-                pMinimap.CanvasSize = new Size(1280, 1024);
-                pMap.CanvasSize = new Size(1280, 1024);
-            }
-            else if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex < 4 && mapZoom == false) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex < 5 && mapZoom == false))
-            {
-                pMinimap.BoxSize = new Size(20, 16);
-                pMinimap.CanvasSize = new Size(320, 256);
-                pMap.CanvasSize = new Size(160, 128);
-            }
-            else if ((game == Program.GameTypes.Ages && cboArea.SelectedIndex > 4 && mapZoom == false) || (game == Program.GameTypes.Seasons && cboArea.SelectedIndex > 5 && mapZoom == false))
-            {
-                pMinimap.BoxSize = new Size(30, 22);
-                pMinimap.CanvasSize = new Size(240, 176);
+                if (mapZoom)
+                    pMinimap.BoxSize = new Size(90, 66);
+                else
+                    pMinimap.BoxSize = new Size(30, 22);
             }
             else
             {
-                pMinimap.BoxSize = new Size(90, 66);
-                pMinimap.CanvasSize = new Size(720, 528);
+                if (mapZoom)
+                    pMinimap.BoxSize = new Size(80, 64);
+                else
+                    pMinimap.BoxSize = new Size(20, 16);
             }
-            if (cboArea.SelectedIndex < (game == Program.GameTypes.Ages ? 4 : 5))
+
+            if (!isDungeonLoaded())
             {
                 LoadMap(pMinimap.SelectedIndex, cboArea.SelectedIndex);
                 groupBox4.Visible = false;
             }
             else
             {
-                LoadMap(-1, cboArea.SelectedIndex);
-                if (!groupBox4.Visible && game != Program.GameTypes.Seasons)
+                if (pMinimap.SelectedIndex > minimapCreator.formationIndexes.Length)
+                    pMinimap.SelectedIndex = 0;
+                LoadMap(minimapCreator.formationIndexes[pMinimap.SelectedIndex], cboArea.SelectedIndex);
+
+                // Static objects box
+                if (game != Program.GameTypes.Seasons)
                     groupBox4.Visible = true;
             }
         }
@@ -724,14 +709,20 @@ namespace ZOLE_4
             return tset;
         }
 
+        private bool isDungeonLoaded()
+        {
+            int group = cboArea.SelectedIndex;
+            return minimapCreator.dungeon(minimapCreator.getRealMapGroup(group, game), game);
+        }
+
         private void pMinimap_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (game == Program.GameTypes.Ages)
-                    LoadMap((cboArea.SelectedIndex < 4 ? pMinimap.SelectedIndex : minimapCreator.formationIndexes[pMinimap.SelectedIndex]), cboArea.SelectedIndex);
+                if (!isDungeonLoaded())
+                    LoadMap(pMinimap.SelectedIndex, cboArea.SelectedIndex);
                 else
-                    LoadMap((cboArea.SelectedIndex < 5 ? pMinimap.SelectedIndex : minimapCreator.formationIndexes[pMinimap.SelectedIndex]), cboArea.SelectedIndex);
+                    LoadMap(minimapCreator.formationIndexes[pMinimap.SelectedIndex], cboArea.SelectedIndex);
             }
         }
         private void pMinimap_MouseUp(object sender, MouseEventArgs e)
@@ -2473,6 +2464,14 @@ namespace ZOLE_4
 
             mouseX = Cursor.Position.X;
             mouseY = Cursor.Position.Y;
+        }
+
+        private void tabsSecondary_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabsSecondary.SelectedIndex == 0)
+                chkInteractions.Checked = false;
+            else
+                chkInteractions.Checked = true;
         }
     }
 }
