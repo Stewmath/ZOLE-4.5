@@ -345,7 +345,7 @@ namespace ZOLE_4
 
         private void button8_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This is the type of warp.  0 is for stairs, 4 is for caves and doors, and 40 is for multiple warps on one map screen.",
+            MessageBox.Show("This is the type of warp.  0 is for stairs, 4 is for caves and doors, and 40 is for multiple warps on one map screen.\n\nDon't edit this.",
                 "Warp Type Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -363,7 +363,7 @@ namespace ZOLE_4
 
         private void button11_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This is the map group you want to travel to.  The Present Overworld is 0, Past Overworld is 1, Present Underwater is 2, Past Underwater is 3, Maku Path through Black Tower and the first Unmapped is 4, and Level 6 through Final Dungeon and the second Unmapped is 5.",
+            MessageBox.Show("This is the map group you will to travel to. Editing this is dangerous. Try to find a warp with the value you want already.\n\nThe Present Overworld is 0, Past Overworld is 1, Present Underwater is 2, Past Underwater is 3, Maku Path through Black Tower and the first Unmapped is 4, and Level 6 through Final Dungeon and the second Unmapped is 5.\n\nSee the wiki for more information.",
                 "Map Group Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -375,7 +375,7 @@ namespace ZOLE_4
 
         private void button13_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This is the type of warp.  0 is for stairs, 4 is for caves and doors, and 40 is for multiple warps on one map screen.",
+            MessageBox.Show("This is the type of warp.  0 is for stairs, 4 is for caves and doors, and 40 is for multiple warps on one map screen.\n\nDon't edit this.",
                 "Warp Type Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
