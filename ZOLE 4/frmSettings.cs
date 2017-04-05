@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace ZOLE_4
 {
-    public partial class frmHelp : Form
+    public partial class frmSettings : Form
     {
-        public frmHelp()
+        public frmSettings()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
