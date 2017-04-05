@@ -39,7 +39,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(856, 527);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://www.zeldahacking.net/", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://wiki.zeldahacking.net/", System.UriKind.Absolute);
             // 
             // frmZeldaHacking
             // 
