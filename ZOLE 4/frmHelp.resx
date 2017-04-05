@@ -118,12 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>If you need help, the first place to look is at wiki.zeldahacking.net, which at the time of this writing has the most up-to-date documentation available.
+    <value>Hello and thank you for downloading ZOLE 4.5!  If you are new to ZOLE,
+it's almost a full editor of The Legend of Zelda:  Oracle of Ages.  Go to
+Help &gt; Credits to see more about the creators.  Have fun, and if you get
+stuck, be sure to read the included documentation, and go and sign up to
+ZeldaHacking.NET.  There, you will find resources and more, as well as
+video and text tutorials.  There is also some built-in documentation
+exclusive to ZOLE 4.5 under the Resources menu.  If you have any
+questions, ask on ZeldaHacking.NET in the appropriate forum, or for
+hands-on help, visit the IRC channel at irc.caffie.net #ZOLE.
 
-ZOLE's forum, which was previously hosted at zeldahacking.net, is no longer up. Now, the community hangs out on an IRC and discord server.
-
-IRC Server: irc.caffie.net, Channel: #zole
-
-You can find an invite to the discord server on the wiki.</value>
+-BigTarantula99, Lin, and Fatories</value>
   </data>
 </root>

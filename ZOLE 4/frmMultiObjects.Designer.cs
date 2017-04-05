@@ -49,7 +49,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(271, 28);
             this.label1.TabIndex = 2;
-            this.label1.Text = "This is for when the same tile is shown multiple times\r\nin one tileset.  More w" +
+            this.label1.Text = "This is for when the same object is shown multiple times\r\nin one tileset.  More w" +
     "ill be added as I discover.";
             // 
             // frmMultiObjects
@@ -63,7 +63,7 @@
             this.Name = "frmMultiObjects";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Multiple Tiles";
+            this.Text = "Multiple Objects";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

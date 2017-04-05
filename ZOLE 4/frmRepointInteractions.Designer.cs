@@ -1,33 +1,33 @@
 ﻿namespace ZOLE_4
 {
-    partial class frmRepointInteractions
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class frmRepointInteractions
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
             this.label1 = new System.Windows.Forms.Label();
             this.nAddress = new System.Windows.Forms.NumericUpDown();
             this.chkCopy = new System.Windows.Forms.CheckBox();
@@ -74,7 +74,7 @@
             this.chkCopy.Name = "chkCopy";
             this.chkCopy.Size = new System.Drawing.Size(134, 17);
             this.chkCopy.TabIndex = 2;
-            this.chkCopy.Text = "Copy Over Objects";
+            this.chkCopy.Text = "Copy Over Interactions";
             this.chkCopy.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -102,18 +102,18 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Repoint Objects";
+            this.Text = "Repoint Interactions";
             ((System.ComponentModel.ISupportInitialize)(this.nAddress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.NumericUpDown nAddress;
-        public System.Windows.Forms.CheckBox chkCopy;
-    }
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button button1;
+		public System.Windows.Forms.NumericUpDown nAddress;
+		public System.Windows.Forms.CheckBox chkCopy;
+	}
 }

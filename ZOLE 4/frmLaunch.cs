@@ -8,18 +8,18 @@ using System.Windows.Forms;
 
 namespace ZOLE_4
 {
-    public partial class frmLaunch : Form
-    {
-        public frmLaunch(string text)
-        {
-            InitializeComponent();
-            label1.Text = label1.Text.Replace("x", text);
-        }
+	public partial class frmLaunch : Form
+	{
+		public frmLaunch(string text)
+		{
+			InitializeComponent();
+			label1.Text = label1.Text.Replace("x", text);
+		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-    }
+		private void button1_Click(object sender, EventArgs e)
+		{
+			this.DialogResult = DialogResult.OK;
+			this.Close();
+		}
+	}
 }

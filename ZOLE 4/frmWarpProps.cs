@@ -9,84 +9,84 @@ using System.Windows.Forms;
 
 namespace ZOLE_4
 {
-    public partial class frmWarpProps : Form
-    {
-        WarpLoader warpLoader;
-        public Warp primaryWarp;
-        public Warp propWarp;
-        int group = 0;
-        public int lastAddress = 0;
-        GBHL.GBFile gb;
-        Program.GameTypes game;
+	public partial class frmWarpProps : Form
+	{
+		WarpLoader warpLoader;
+		public Warp primaryWarp;
+		public Warp propWarp;
+		int group = 0;
+		public int lastAddress = 0;
+		GBHL.GBFile gb;
+		Program.GameTypes game;
 
-        public frmWarpProps(WarpLoader w, int g, int la, Program.GameTypes gm, GBHL.GBFile gbf)
-        {
-            game = gm;
-            warpLoader = w;
-            group = g;
-            lastAddress = la;
-            gb = gbf;
-            InitializeComponent();
-        }
+		public frmWarpProps(WarpLoader w, int g, int la, Program.GameTypes gm, GBHL.GBFile gbf)
+		{
+			game = gm;
+			warpLoader = w;
+			group = g;
+			lastAddress = la;
+			gb = gbf;
+			InitializeComponent();
+		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
+		private void button1_Click(object sender, EventArgs e)
+		{
+			this.DialogResult = DialogResult.Cancel;
+			this.Close();
+		}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
+		private void button2_Click(object sender, EventArgs e)
+		{
+			this.DialogResult = DialogResult.OK;
+			this.Close();
+		}
 
-        public void fillWarp(Warp w)
-        {
-            primaryWarp = w;
-            nType.Value = w.opcode;
-            nSrcX.Value = w.map;
-            nWarp.Value = w.index;
-            if (w.index == 0)
-                nWarp_ValueChanged(null, null);
-            nDestGroup.Value = w.group;
-            nEntrance.Value = w.entrance;
-        }
+		public void fillWarp(Warp w)
+		{
+			primaryWarp = w;
+			nType.Value = w.opcode;
+			nSrcX.Value = w.map;
+			nWarp.Value = w.index;
+			if (w.index == 0)
+				nWarp_ValueChanged(null, null);
+			nDestGroup.Value = w.group;
+			nEntrance.Value = w.entrance;
+		}
 
-        public void setPosWarp(int index)
-        {
-            Warp w = warpLoader.loadWarpProps(index, primaryWarp.group, game);
-            propWarp = w;
-            nMap1.Value = w.map;
-            nPos1.Value = w.pos;
-            nUnknown1.Value = w.unknown;
-        }
+		public void setPosWarp(int index)
+		{
+			Warp w = warpLoader.loadWarpProps(index, primaryWarp.group, game);
+			propWarp = w;
+			nMap1.Value = w.map;
+			nPos1.Value = w.pos;
+			nUnknown1.Value = w.unknown;
+		}
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (gb.ReadByte(lastAddress + 4) == 0xFF)
-            {
-                MessageBox.Show("Unable to continue. End of warp data for that group.", "Cannot Advance");
-                return;
-            }
-            if ((primaryWarp.opcode & 0x80) != 0)
-            {
-                if (MessageBox.Show("The next warp will not be read by the current map. Continue anyway?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No)
-                    return;
-            }
-            fillWarp(warpLoader.loadWarp(lastAddress + 4));
-            lastAddress += 4;
-        }
+		private void button4_Click(object sender, EventArgs e)
+		{
+			if (gb.ReadByte(lastAddress + 4) == 0xFF)
+			{
+				MessageBox.Show("Unable to continue. End of warp data for that group.", "Cannot Advance");
+				return;
+			}
+			if ((primaryWarp.opcode & 0x80) != 0)
+			{
+				if (MessageBox.Show("The next warp will not be read by the current map. Continue anyway?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No)
+					return;
+			}
+			fillWarp(warpLoader.loadWarp(lastAddress + 4));
+			lastAddress += 4;
+		}
 
-        private void nWarp_ValueChanged(object sender, EventArgs e)
-        {
-            setPosWarp((int)nWarp.Value);
-        }
+		private void nWarp_ValueChanged(object sender, EventArgs e)
+		{
+			setPosWarp((int)nWarp.Value);
+		}
 
-        private void frmWarpProps_Load(object sender, EventArgs e)
-        {
+		private void frmWarpProps_Load(object sender, EventArgs e)
+		{
 
-        }
+		}
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -153,5 +153,5 @@ namespace ZOLE_4
             MessageBox.Show("This could be one of three values.  If you want Link to enter facing upwards, enter 93.  If you want Link to enter facing downwards, enter F3.  If you want Link to fall from the ceiling on entry, enter 0B.",
                 "Unknown Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-    }
+	}
 }
