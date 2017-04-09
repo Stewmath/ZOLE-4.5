@@ -1,1 +1,3 @@
-* Warn when about to patch a rom
+* Reload button
+* Top bar gets moved when opening Seasons roms
+* Fix loading disassembly roms (something corrupts tilesets)

@@ -54,7 +54,19 @@ namespace ZOLE_4
 
         public void loadSmallTiles(int tileset, Program.GameTypes game)
         {
-            gb.BufferLocation = game == Program.GameTypes.Ages ? 0x787E : 0x7964;
+            // For ages, get this address from the code that reads it. This will allow for
+            // some flexibility for ROMs modified by the disassembly.
+            // The corresponding address for Seasons hasn't been looked into yet.
+            if (game == Program.GameTypes.Ages) {
+                gb.BufferLocation = 0x7aa;
+                int address = gb.ReadByte() + gb.ReadByte() * 0x100;
+                gb.BufferLocation = 0x7a2;
+                gb.BufferLocation = gb.ReadByte() * 0x4000 + (address & 0x3fff);
+                Console.WriteLine(gb.BufferLocation);
+                // For an unmodified rom, gb.BufferLocation should be 0x787e now.
+            }
+            else
+                gb.BufferLocation = 0x7964;
             gb.BufferLocation += tileset * 2;
             gb.BufferLocation = gb.ReadByte() + gb.ReadByte() * 0x100;
             byte[] ram = new byte[0x10000];
