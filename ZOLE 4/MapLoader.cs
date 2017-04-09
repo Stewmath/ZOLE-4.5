@@ -208,6 +208,14 @@ namespace ZOLE_4
             room.area = ar;
         }
 
+        public int getRoomPack(int map, int group, int season, Program.GameTypes game)
+        {
+            gb.BufferLocation = 0x1075C;
+            gb.BufferLocation += map;
+            gb.BufferLocation += (0xFF * group);
+            return gb.ReadByte();
+        }
+
         public void loadMapHeader(int index, int group, int season, bool flag, Program.GameTypes game)
         {
             //3986

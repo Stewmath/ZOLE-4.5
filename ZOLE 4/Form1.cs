@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 
+using System.Configuration;
+using System.Collections.Specialized;
+
 //using System.Runtime.InteropServices;
 
 namespace ZOLE_4
@@ -33,6 +36,8 @@ namespace ZOLE_4
         bool mapZoom = false;
         int mouseX = 0;
         int mouseY = 0;
+        string hexEditor;
+
         /*
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -64,6 +69,7 @@ namespace ZOLE_4
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            hexEditor = ConfigurationManager.AppSettings.Get("HexEditor");
         }
 
         private void openROMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,6 +80,15 @@ namespace ZOLE_4
             if (o.ShowDialog() != DialogResult.OK)
                 return;
             LoadROM(o.FileName);
+        }
+
+        private void reloadROMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (filename == "")
+                return;
+            LoadROM(filename);
+
+            
         }
 
         private void LoadROM(string file)
@@ -308,6 +323,19 @@ namespace ZOLE_4
             gb.BufferLocation += index;
             nMusic.Value = gb.ReadByte();
 
+            if (game == Program.GameTypes.Ages && group <= 1)
+            {
+                nRoomPack.ReadOnly = false;
+                gb.BufferLocation = 0x1075C;
+                gb.BufferLocation += index;
+                gb.BufferLocation += (0xFF * group);
+                nRoomPack.Value = gb.ReadByte();
+            }
+            else
+            {
+                nRoomPack.Value = 0;
+                nRoomPack.ReadOnly = true;
+            }
             staticObjectLoader.staticObjects = new List<StaticObjectLoader.StaticObject>();
             staticObjectLoader.loadStaticObjects(MinimapCreator.GetDungeon(group, mapLoader.room.area.flags1, game), index);
             nStaticIndex.Maximum = staticObjectLoader.staticObjects.Count - 1;
@@ -747,6 +775,37 @@ namespace ZOLE_4
             
         }
 
+        private void copyMap()
+        {
+            if (mapLoader == null)
+                return;
+            int i = (mapLoader.room.type == MapLoader.RoomTypes.Small ? 80 : 0xB0);
+            byte[] b = new byte[i + 1];
+            b[0] = (byte)mapLoader.room.type;
+            Array.Copy(mapLoader.room.decompressed, 0, b, 1, b.Length - 1);
+            Clipboard.SetData("mapdata", b);
+        }
+
+        private void pasteMap()
+        {
+            if (mapLoader == null)
+                return;
+            byte[] b = (byte[])Clipboard.GetData("mapdata");
+            if (b == null)
+            {
+                MessageBox.Show("No data exists.", "Error Pasting");
+                return;
+            }
+            byte type = b[0];
+            if ((mapLoader.room.type == MapLoader.RoomTypes.Small && type != 0) || (mapLoader.room.type == MapLoader.RoomTypes.Dungeon && type != 1))
+            {
+                MessageBox.Show("Incompatible map sizes.", "Error Pasting");
+                return;
+            }
+            Array.Copy(b, 1, mapLoader.room.decompressed, 0, b.Length - 1);
+            updateMap();
+        }
+
         private void pMap_Paint(object sender, PaintEventArgs e)
         {
             lastMapHoverPoint = new Point(-1, -1);
@@ -867,6 +926,9 @@ namespace ZOLE_4
             }
 
             mapSaver.saveMusic((int)nMap.Value, minimapCreator.getRealMapGroup(cboArea.SelectedIndex, game), (byte)nMusic.Value, game);
+
+            mapSaver.saveRoomPack((int)nMap.Value, minimapCreator.getRealMapGroup(cboArea.SelectedIndex, game), (byte)nRoomPack.Value, game);
+
             mapSaver.saveAreaIndex((int)nMap.Value, minimapCreator.getRealMapGroup(cboArea.SelectedIndex, game), (byte)nArea.Value, game);
             int season = (cboArea.SelectedIndex < 4 ? (cboArea.SelectedIndex & 7) : 0);
             mapSaver.saveAreaData((int)nArea.Value, (int)nVRAM.Value, (int)nTileset.Value, (int)nUnique.Value, (int)nAnimation.Value, (int)nPalette.Value, season, game);
@@ -1255,7 +1317,7 @@ namespace ZOLE_4
                 }
 
                 if (type == 0)
-                    mapLoader.room.decompressed = br.ReadBytes(0x80);
+                    mapLoader.room.decompressed = br.ReadBytes(0x50);
                 else
                     mapLoader.room.decompressed = br.ReadBytes(0xB0);
                 pMap.Image = mapLoader.DrawMap(cachedAreas[(int)nArea.Value], new bool[] { false });
@@ -1283,12 +1345,101 @@ namespace ZOLE_4
             {
                 BinaryWriter bw = new BinaryWriter(File.Open(s.FileName, FileMode.OpenOrCreate));
                 bw.Write((byte)(mapLoader.room.type == MapLoader.RoomTypes.Small ? 0 : 1));
+                //bw.Write(mapLoader.room.decompressed);
                 bw.Write(mapLoader.room.decompressed);
                 bw.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("IO Error.\n\n" + ex.Message, "Error");
+            }
+        }
+
+        private void overworldDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mapLoader == null)
+                return;
+            if (mapLoader.room.type != MapLoader.RoomTypes.Small)
+                return;
+            SaveFileDialog s = new SaveFileDialog();
+            s.Title = "Export Overworld Data";
+            s.Filter = "Overworld Data File (*.ZOW)|*.ZOW";
+            if (s.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                BinaryWriter bw = new BinaryWriter(File.Open(s.FileName, FileMode.OpenOrCreate));
+                int i = 0;
+                bw.Write((String)("ZOW01"));
+                while (i != 256)
+                {
+                    LoadMap(i, cboArea.SelectedIndex);
+                    bw.Write(mapLoader.room.decompressed);
+                    bw.Write((byte)(nArea.Value));
+                    bw.Write((byte)(nMusic.Value));
+                    i++;
+                }
+                bw.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("IO Error.\n\n" + ex.Message, "Error");
+            }
+        }
+
+        private void overworldDataToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (mapLoader == null)
+                return;
+            if (mapLoader.room.type != MapLoader.RoomTypes.Small)
+                return;
+            OpenFileDialog s = new OpenFileDialog();
+            s.Title = "Import Overworld Data";
+            s.Filter = "Overworld Data File (*.ZOW)|*.ZOW";
+            Start:
+            if (s.ShowDialog() != DialogResult.OK)
+                return;
+            try
+            {
+                BinaryReader br = new BinaryReader(File.OpenRead(s.FileName));
+                int i = 0;
+                //int ii = 0x50;
+                try
+                {
+                    if (br.ReadString() != ("ZOW01"))
+                    {
+                        MessageBox.Show("This file either isn't a Zelda Overworld file or it's damaged.");
+                        return;
+                    }
+                    while (i <= 0xFF)
+                    {
+                        LoadMap(i, cboArea.SelectedIndex);
+                        mapLoader.room.decompressed = br.ReadBytes(0x50);
+                        nArea.Value = br.ReadByte();
+                        nMusic.Value = br.ReadByte();
+                        save();
+                        i++;
+                    }
+                    if (mapLoader == null)
+                        return;
+                    bigMaps[cboArea.SelectedIndex] = null;
+                    cboArea_SelectedIndexChanged(null, null);
+                }
+                catch
+                {
+                    MessageBox.Show("This file either isn't a Zelda Overworld file or it's damaged.");
+                    return;
+                }
+                //pMap.Image = mapLoader.DrawMap(cachedAreas[(int)nArea.Value], new bool[] { false });
+                //cboArea_SelectedIndexChanged(null, null);
+                br.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("IO Error.\n\n" + ex.Message, "Error");
+                goto Start;
             }
         }
 
@@ -2212,6 +2363,11 @@ namespace ZOLE_4
             Launch("ZOSE");
         }
 
+        private void hEXEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LaunchHex();
+        }
+
         private void zOTEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Due to ZOTE requiring an older version of GHBL.dll, ZOTE cannot be launched from ZOLE 4.5.  Please save your ROM and close ZOLE 4.5, then launch ZOTE from its separate folder and open your ROM.", "ZOLE 4.5", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2231,6 +2387,24 @@ namespace ZOLE_4
             p.StartInfo = s;
             p.Start();
             frmLaunch f = new frmLaunch(name);
+            f.ShowDialog();
+            LoadROM(filename);
+        }
+
+        private void LaunchHex()
+        {
+            if (filename == "" || mapLoader == null)
+                return;
+            if (!File.Exists(hexEditor))
+            {
+                MessageBox.Show(hexEditor + "Your HEX Editor wasn't found, link it to ZOLE with the Settings tab.");
+                return;
+            }
+            System.Diagnostics.ProcessStartInfo s = new System.Diagnostics.ProcessStartInfo(hexEditor, filename);
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo = s;
+            p.Start();
+            frmLaunch f = new frmLaunch("your HEX Editor");
             f.ShowDialog();
             LoadROM(filename);
         }
@@ -2424,6 +2598,24 @@ namespace ZOLE_4
         {
             frnChestIDs Chests = new frnChestIDs();
             Chests.Show();
+        }
+
+        private void openSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog oh = new OpenFileDialog();
+            oh.Title = "Select HEX Editor";
+            oh.Filter = "All Supported Types|*.exe";
+            if (oh.ShowDialog() != DialogResult.OK)
+                return;
+            hexEditor = oh.FileName;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings.Remove("HexEditor");
+            config.AppSettings.Settings.Add("HexEditor", hexEditor);
+            config.Save();
+
+            //ConfigurationManager.AppSettings["HexEditor"] = hexEditor;
+            //ConfigurationManager.AppSettings.Set("HexEditor", oh.FileName);
+            //hexEditor = ConfigurationManager.AppSettings.Get("HexEditor");
         }
 
         private void memoryAddressesToolStripMenuItem_Click(object sender, EventArgs e)

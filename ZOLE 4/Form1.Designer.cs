@@ -34,6 +34,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportEntireMapGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,10 +44,12 @@
             this.rawMapDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rawBaseTilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overworldDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseTilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overworldDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.clearMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
@@ -113,6 +116,9 @@
             this.zOSEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zOTEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zOCFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hEXEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resourcesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chestIDsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,6 +134,7 @@
             this.zOTEValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memoryAddressesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolAges = new System.Windows.Forms.ToolStrip();
@@ -183,59 +190,56 @@
             this.btnArrangeSeasons = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton25 = new System.Windows.Forms.ToolStripButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nArea = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.cboArea = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.nVRAM = new System.Windows.Forms.NumericUpDown();
-            this.nTileset = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nUnique = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.nAnimation = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nPalette = new System.Windows.Forms.NumericUpDown();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nMusic = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pTile = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nMap = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.nInteraction = new System.Windows.Forms.NumericUpDown();
-            this.chkInteractions = new System.Windows.Forms.CheckBox();
-            this.pInteractionColor = new System.Windows.Forms.PictureBox();
-            this.lblInteractionType = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
-            this.lblSelectedTile = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.nStaticFactor = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.nStaticX = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.nStaticID = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.nStaticIndex = new System.Windows.Forms.NumericUpDown();
-            this.chkStaticObjects = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.nStaticUnknown = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
-            this.nStaticY = new System.Windows.Forms.NumericUpDown();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.nStaticMap = new System.Windows.Forms.NumericUpDown();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pnlMap = new System.Windows.Forms.Panel();
             this.tabsSecondary = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pTileset = new ZOLE_4.GridBox();
+            this.nMusic = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nPalette = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nAnimation = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nUnique = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.nTileset = new System.Windows.Forms.NumericUpDown();
+            this.nVRAM = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pTile = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblSelectedTile = new System.Windows.Forms.Label();
+            this.nArea = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblInteractionType = new System.Windows.Forms.Label();
+            this.pInteractionColor = new System.Windows.Forms.PictureBox();
+            this.chkInteractions = new System.Windows.Forms.CheckBox();
+            this.nInteraction = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.nStaticMap = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.nStaticY = new System.Windows.Forms.NumericUpDown();
+            this.button2 = new System.Windows.Forms.Button();
+            this.nStaticUnknown = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.chkStaticObjects = new System.Windows.Forms.CheckBox();
+            this.nStaticIndex = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.nStaticID = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.nStaticX = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.nStaticFactor = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pMinimap = new ZOLE_4.GridBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripSaveMap = new System.Windows.Forms.ToolStripButton();
@@ -244,42 +248,47 @@
             this.toolStripButton34 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton33 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton35 = new System.Windows.Forms.ToolStripButton();
+            this.nRoomPack = new System.Windows.Forms.NumericUpDown();
+            this.textRoomPack = new System.Windows.Forms.Label();
+            this.pMinimap = new ZOLE_4.GridBox();
+            this.pTileset = new ZOLE_4.GridBox();
+            this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
             this.pMap = new ZOLE_4.GridBox();
-            this.wikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolAges.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolSeasons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nArea)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nVRAM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nTileset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUnique)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nAnimation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nPalette)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nMusic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pTile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nMap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nInteraction)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pInteractionColor)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticFactor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticIndex)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticUnknown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticMap)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.pnlMap.SuspendLayout();
             this.tabsSecondary.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nMusic)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nPalette)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nAnimation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUnique)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nTileset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nVRAM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pTile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nArea)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pInteractionColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nInteraction)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticUnknown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticFactor)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
             this.panel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nRoomPack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).BeginInit();
             this.SuspendLayout();
             // 
@@ -293,6 +302,7 @@
             this.menuToolsSeasons,
             this.toolStripMenuItem3,
             this.toolStripMenuItem21,
+            this.settingsToolStripMenuItem,
             this.resourcesToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -307,6 +317,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openROMToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.reloadToolStripMenuItem,
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
             this.exportEntireMapGroupToolStripMenuItem,
@@ -333,6 +344,15 @@
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(308, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // reloadToolStripMenuItem
+            // 
+            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            this.reloadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.R)));
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(308, 22);
+            this.reloadToolStripMenuItem.Text = "Reload ROM";
+            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadROMToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -372,7 +392,8 @@
             this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rawMapDataToolStripMenuItem,
             this.rawBaseTilesToolStripMenuItem,
-            this.paletteToolStripMenuItem});
+            this.paletteToolStripMenuItem,
+            this.overworldDataToolStripMenuItem1});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(308, 22);
             this.importToolStripMenuItem.Text = "Import";
@@ -380,30 +401,38 @@
             // rawMapDataToolStripMenuItem
             // 
             this.rawMapDataToolStripMenuItem.Name = "rawMapDataToolStripMenuItem";
-            this.rawMapDataToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.rawMapDataToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.rawMapDataToolStripMenuItem.Text = "Map Data...";
             this.rawMapDataToolStripMenuItem.Click += new System.EventHandler(this.rawMapDataToolStripMenuItem_Click);
             // 
             // rawBaseTilesToolStripMenuItem
             // 
             this.rawBaseTilesToolStripMenuItem.Name = "rawBaseTilesToolStripMenuItem";
-            this.rawBaseTilesToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.rawBaseTilesToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.rawBaseTilesToolStripMenuItem.Text = "Raw Base Tiles...";
             this.rawBaseTilesToolStripMenuItem.Click += new System.EventHandler(this.rawBaseTilesToolStripMenuItem_Click);
             // 
             // paletteToolStripMenuItem
             // 
             this.paletteToolStripMenuItem.Name = "paletteToolStripMenuItem";
-            this.paletteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.paletteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.paletteToolStripMenuItem.Text = "Palette...";
             this.paletteToolStripMenuItem.Click += new System.EventHandler(this.paletteToolStripMenuItem_Click);
+            // 
+            // overworldDataToolStripMenuItem1
+            // 
+            this.overworldDataToolStripMenuItem1.Name = "overworldDataToolStripMenuItem1";
+            this.overworldDataToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
+            this.overworldDataToolStripMenuItem1.Text = "Overworld Data...";
+            this.overworldDataToolStripMenuItem1.Click += new System.EventHandler(this.overworldDataToolStripMenuItem1_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mapDataToolStripMenuItem,
             this.baseTilesToolStripMenuItem,
-            this.currentPaletteToolStripMenuItem});
+            this.currentPaletteToolStripMenuItem,
+            this.overworldDataToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(308, 22);
             this.exportToolStripMenuItem.Text = "Export";
@@ -411,23 +440,30 @@
             // mapDataToolStripMenuItem
             // 
             this.mapDataToolStripMenuItem.Name = "mapDataToolStripMenuItem";
-            this.mapDataToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.mapDataToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.mapDataToolStripMenuItem.Text = "Map Data...";
             this.mapDataToolStripMenuItem.Click += new System.EventHandler(this.mapDataToolStripMenuItem_Click);
             // 
             // baseTilesToolStripMenuItem
             // 
             this.baseTilesToolStripMenuItem.Name = "baseTilesToolStripMenuItem";
-            this.baseTilesToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.baseTilesToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.baseTilesToolStripMenuItem.Text = "Base Tiles...";
             this.baseTilesToolStripMenuItem.Click += new System.EventHandler(this.baseTilesToolStripMenuItem_Click);
             // 
             // currentPaletteToolStripMenuItem
             // 
             this.currentPaletteToolStripMenuItem.Name = "currentPaletteToolStripMenuItem";
-            this.currentPaletteToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.currentPaletteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.currentPaletteToolStripMenuItem.Text = "Current Palette...";
             this.currentPaletteToolStripMenuItem.Click += new System.EventHandler(this.currentPaletteToolStripMenuItem_Click);
+            // 
+            // overworldDataToolStripMenuItem
+            // 
+            this.overworldDataToolStripMenuItem.Name = "overworldDataToolStripMenuItem";
+            this.overworldDataToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.overworldDataToolStripMenuItem.Text = "Overworld Data...";
+            this.overworldDataToolStripMenuItem.Click += new System.EventHandler(this.overworldDataToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -517,7 +553,7 @@
             this.toolStripMenuItem34,
             this.createBackupToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // warpEditorToolStripMenuItem
@@ -763,7 +799,7 @@
             this.toolStripMenuItem35,
             this.toolStripMenuItem36});
             this.menuToolsSeasons.Name = "menuToolsSeasons";
-            this.menuToolsSeasons.Size = new System.Drawing.Size(48, 20);
+            this.menuToolsSeasons.Size = new System.Drawing.Size(47, 20);
             this.menuToolsSeasons.Text = "&Tools";
             this.menuToolsSeasons.Visible = false;
             // 
@@ -994,7 +1030,8 @@
             this.toolStripMenuItem21.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zOSEToolStripMenuItem,
             this.zOTEToolStripMenuItem,
-            this.zOCFToolStripMenuItem});
+            this.zOCFToolStripMenuItem,
+            this.hEXEditorToolStripMenuItem});
             this.toolStripMenuItem21.Name = "toolStripMenuItem21";
             this.toolStripMenuItem21.Size = new System.Drawing.Size(58, 20);
             this.toolStripMenuItem21.Text = "Launch";
@@ -1002,23 +1039,46 @@
             // zOSEToolStripMenuItem
             // 
             this.zOSEToolStripMenuItem.Name = "zOSEToolStripMenuItem";
-            this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zOSEToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.zOSEToolStripMenuItem.Text = "ZOSE";
             this.zOSEToolStripMenuItem.Click += new System.EventHandler(this.zOSEToolStripMenuItem_Click);
             // 
             // zOTEToolStripMenuItem
             // 
             this.zOTEToolStripMenuItem.Name = "zOTEToolStripMenuItem";
-            this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zOTEToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.zOTEToolStripMenuItem.Text = "ZOTE";
             this.zOTEToolStripMenuItem.Click += new System.EventHandler(this.zOTEToolStripMenuItem_Click);
             // 
             // zOCFToolStripMenuItem
             // 
             this.zOCFToolStripMenuItem.Name = "zOCFToolStripMenuItem";
-            this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zOCFToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.zOCFToolStripMenuItem.Text = "ZOCF";
             this.zOCFToolStripMenuItem.Click += new System.EventHandler(this.zOCFToolStripMenuItem_Click);
+            // 
+            // hEXEditorToolStripMenuItem
+            // 
+            this.hEXEditorToolStripMenuItem.Name = "hEXEditorToolStripMenuItem";
+            this.hEXEditorToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.hEXEditorToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.hEXEditorToolStripMenuItem.Text = "HEX Editor";
+            this.hEXEditorToolStripMenuItem.Click += new System.EventHandler(this.hEXEditorToolStripMenuItem_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openSettingsToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // openSettingsToolStripMenuItem
+            // 
+            this.openSettingsToolStripMenuItem.Name = "openSettingsToolStripMenuItem";
+            this.openSettingsToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.openSettingsToolStripMenuItem.Text = "Change HEX Editor";
+            this.openSettingsToolStripMenuItem.Click += new System.EventHandler(this.openSettingsToolStripMenuItem_Click);
             // 
             // resourcesToolStripMenuItem
             // 
@@ -1044,7 +1104,7 @@
             this.zOTEValuesToolStripMenuItem,
             this.memoryAddressesToolStripMenuItem1});
             this.listsToolStripMenuItem.Name = "listsToolStripMenuItem";
-            this.listsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listsToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.listsToolStripMenuItem.Text = "Lists";
             // 
             // chestIDsToolStripMenuItem
@@ -1139,17 +1199,24 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
+            // wikiToolStripMenuItem
+            // 
+            this.wikiToolStripMenuItem.Name = "wikiToolStripMenuItem";
+            this.wikiToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.wikiToolStripMenuItem.Text = "Wiki";
+            this.wikiToolStripMenuItem.Click += new System.EventHandler(this.goToZeldaHackingNETToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // creditsToolStripMenuItem
             // 
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.creditsToolStripMenuItem.Text = "Credits";
             this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
             // 
@@ -1474,7 +1541,7 @@
             this.lblMap.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.lblMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.lblMap.Name = "lblMap";
-            this.lblMap.Size = new System.Drawing.Size(110, 17);
+            this.lblMap.Size = new System.Drawing.Size(120, 17);
             this.lblMap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblInteraction
@@ -1492,7 +1559,7 @@
             this.lblRealGroup.AutoSize = false;
             this.lblRealGroup.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.lblRealGroup.Name = "lblRealGroup";
-            this.lblRealGroup.Size = new System.Drawing.Size(109, 17);
+            this.lblRealGroup.Size = new System.Drawing.Size(120, 17);
             // 
             // lblHoverPos
             // 
@@ -1686,28 +1753,6 @@
             this.toolStripButton25.Text = "Re-Apply ASM Patches";
             this.toolStripButton25.Click += new System.EventHandler(this.reApplyASMPatchesToolStripMenuItem_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 305);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Area ID:";
-            // 
-            // nArea
-            // 
-            this.nArea.Location = new System.Drawing.Point(71, 303);
-            this.nArea.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nArea.Name = "nArea";
-            this.nArea.Size = new System.Drawing.Size(135, 20);
-            this.nArea.TabIndex = 3;
-            this.nArea.ValueChanged += new System.EventHandler(this.nArea_ValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1726,175 +1771,6 @@
             this.cboArea.Size = new System.Drawing.Size(196, 21);
             this.cboArea.TabIndex = 5;
             this.cboArea.SelectedIndexChanged += new System.EventHandler(this.cboArea_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Tileset:";
-            // 
-            // nVRAM
-            // 
-            this.nVRAM.Enabled = false;
-            this.nVRAM.Location = new System.Drawing.Point(70, 19);
-            this.nVRAM.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nVRAM.Name = "nVRAM";
-            this.nVRAM.Size = new System.Drawing.Size(133, 20);
-            this.nVRAM.TabIndex = 15;
-            this.nVRAM.Value = new decimal(new int[] {
-            64,
-            0,
-            0,
-            0});
-            this.nVRAM.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
-            // 
-            // nTileset
-            // 
-            this.nTileset.Enabled = false;
-            this.nTileset.Location = new System.Drawing.Point(70, 45);
-            this.nTileset.Maximum = new decimal(new int[] {
-            512,
-            0,
-            0,
-            0});
-            this.nTileset.Name = "nTileset";
-            this.nTileset.Size = new System.Drawing.Size(133, 20);
-            this.nTileset.TabIndex = 17;
-            this.nTileset.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Base Tiles:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Unique:";
-            // 
-            // nUnique
-            // 
-            this.nUnique.Enabled = false;
-            this.nUnique.Location = new System.Drawing.Point(70, 71);
-            this.nUnique.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nUnique.Name = "nUnique";
-            this.nUnique.Size = new System.Drawing.Size(133, 20);
-            this.nUnique.TabIndex = 19;
-            this.nUnique.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Animation:";
-            // 
-            // nAnimation
-            // 
-            this.nAnimation.Location = new System.Drawing.Point(70, 97);
-            this.nAnimation.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nAnimation.Name = "nAnimation";
-            this.nAnimation.Size = new System.Drawing.Size(133, 20);
-            this.nAnimation.TabIndex = 21;
-            this.nAnimation.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 125);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Palette:";
-            // 
-            // nPalette
-            // 
-            this.nPalette.Location = new System.Drawing.Point(70, 123);
-            this.nPalette.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nPalette.Name = "nPalette";
-            this.nPalette.Size = new System.Drawing.Size(133, 20);
-            this.nPalette.TabIndex = 23;
-            this.nPalette.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.nPalette);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.nAnimation);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.nUnique);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.nTileset);
-            this.groupBox1.Controls.Add(this.nVRAM);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(6, 329);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 147);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Area Information";
-            // 
-            // nMusic
-            // 
-            this.nMusic.Hexadecimal = true;
-            this.nMusic.Location = new System.Drawing.Point(71, 277);
-            this.nMusic.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nMusic.Name = "nMusic";
-            this.nMusic.Size = new System.Drawing.Size(135, 20);
-            this.nMusic.TabIndex = 1;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 279);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Music:";
-            // 
-            // pTile
-            // 
-            this.pTile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pTile.Location = new System.Drawing.Point(237, 270);
-            this.pTile.Name = "pTile";
-            this.pTile.Size = new System.Drawing.Size(20, 20);
-            this.pTile.TabIndex = 14;
-            this.pTile.TabStop = false;
-            this.pTile.Paint += new System.Windows.Forms.PaintEventHandler(this.pTile_Paint);
             // 
             // label8
             // 
@@ -1919,14 +1795,314 @@
             this.nMap.TabIndex = 16;
             this.nMap.ValueChanged += new System.EventHandler(this.nMap_ValueChanged);
             // 
-            // label9
+            // pnlMap
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Index:";
+            this.pnlMap.Controls.Add(this.tabsSecondary);
+            this.pnlMap.Location = new System.Drawing.Point(2, 52);
+            this.pnlMap.Name = "pnlMap";
+            this.pnlMap.Size = new System.Drawing.Size(274, 521);
+            this.pnlMap.TabIndex = 30;
+            // 
+            // tabsSecondary
+            // 
+            this.tabsSecondary.Controls.Add(this.tabPage3);
+            this.tabsSecondary.Controls.Add(this.tabPage1);
+            this.tabsSecondary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabsSecondary.Location = new System.Drawing.Point(0, 0);
+            this.tabsSecondary.Multiline = true;
+            this.tabsSecondary.Name = "tabsSecondary";
+            this.tabsSecondary.SelectedIndex = 0;
+            this.tabsSecondary.Size = new System.Drawing.Size(274, 521);
+            this.tabsSecondary.TabIndex = 2;
+            this.tabsSecondary.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabsSecondary_Selected);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.nRoomPack);
+            this.tabPage3.Controls.Add(this.textRoomPack);
+            this.tabPage3.Controls.Add(this.pTileset);
+            this.tabPage3.Controls.Add(this.nMusic);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Controls.Add(this.pTile);
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.lblSelectedTile);
+            this.tabPage3.Controls.Add(this.nArea);
+            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(266, 495);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Map Editor";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // nMusic
+            // 
+            this.nMusic.Hexadecimal = true;
+            this.nMusic.Location = new System.Drawing.Point(82, 268);
+            this.nMusic.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nMusic.Name = "nMusic";
+            this.nMusic.Size = new System.Drawing.Size(135, 20);
+            this.nMusic.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.nPalette);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.nAnimation);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.nUnique);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.nTileset);
+            this.groupBox1.Controls.Add(this.nVRAM);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Location = new System.Drawing.Point(6, 344);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(219, 148);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Area Information";
+            // 
+            // nPalette
+            // 
+            this.nPalette.Location = new System.Drawing.Point(76, 123);
+            this.nPalette.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nPalette.Name = "nPalette";
+            this.nPalette.Size = new System.Drawing.Size(133, 20);
+            this.nPalette.TabIndex = 23;
+            this.nPalette.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 125);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Palette:";
+            // 
+            // nAnimation
+            // 
+            this.nAnimation.Location = new System.Drawing.Point(76, 97);
+            this.nAnimation.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nAnimation.Name = "nAnimation";
+            this.nAnimation.Size = new System.Drawing.Size(133, 20);
+            this.nAnimation.TabIndex = 21;
+            this.nAnimation.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 99);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Animation:";
+            // 
+            // nUnique
+            // 
+            this.nUnique.Enabled = false;
+            this.nUnique.Location = new System.Drawing.Point(76, 71);
+            this.nUnique.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nUnique.Name = "nUnique";
+            this.nUnique.Size = new System.Drawing.Size(133, 20);
+            this.nUnique.TabIndex = 19;
+            this.nUnique.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Unique:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Base Tiles:";
+            // 
+            // nTileset
+            // 
+            this.nTileset.Enabled = false;
+            this.nTileset.Location = new System.Drawing.Point(76, 45);
+            this.nTileset.Maximum = new decimal(new int[] {
+            512,
+            0,
+            0,
+            0});
+            this.nTileset.Name = "nTileset";
+            this.nTileset.Size = new System.Drawing.Size(133, 20);
+            this.nTileset.TabIndex = 17;
+            this.nTileset.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
+            // 
+            // nVRAM
+            // 
+            this.nVRAM.Enabled = false;
+            this.nVRAM.Location = new System.Drawing.Point(76, 19);
+            this.nVRAM.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nVRAM.Name = "nVRAM";
+            this.nVRAM.Size = new System.Drawing.Size(133, 20);
+            this.nVRAM.TabIndex = 15;
+            this.nVRAM.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.nVRAM.ValueChanged += new System.EventHandler(this.nTileset_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Tileset:";
+            // 
+            // pTile
+            // 
+            this.pTile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pTile.Location = new System.Drawing.Point(237, 270);
+            this.pTile.Name = "pTile";
+            this.pTile.Size = new System.Drawing.Size(20, 20);
+            this.pTile.TabIndex = 14;
+            this.pTile.TabStop = false;
+            this.pTile.Paint += new System.Windows.Forms.PaintEventHandler(this.pTile_Paint);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 270);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Music:";
+            // 
+            // lblSelectedTile
+            // 
+            this.lblSelectedTile.AutoSize = true;
+            this.lblSelectedTile.Location = new System.Drawing.Point(237, 293);
+            this.lblSelectedTile.Name = "lblSelectedTile";
+            this.lblSelectedTile.Size = new System.Drawing.Size(19, 13);
+            this.lblSelectedTile.TabIndex = 20;
+            this.lblSelectedTile.Text = "00";
+            this.lblSelectedTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nArea
+            // 
+            this.nArea.Location = new System.Drawing.Point(82, 294);
+            this.nArea.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nArea.Name = "nArea";
+            this.nArea.Size = new System.Drawing.Size(135, 20);
+            this.nArea.TabIndex = 3;
+            this.nArea.ValueChanged += new System.EventHandler(this.nArea_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 296);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Area ID:";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(266, 495);
+            this.tabPage1.TabIndex = 4;
+            this.tabPage1.Text = "Object Editor";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.interactionBox);
+            this.groupBox2.Controls.Add(this.lblInteractionType);
+            this.groupBox2.Controls.Add(this.pInteractionColor);
+            this.groupBox2.Controls.Add(this.chkInteractions);
+            this.groupBox2.Controls.Add(this.nInteraction);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(243, 234);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Objects";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(11, 204);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(226, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Delete";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblInteractionType
+            // 
+            this.lblInteractionType.BackColor = System.Drawing.SystemColors.Control;
+            this.lblInteractionType.Location = new System.Drawing.Point(101, 19);
+            this.lblInteractionType.Name = "lblInteractionType";
+            this.lblInteractionType.Size = new System.Drawing.Size(136, 16);
+            this.lblInteractionType.TabIndex = 7;
+            this.lblInteractionType.Text = "Type";
+            this.lblInteractionType.Visible = false;
+            // 
+            // pInteractionColor
+            // 
+            this.pInteractionColor.Location = new System.Drawing.Point(79, 19);
+            this.pInteractionColor.Name = "pInteractionColor";
+            this.pInteractionColor.Size = new System.Drawing.Size(16, 16);
+            this.pInteractionColor.TabIndex = 6;
+            this.pInteractionColor.TabStop = false;
+            this.pInteractionColor.Visible = false;
+            // 
+            // chkInteractions
+            // 
+            this.chkInteractions.AutoSize = true;
+            this.chkInteractions.Location = new System.Drawing.Point(14, 19);
+            this.chkInteractions.Name = "chkInteractions";
+            this.chkInteractions.Size = new System.Drawing.Size(56, 17);
+            this.chkInteractions.TabIndex = 4;
+            this.chkInteractions.Text = "Visible";
+            this.chkInteractions.UseVisualStyleBackColor = true;
+            this.chkInteractions.CheckedChanged += new System.EventHandler(this.chkInteractions_CheckedChanged);
             // 
             // nInteraction
             // 
@@ -1946,273 +2122,14 @@
             -2147483648});
             this.nInteraction.ValueChanged += new System.EventHandler(this.nInteraction_ValueChanged);
             // 
-            // chkInteractions
+            // label9
             // 
-            this.chkInteractions.AutoSize = true;
-            this.chkInteractions.Location = new System.Drawing.Point(14, 19);
-            this.chkInteractions.Name = "chkInteractions";
-            this.chkInteractions.Size = new System.Drawing.Size(56, 17);
-            this.chkInteractions.TabIndex = 4;
-            this.chkInteractions.Text = "Visible";
-            this.chkInteractions.UseVisualStyleBackColor = true;
-            this.chkInteractions.CheckedChanged += new System.EventHandler(this.chkInteractions_CheckedChanged);
-            // 
-            // pInteractionColor
-            // 
-            this.pInteractionColor.Location = new System.Drawing.Point(79, 19);
-            this.pInteractionColor.Name = "pInteractionColor";
-            this.pInteractionColor.Size = new System.Drawing.Size(16, 16);
-            this.pInteractionColor.TabIndex = 6;
-            this.pInteractionColor.TabStop = false;
-            this.pInteractionColor.Visible = false;
-            // 
-            // lblInteractionType
-            // 
-            this.lblInteractionType.BackColor = System.Drawing.SystemColors.Control;
-            this.lblInteractionType.Location = new System.Drawing.Point(101, 19);
-            this.lblInteractionType.Name = "lblInteractionType";
-            this.lblInteractionType.Size = new System.Drawing.Size(136, 16);
-            this.lblInteractionType.TabIndex = 7;
-            this.lblInteractionType.Text = "Type";
-            this.lblInteractionType.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(11, 204);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.interactionBox);
-            this.groupBox2.Controls.Add(this.lblInteractionType);
-            this.groupBox2.Controls.Add(this.pInteractionColor);
-            this.groupBox2.Controls.Add(this.chkInteractions);
-            this.groupBox2.Controls.Add(this.nInteraction);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(243, 234);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Objects";
-            // 
-            // interactionBox
-            // 
-            this.interactionBox.Location = new System.Drawing.Point(11, 65);
-            this.interactionBox.Name = "interactionBox";
-            this.interactionBox.Size = new System.Drawing.Size(226, 140);
-            this.interactionBox.TabIndex = 8;
-            this.interactionBox.Visible = false;
-            this.interactionBox.ValueChanged += new ZOLE_4.SpriteDefinitionBox.valueChanged(this.interactionBox_ValueChanged);
-            // 
-            // lblSelectedTile
-            // 
-            this.lblSelectedTile.AutoSize = true;
-            this.lblSelectedTile.Location = new System.Drawing.Point(237, 293);
-            this.lblSelectedTile.Name = "lblSelectedTile";
-            this.lblSelectedTile.Size = new System.Drawing.Size(19, 13);
-            this.lblSelectedTile.TabIndex = 20;
-            this.lblSelectedTile.Text = "00";
-            this.lblSelectedTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 96);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 13);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "Sub ID (2nd 2):";
-            // 
-            // nStaticFactor
-            // 
-            this.nStaticFactor.Enabled = false;
-            this.nStaticFactor.Hexadecimal = true;
-            this.nStaticFactor.Location = new System.Drawing.Point(91, 94);
-            this.nStaticFactor.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nStaticFactor.Name = "nStaticFactor";
-            this.nStaticFactor.Size = new System.Drawing.Size(146, 20);
-            this.nStaticFactor.TabIndex = 6;
-            this.nStaticFactor.ValueChanged += new System.EventHandler(this.nStaticFactor_ValueChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(11, 71);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 13);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Main ID (1st 2):";
-            // 
-            // nStaticX
-            // 
-            this.nStaticX.Enabled = false;
-            this.nStaticX.Hexadecimal = true;
-            this.nStaticX.Location = new System.Drawing.Point(91, 146);
-            this.nStaticX.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nStaticX.Name = "nStaticX";
-            this.nStaticX.Size = new System.Drawing.Size(68, 20);
-            this.nStaticX.TabIndex = 11;
-            this.nStaticX.ValueChanged += new System.EventHandler(this.nStaticX_ValueChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 148);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 13);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "X | Y";
-            // 
-            // nStaticID
-            // 
-            this.nStaticID.Enabled = false;
-            this.nStaticID.Hexadecimal = true;
-            this.nStaticID.Location = new System.Drawing.Point(91, 68);
-            this.nStaticID.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nStaticID.Name = "nStaticID";
-            this.nStaticID.Size = new System.Drawing.Size(146, 20);
-            this.nStaticID.TabIndex = 4;
-            this.nStaticID.ValueChanged += new System.EventHandler(this.nStaticID_ValueChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(11, 44);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(36, 13);
-            this.label16.TabIndex = 7;
-            this.label16.Text = "Index:";
-            // 
-            // nStaticIndex
-            // 
-            this.nStaticIndex.Location = new System.Drawing.Point(91, 42);
-            this.nStaticIndex.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.nStaticIndex.Name = "nStaticIndex";
-            this.nStaticIndex.Size = new System.Drawing.Size(146, 20);
-            this.nStaticIndex.TabIndex = 8;
-            this.nStaticIndex.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.nStaticIndex.ValueChanged += new System.EventHandler(this.nStaticIndex_ValueChanged);
-            // 
-            // chkStaticObjects
-            // 
-            this.chkStaticObjects.AutoSize = true;
-            this.chkStaticObjects.Location = new System.Drawing.Point(14, 19);
-            this.chkStaticObjects.Name = "chkStaticObjects";
-            this.chkStaticObjects.Size = new System.Drawing.Size(56, 17);
-            this.chkStaticObjects.TabIndex = 9;
-            this.chkStaticObjects.Text = "Visible";
-            this.chkStaticObjects.UseVisualStyleBackColor = true;
-            this.chkStaticObjects.CheckedChanged += new System.EventHandler(this.chkStaticObjects_CheckedChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 174);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 13);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Unknown:";
-            // 
-            // nStaticUnknown
-            // 
-            this.nStaticUnknown.Enabled = false;
-            this.nStaticUnknown.Hexadecimal = true;
-            this.nStaticUnknown.Location = new System.Drawing.Point(91, 172);
-            this.nStaticUnknown.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nStaticUnknown.Name = "nStaticUnknown";
-            this.nStaticUnknown.Size = new System.Drawing.Size(146, 20);
-            this.nStaticUnknown.TabIndex = 2;
-            this.nStaticUnknown.ValueChanged += new System.EventHandler(this.nStaticUnknown_ValueChanged);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(91, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 23);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // nStaticY
-            // 
-            this.nStaticY.Enabled = false;
-            this.nStaticY.Hexadecimal = true;
-            this.nStaticY.Location = new System.Drawing.Point(165, 146);
-            this.nStaticY.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nStaticY.Name = "nStaticY";
-            this.nStaticY.Size = new System.Drawing.Size(72, 20);
-            this.nStaticY.TabIndex = 13;
-            this.nStaticY.ValueChanged += new System.EventHandler(this.nStaticY_ValueChanged);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(165, 15);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(11, 122);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 13);
-            this.label19.TabIndex = 27;
-            this.label19.Text = "Map:";
-            // 
-            // nStaticMap
-            // 
-            this.nStaticMap.Enabled = false;
-            this.nStaticMap.Hexadecimal = true;
-            this.nStaticMap.Location = new System.Drawing.Point(91, 120);
-            this.nStaticMap.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nStaticMap.Name = "nStaticMap";
-            this.nStaticMap.Size = new System.Drawing.Size(146, 20);
-            this.nStaticMap.TabIndex = 28;
-            this.nStaticMap.ValueChanged += new System.EventHandler(this.nStaticMap_ValueChanged);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(11, 44);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Index:";
             // 
             // groupBox4
             // 
@@ -2240,74 +2157,198 @@
             this.groupBox4.Text = "Static Objects";
             this.groupBox4.Visible = false;
             // 
-            // pnlMap
+            // nStaticMap
             // 
-            this.pnlMap.Controls.Add(this.tabsSecondary);
-            this.pnlMap.Location = new System.Drawing.Point(2, 52);
-            this.pnlMap.Name = "pnlMap";
-            this.pnlMap.Size = new System.Drawing.Size(274, 521);
-            this.pnlMap.TabIndex = 30;
+            this.nStaticMap.Enabled = false;
+            this.nStaticMap.Hexadecimal = true;
+            this.nStaticMap.Location = new System.Drawing.Point(91, 120);
+            this.nStaticMap.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nStaticMap.Name = "nStaticMap";
+            this.nStaticMap.Size = new System.Drawing.Size(146, 20);
+            this.nStaticMap.TabIndex = 28;
+            this.nStaticMap.ValueChanged += new System.EventHandler(this.nStaticMap_ValueChanged);
             // 
-            // tabsSecondary
+            // label19
             // 
-            this.tabsSecondary.Controls.Add(this.tabPage3);
-            this.tabsSecondary.Controls.Add(this.tabPage1);
-            this.tabsSecondary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabsSecondary.Location = new System.Drawing.Point(0, 0);
-            this.tabsSecondary.Multiline = true;
-            this.tabsSecondary.Name = "tabsSecondary";
-            this.tabsSecondary.SelectedIndex = 0;
-            this.tabsSecondary.Size = new System.Drawing.Size(274, 521);
-            this.tabsSecondary.TabIndex = 2;
-            this.tabsSecondary.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabsSecondary_Selected);
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(11, 122);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(31, 13);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Map:";
             // 
-            // tabPage3
+            // button3
             // 
-            this.tabPage3.Controls.Add(this.pTileset);
-            this.tabPage3.Controls.Add(this.nMusic);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.pTile);
-            this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.lblSelectedTile);
-            this.tabPage3.Controls.Add(this.nArea);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(266, 495);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Map Editor";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(165, 15);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(72, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Delete";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // pTileset
+            // nStaticY
             // 
-            this.pTileset.AllowMultiSelection = true;
-            this.pTileset.BoxSize = new System.Drawing.Size(16, 16);
-            this.pTileset.CanvasSize = new System.Drawing.Size(256, 256);
-            this.pTileset.HoverBox = true;
-            this.pTileset.HoverColor = System.Drawing.Color.White;
-            this.pTileset.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pTileset.Location = new System.Drawing.Point(3, 4);
-            this.pTileset.Name = "pTileset";
-            this.pTileset.Selectable = true;
-            this.pTileset.SelectedIndex = -2;
-            this.pTileset.SelectionColor = System.Drawing.Color.Red;
-            this.pTileset.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
-            this.pTileset.Size = new System.Drawing.Size(260, 260);
-            this.pTileset.TabIndex = 9;
-            this.pTileset.TabStop = false;
-            this.pTileset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTileset_MouseDown);
+            this.nStaticY.Enabled = false;
+            this.nStaticY.Hexadecimal = true;
+            this.nStaticY.Location = new System.Drawing.Point(165, 146);
+            this.nStaticY.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nStaticY.Name = "nStaticY";
+            this.nStaticY.Size = new System.Drawing.Size(72, 20);
+            this.nStaticY.TabIndex = 13;
+            this.nStaticY.ValueChanged += new System.EventHandler(this.nStaticY_ValueChanged);
             // 
-            // tabPage1
+            // button2
             // 
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(266, 495);
-            this.tabPage1.TabIndex = 4;
-            this.tabPage1.Text = "Object Editor";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(91, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(68, 23);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Add";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // nStaticUnknown
+            // 
+            this.nStaticUnknown.Enabled = false;
+            this.nStaticUnknown.Hexadecimal = true;
+            this.nStaticUnknown.Location = new System.Drawing.Point(91, 172);
+            this.nStaticUnknown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nStaticUnknown.Name = "nStaticUnknown";
+            this.nStaticUnknown.Size = new System.Drawing.Size(146, 20);
+            this.nStaticUnknown.TabIndex = 2;
+            this.nStaticUnknown.ValueChanged += new System.EventHandler(this.nStaticUnknown_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Unknown:";
+            // 
+            // chkStaticObjects
+            // 
+            this.chkStaticObjects.AutoSize = true;
+            this.chkStaticObjects.Location = new System.Drawing.Point(14, 19);
+            this.chkStaticObjects.Name = "chkStaticObjects";
+            this.chkStaticObjects.Size = new System.Drawing.Size(56, 17);
+            this.chkStaticObjects.TabIndex = 9;
+            this.chkStaticObjects.Text = "Visible";
+            this.chkStaticObjects.UseVisualStyleBackColor = true;
+            this.chkStaticObjects.CheckedChanged += new System.EventHandler(this.chkStaticObjects_CheckedChanged);
+            // 
+            // nStaticIndex
+            // 
+            this.nStaticIndex.Location = new System.Drawing.Point(91, 42);
+            this.nStaticIndex.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.nStaticIndex.Name = "nStaticIndex";
+            this.nStaticIndex.Size = new System.Drawing.Size(146, 20);
+            this.nStaticIndex.TabIndex = 8;
+            this.nStaticIndex.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.nStaticIndex.ValueChanged += new System.EventHandler(this.nStaticIndex_ValueChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 44);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(36, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Index:";
+            // 
+            // nStaticID
+            // 
+            this.nStaticID.Enabled = false;
+            this.nStaticID.Hexadecimal = true;
+            this.nStaticID.Location = new System.Drawing.Point(91, 68);
+            this.nStaticID.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nStaticID.Name = "nStaticID";
+            this.nStaticID.Size = new System.Drawing.Size(146, 20);
+            this.nStaticID.TabIndex = 4;
+            this.nStaticID.ValueChanged += new System.EventHandler(this.nStaticID_ValueChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(11, 148);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(29, 13);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "X | Y";
+            // 
+            // nStaticX
+            // 
+            this.nStaticX.Enabled = false;
+            this.nStaticX.Hexadecimal = true;
+            this.nStaticX.Location = new System.Drawing.Point(91, 146);
+            this.nStaticX.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nStaticX.Name = "nStaticX";
+            this.nStaticX.Size = new System.Drawing.Size(68, 20);
+            this.nStaticX.TabIndex = 11;
+            this.nStaticX.ValueChanged += new System.EventHandler(this.nStaticX_ValueChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 71);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Main ID (1st 2):";
+            // 
+            // nStaticFactor
+            // 
+            this.nStaticFactor.Enabled = false;
+            this.nStaticFactor.Hexadecimal = true;
+            this.nStaticFactor.Location = new System.Drawing.Point(91, 94);
+            this.nStaticFactor.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nStaticFactor.Name = "nStaticFactor";
+            this.nStaticFactor.Size = new System.Drawing.Size(146, 20);
+            this.nStaticFactor.TabIndex = 6;
+            this.nStaticFactor.ValueChanged += new System.EventHandler(this.nStaticFactor_ValueChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 96);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 13);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Sub ID (2nd 2):";
             // 
             // panel1
             // 
@@ -2318,29 +2359,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(336, 271);
             this.panel1.TabIndex = 31;
-            // 
-            // pMinimap
-            // 
-            this.pMinimap.AllowMultiSelection = false;
-            this.pMinimap.BoxSize = new System.Drawing.Size(10, 8);
-            this.pMinimap.CanvasSize = new System.Drawing.Size(160, 128);
-            this.pMinimap.HoverBox = true;
-            this.pMinimap.HoverColor = System.Drawing.Color.White;
-            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pMinimap.Location = new System.Drawing.Point(0, 0);
-            this.pMinimap.MaximumSize = new System.Drawing.Size(1280, 1024);
-            this.pMinimap.Name = "pMinimap";
-            this.pMinimap.Selectable = true;
-            this.pMinimap.SelectedIndex = -1;
-            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
-            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-1, 0, 1, 1);
-            this.pMinimap.Size = new System.Drawing.Size(16, 16);
-            this.pMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pMinimap.TabIndex = 17;
-            this.pMinimap.TabStop = false;
-            this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
-            this.pMinimap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseMove);
-            this.pMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseUp);
             // 
             // panel2
             // 
@@ -2434,6 +2452,78 @@
             this.toolStripButton35.Text = "Zoom";
             this.toolStripButton35.Click += new System.EventHandler(this.mapZoom_Click);
             // 
+            // nRoomPack
+            // 
+            this.nRoomPack.Location = new System.Drawing.Point(82, 320);
+            this.nRoomPack.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nRoomPack.Name = "nRoomPack";
+            this.nRoomPack.Size = new System.Drawing.Size(135, 20);
+            this.nRoomPack.TabIndex = 22;
+            this.nRoomPack.Hexadecimal = true;
+            // textRoomPack
+            // 
+            this.textRoomPack.AutoSize = true;
+            this.textRoomPack.Location = new System.Drawing.Point(10, 322);
+            this.textRoomPack.Name = "textRoomPack";
+            this.textRoomPack.Size = new System.Drawing.Size(66, 13);
+            this.textRoomPack.TabIndex = 21;
+            this.textRoomPack.Text = "Room Pack:";
+            // 
+            // pMinimap
+            // 
+            this.pMinimap.AllowMultiSelection = false;
+            this.pMinimap.BoxSize = new System.Drawing.Size(10, 8);
+            this.pMinimap.CanvasSize = new System.Drawing.Size(160, 128);
+            this.pMinimap.HoverBox = true;
+            this.pMinimap.HoverColor = System.Drawing.Color.White;
+            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pMinimap.Location = new System.Drawing.Point(0, 0);
+            this.pMinimap.MaximumSize = new System.Drawing.Size(1280, 1024);
+            this.pMinimap.Name = "pMinimap";
+            this.pMinimap.Selectable = true;
+            this.pMinimap.SelectedIndex = -1;
+            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
+            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-1, 0, 1, 1);
+            this.pMinimap.Size = new System.Drawing.Size(16, 16);
+            this.pMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pMinimap.TabIndex = 17;
+            this.pMinimap.TabStop = false;
+            this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
+            this.pMinimap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseMove);
+            this.pMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseUp);
+            // 
+            // pTileset
+            // 
+            this.pTileset.AllowMultiSelection = true;
+            this.pTileset.BoxSize = new System.Drawing.Size(16, 16);
+            this.pTileset.CanvasSize = new System.Drawing.Size(256, 256);
+            this.pTileset.HoverBox = true;
+            this.pTileset.HoverColor = System.Drawing.Color.White;
+            this.pTileset.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pTileset.Location = new System.Drawing.Point(3, 4);
+            this.pTileset.Name = "pTileset";
+            this.pTileset.Selectable = true;
+            this.pTileset.SelectedIndex = -2;
+            this.pTileset.SelectionColor = System.Drawing.Color.Red;
+            this.pTileset.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
+            this.pTileset.Size = new System.Drawing.Size(260, 260);
+            this.pTileset.TabIndex = 9;
+            this.pTileset.TabStop = false;
+            this.pTileset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTileset_MouseDown);
+            // 
+            // interactionBox
+            // 
+            this.interactionBox.Location = new System.Drawing.Point(11, 65);
+            this.interactionBox.Name = "interactionBox";
+            this.interactionBox.Size = new System.Drawing.Size(226, 140);
+            this.interactionBox.TabIndex = 8;
+            this.interactionBox.Visible = false;
+            this.interactionBox.ValueChanged += new ZOLE_4.SpriteDefinitionBox.valueChanged(this.interactionBox_ValueChanged);
+            // 
             // pMap
             // 
             this.pMap.AllowMultiSelection = false;
@@ -2456,13 +2546,6 @@
             this.pMap.MouseLeave += new System.EventHandler(this.pMap_MouseLeave);
             this.pMap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMap_MouseDown);
             // 
-            // wikiToolStripMenuItem
-            // 
-            this.wikiToolStripMenuItem.Name = "wikiToolStripMenuItem";
-            this.wikiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.wikiToolStripMenuItem.Text = "Wiki";
-            this.wikiToolStripMenuItem.Click += new System.EventHandler(this.goToZeldaHackingNETToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2483,7 +2566,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "ZOLE 4.6.00";
+            this.Text = "ZOLE 4.6.01";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -2493,43 +2576,44 @@
             this.statusStrip1.PerformLayout();
             this.toolSeasons.ResumeLayout(false);
             this.toolSeasons.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nArea)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nVRAM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nTileset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUnique)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nAnimation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nPalette)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nMusic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pTile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nMap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nInteraction)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pInteractionColor)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticFactor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticIndex)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticUnknown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nStaticMap)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.pnlMap.ResumeLayout(false);
             this.tabsSecondary.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nMusic)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nPalette)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nAnimation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUnique)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nTileset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nVRAM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pTile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nArea)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pInteractionColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nInteraction)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticUnknown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nStaticFactor)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nRoomPack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2691,58 +2775,12 @@
         private System.Windows.Forms.ToolStripMenuItem mapGroupsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extraBankForInteractionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extraInteractionBankToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.NumericUpDown nArea;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboArea;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown nVRAM;
-        private System.Windows.Forms.NumericUpDown nTileset;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nUnique;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown nAnimation;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.NumericUpDown nPalette;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pTile;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown nMap;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown nInteraction;
-        private System.Windows.Forms.CheckBox chkInteractions;
-        private System.Windows.Forms.PictureBox pInteractionColor;
-        private System.Windows.Forms.Label lblInteractionType;
-        private SpriteDefinitionBox interactionBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private GridBox pTileset;
         private GridBox pMap;
-        private System.Windows.Forms.Label lblSelectedTile;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.NumericUpDown nStaticFactor;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.NumericUpDown nStaticX;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown nStaticID;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown nStaticIndex;
-        private System.Windows.Forms.CheckBox chkStaticObjects;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown nStaticUnknown;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.NumericUpDown nStaticY;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown nStaticMap;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.NumericUpDown nMusic;
         private System.Windows.Forms.Panel pnlMap;
-        private System.Windows.Forms.TabControl tabsSecondary;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStrip toolStrip2;
@@ -2754,6 +2792,60 @@
         private System.Windows.Forms.ToolStripButton toolStripButton35;
         public GridBox pMinimap;
         private System.Windows.Forms.ToolStripMenuItem wikiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabsSecondary;
+        private System.Windows.Forms.TabPage tabPage3;
+        private GridBox pTileset;
+        private System.Windows.Forms.NumericUpDown nMusic;
+        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.NumericUpDown nPalette;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nAnimation;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown nUnique;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown nTileset;
+        private System.Windows.Forms.NumericUpDown nVRAM;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pTile;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblSelectedTile;
+        public System.Windows.Forms.NumericUpDown nArea;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private SpriteDefinitionBox interactionBox;
+        private System.Windows.Forms.Label lblInteractionType;
+        private System.Windows.Forms.PictureBox pInteractionColor;
+        private System.Windows.Forms.CheckBox chkInteractions;
+        private System.Windows.Forms.NumericUpDown nInteraction;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown nStaticMap;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.NumericUpDown nStaticY;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown nStaticUnknown;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox chkStaticObjects;
+        private System.Windows.Forms.NumericUpDown nStaticIndex;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.NumericUpDown nStaticID;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown nStaticX;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown nStaticFactor;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hEXEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem overworldDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem overworldDataToolStripMenuItem1;
+        public System.Windows.Forms.NumericUpDown nRoomPack;
+        private System.Windows.Forms.Label textRoomPack;
     }
 }
 
