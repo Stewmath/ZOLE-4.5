@@ -67,11 +67,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSettings.cs">
+    <Compile Include="frmDungeonImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSettings.Designer.cs">
-      <DependentUpon>frmSettings.cs</DependentUpon>
+    <Compile Include="frmDungeonImport.Designer.cs">
+      <DependentUpon>frmDungeonImport.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
@@ -344,6 +344,9 @@
     <EmbeddedResource Include="frmDecompressTileset.resx">
       <DependentUpon>frmDecompressTileset.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDungeonImport.resx">
+      <DependentUpon>frmDungeonImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDungeonMinimapEditor.resx">
       <DependentUpon>frmDungeonMinimapEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,9 +406,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSecondaryScript.resx">
       <DependentUpon>frmSecondaryScript.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSettings.resx">
-      <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSign.resx">
       <DependentUpon>frmSign.cs</DependentUpon>

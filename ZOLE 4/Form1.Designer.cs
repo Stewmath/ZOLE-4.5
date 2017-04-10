@@ -45,11 +45,13 @@
             this.rawBaseTilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overworldDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dungeonDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseTilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overworldDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dungeonDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.clearMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
@@ -197,6 +199,9 @@
             this.pnlMap = new System.Windows.Forms.Panel();
             this.tabsSecondary = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.nRoomPack = new System.Windows.Forms.NumericUpDown();
+            this.textRoomPack = new System.Windows.Forms.Label();
+            this.pTileset = new ZOLE_4.GridBox();
             this.nMusic = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nPalette = new System.Windows.Forms.NumericUpDown();
@@ -217,6 +222,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
             this.lblInteractionType = new System.Windows.Forms.Label();
             this.pInteractionColor = new System.Windows.Forms.PictureBox();
             this.chkInteractions = new System.Windows.Forms.CheckBox();
@@ -240,6 +246,7 @@
             this.nStaticFactor = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pMinimap = new ZOLE_4.GridBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripSaveMap = new System.Windows.Forms.ToolStripButton();
@@ -248,11 +255,6 @@
             this.toolStripButton34 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton33 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton35 = new System.Windows.Forms.ToolStripButton();
-            this.nRoomPack = new System.Windows.Forms.NumericUpDown();
-            this.textRoomPack = new System.Windows.Forms.Label();
-            this.pMinimap = new ZOLE_4.GridBox();
-            this.pTileset = new ZOLE_4.GridBox();
-            this.interactionBox = new ZOLE_4.SpriteDefinitionBox();
             this.pMap = new ZOLE_4.GridBox();
             this.menuStrip1.SuspendLayout();
             this.toolAges.SuspendLayout();
@@ -262,6 +264,8 @@
             this.pnlMap.SuspendLayout();
             this.tabsSecondary.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nRoomPack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nMusic)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nPalette)).BeginInit();
@@ -284,11 +288,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nStaticX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nStaticFactor)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
             this.panel2.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nRoomPack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).BeginInit();
             this.SuspendLayout();
             // 
@@ -393,7 +395,8 @@
             this.rawMapDataToolStripMenuItem,
             this.rawBaseTilesToolStripMenuItem,
             this.paletteToolStripMenuItem,
-            this.overworldDataToolStripMenuItem1});
+            this.overworldDataToolStripMenuItem1,
+            this.dungeonDataToolStripMenuItem1});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(308, 22);
             this.importToolStripMenuItem.Text = "Import";
@@ -426,13 +429,21 @@
             this.overworldDataToolStripMenuItem1.Text = "Overworld Data...";
             this.overworldDataToolStripMenuItem1.Click += new System.EventHandler(this.overworldDataToolStripMenuItem1_Click);
             // 
+            // dungeonDataToolStripMenuItem1
+            // 
+            this.dungeonDataToolStripMenuItem1.Name = "dungeonDataToolStripMenuItem1";
+            this.dungeonDataToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
+            this.dungeonDataToolStripMenuItem1.Text = "Dungeon Data...";
+            this.dungeonDataToolStripMenuItem1.Click += new System.EventHandler(this.dungeonDataToolStripMenuItem1_Click);
+            // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mapDataToolStripMenuItem,
             this.baseTilesToolStripMenuItem,
             this.currentPaletteToolStripMenuItem,
-            this.overworldDataToolStripMenuItem});
+            this.overworldDataToolStripMenuItem,
+            this.dungeonDataToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(308, 22);
             this.exportToolStripMenuItem.Text = "Export";
@@ -464,6 +475,13 @@
             this.overworldDataToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.overworldDataToolStripMenuItem.Text = "Overworld Data...";
             this.overworldDataToolStripMenuItem.Click += new System.EventHandler(this.overworldDataToolStripMenuItem_Click);
+            // 
+            // dungeonDataToolStripMenuItem
+            // 
+            this.dungeonDataToolStripMenuItem.Name = "dungeonDataToolStripMenuItem";
+            this.dungeonDataToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.dungeonDataToolStripMenuItem.Text = "Dungeon Data...";
+            this.dungeonDataToolStripMenuItem.Click += new System.EventHandler(this.dungeonDataToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -1595,7 +1613,7 @@
             this.toolSeasons.Location = new System.Drawing.Point(0, 49);
             this.toolSeasons.Name = "toolSeasons";
             this.toolSeasons.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolSeasons.Size = new System.Drawing.Size(1017, 25);
+            this.toolSeasons.Size = new System.Drawing.Size(600, 25);
             this.toolSeasons.TabIndex = 25;
             this.toolSeasons.Text = "toolStrip2";
             this.toolSeasons.Visible = false;
@@ -1835,6 +1853,47 @@
             this.tabPage3.Text = "Map Editor";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // nRoomPack
+            // 
+            this.nRoomPack.Hexadecimal = true;
+            this.nRoomPack.Location = new System.Drawing.Point(82, 320);
+            this.nRoomPack.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nRoomPack.Name = "nRoomPack";
+            this.nRoomPack.Size = new System.Drawing.Size(135, 20);
+            this.nRoomPack.TabIndex = 22;
+            // 
+            // textRoomPack
+            // 
+            this.textRoomPack.AutoSize = true;
+            this.textRoomPack.Location = new System.Drawing.Point(10, 322);
+            this.textRoomPack.Name = "textRoomPack";
+            this.textRoomPack.Size = new System.Drawing.Size(66, 13);
+            this.textRoomPack.TabIndex = 21;
+            this.textRoomPack.Text = "Room Pack:";
+            // 
+            // pTileset
+            // 
+            this.pTileset.AllowMultiSelection = true;
+            this.pTileset.BoxSize = new System.Drawing.Size(16, 16);
+            this.pTileset.CanvasSize = new System.Drawing.Size(256, 256);
+            this.pTileset.HoverBox = true;
+            this.pTileset.HoverColor = System.Drawing.Color.White;
+            this.pTileset.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pTileset.Location = new System.Drawing.Point(3, 4);
+            this.pTileset.Name = "pTileset";
+            this.pTileset.Selectable = true;
+            this.pTileset.SelectedIndex = -2;
+            this.pTileset.SelectionColor = System.Drawing.Color.Red;
+            this.pTileset.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
+            this.pTileset.Size = new System.Drawing.Size(260, 260);
+            this.pTileset.TabIndex = 9;
+            this.pTileset.TabStop = false;
+            this.pTileset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTileset_MouseDown);
+            // 
             // nMusic
             // 
             this.nMusic.Hexadecimal = true;
@@ -2073,6 +2132,15 @@
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // interactionBox
+            // 
+            this.interactionBox.Location = new System.Drawing.Point(11, 65);
+            this.interactionBox.Name = "interactionBox";
+            this.interactionBox.Size = new System.Drawing.Size(226, 140);
+            this.interactionBox.TabIndex = 8;
+            this.interactionBox.Visible = false;
+            this.interactionBox.ValueChanged += new ZOLE_4.SpriteDefinitionBox.valueChanged(this.interactionBox_ValueChanged);
             // 
             // lblInteractionType
             // 
@@ -2360,6 +2428,29 @@
             this.panel1.Size = new System.Drawing.Size(336, 271);
             this.panel1.TabIndex = 31;
             // 
+            // pMinimap
+            // 
+            this.pMinimap.AllowMultiSelection = false;
+            this.pMinimap.BoxSize = new System.Drawing.Size(10, 8);
+            this.pMinimap.CanvasSize = new System.Drawing.Size(160, 128);
+            this.pMinimap.HoverBox = true;
+            this.pMinimap.HoverColor = System.Drawing.Color.White;
+            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pMinimap.Location = new System.Drawing.Point(0, 0);
+            this.pMinimap.MaximumSize = new System.Drawing.Size(1280, 1024);
+            this.pMinimap.Name = "pMinimap";
+            this.pMinimap.Selectable = true;
+            this.pMinimap.SelectedIndex = -1;
+            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
+            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-1, 0, 1, 1);
+            this.pMinimap.Size = new System.Drawing.Size(16, 16);
+            this.pMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pMinimap.TabIndex = 17;
+            this.pMinimap.TabStop = false;
+            this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
+            this.pMinimap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseMove);
+            this.pMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseUp);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.toolStrip2);
@@ -2452,78 +2543,6 @@
             this.toolStripButton35.Text = "Zoom";
             this.toolStripButton35.Click += new System.EventHandler(this.mapZoom_Click);
             // 
-            // nRoomPack
-            // 
-            this.nRoomPack.Location = new System.Drawing.Point(82, 320);
-            this.nRoomPack.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nRoomPack.Name = "nRoomPack";
-            this.nRoomPack.Size = new System.Drawing.Size(135, 20);
-            this.nRoomPack.TabIndex = 22;
-            this.nRoomPack.Hexadecimal = true;
-            // textRoomPack
-            // 
-            this.textRoomPack.AutoSize = true;
-            this.textRoomPack.Location = new System.Drawing.Point(10, 322);
-            this.textRoomPack.Name = "textRoomPack";
-            this.textRoomPack.Size = new System.Drawing.Size(66, 13);
-            this.textRoomPack.TabIndex = 21;
-            this.textRoomPack.Text = "Room Pack:";
-            // 
-            // pMinimap
-            // 
-            this.pMinimap.AllowMultiSelection = false;
-            this.pMinimap.BoxSize = new System.Drawing.Size(10, 8);
-            this.pMinimap.CanvasSize = new System.Drawing.Size(160, 128);
-            this.pMinimap.HoverBox = true;
-            this.pMinimap.HoverColor = System.Drawing.Color.White;
-            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pMinimap.Location = new System.Drawing.Point(0, 0);
-            this.pMinimap.MaximumSize = new System.Drawing.Size(1280, 1024);
-            this.pMinimap.Name = "pMinimap";
-            this.pMinimap.Selectable = true;
-            this.pMinimap.SelectedIndex = -1;
-            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
-            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-1, 0, 1, 1);
-            this.pMinimap.Size = new System.Drawing.Size(16, 16);
-            this.pMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pMinimap.TabIndex = 17;
-            this.pMinimap.TabStop = false;
-            this.pMinimap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseDown);
-            this.pMinimap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseMove);
-            this.pMinimap.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseUp);
-            // 
-            // pTileset
-            // 
-            this.pTileset.AllowMultiSelection = true;
-            this.pTileset.BoxSize = new System.Drawing.Size(16, 16);
-            this.pTileset.CanvasSize = new System.Drawing.Size(256, 256);
-            this.pTileset.HoverBox = true;
-            this.pTileset.HoverColor = System.Drawing.Color.White;
-            this.pTileset.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pTileset.Location = new System.Drawing.Point(3, 4);
-            this.pTileset.Name = "pTileset";
-            this.pTileset.Selectable = true;
-            this.pTileset.SelectedIndex = -2;
-            this.pTileset.SelectionColor = System.Drawing.Color.Red;
-            this.pTileset.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
-            this.pTileset.Size = new System.Drawing.Size(260, 260);
-            this.pTileset.TabIndex = 9;
-            this.pTileset.TabStop = false;
-            this.pTileset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTileset_MouseDown);
-            // 
-            // interactionBox
-            // 
-            this.interactionBox.Location = new System.Drawing.Point(11, 65);
-            this.interactionBox.Name = "interactionBox";
-            this.interactionBox.Size = new System.Drawing.Size(226, 140);
-            this.interactionBox.TabIndex = 8;
-            this.interactionBox.Visible = false;
-            this.interactionBox.ValueChanged += new ZOLE_4.SpriteDefinitionBox.valueChanged(this.interactionBox_ValueChanged);
-            // 
             // pMap
             // 
             this.pMap.AllowMultiSelection = false;
@@ -2551,6 +2570,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 593);
+            this.Controls.Add(this.toolSeasons);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlMap);
             this.Controls.Add(this.pMap);
@@ -2561,7 +2581,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toolAges);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.toolSeasons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -2581,6 +2600,8 @@
             this.tabsSecondary.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nRoomPack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nMusic)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2607,13 +2628,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nStaticFactor)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nRoomPack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pTileset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2846,6 +2865,8 @@
         private System.Windows.Forms.ToolStripMenuItem overworldDataToolStripMenuItem1;
         public System.Windows.Forms.NumericUpDown nRoomPack;
         private System.Windows.Forms.Label textRoomPack;
+        private System.Windows.Forms.ToolStripMenuItem dungeonDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dungeonDataToolStripMenuItem1;
     }
 }
 

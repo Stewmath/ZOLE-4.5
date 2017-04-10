@@ -336,6 +336,7 @@ namespace ZOLE_4
                 nRoomPack.Value = 0;
                 nRoomPack.ReadOnly = true;
             }
+            
             staticObjectLoader.staticObjects = new List<StaticObjectLoader.StaticObject>();
             staticObjectLoader.loadStaticObjects(MinimapCreator.GetDungeon(group, mapLoader.room.area.flags1, game), index);
             nStaticIndex.Maximum = staticObjectLoader.staticObjects.Count - 1;
@@ -1363,7 +1364,7 @@ namespace ZOLE_4
                 return;
             SaveFileDialog s = new SaveFileDialog();
             s.Title = "Export Overworld Data";
-            s.Filter = "Overworld Data File (*.ZOW)|*.ZOW";
+            s.Filter = "Overworld Data File (*.ZOW)|*.zow";
             if (s.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -1396,7 +1397,7 @@ namespace ZOLE_4
                 return;
             OpenFileDialog s = new OpenFileDialog();
             s.Title = "Import Overworld Data";
-            s.Filter = "Overworld Data File (*.ZOW)|*.ZOW";
+            s.Filter = "Overworld Data File (*.ZOW)|*.zow";
             Start:
             if (s.ShowDialog() != DialogResult.OK)
                 return;
@@ -1443,6 +1444,136 @@ namespace ZOLE_4
             }
         }
 
+        private void dungeonDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mapLoader == null)
+                return;
+            if (mapLoader.room.type != MapLoader.RoomTypes.Dungeon)
+                return;
+            SaveFileDialog s = new SaveFileDialog();
+            s.Title = "Export Dungeon Data";
+            s.Filter = "Dungeon Data File (*.ZDD)|*.zdd";
+            if (s.ShowDialog() != DialogResult.OK)
+                return;
+            int location = 0x4FCE;
+            if (game == Program.GameTypes.Ages)
+            { location = 0x4FCE; }
+            else
+            { location = 0x4F01; }
+            try
+            {
+                BinaryWriter bw = new BinaryWriter(File.Open(s.FileName, FileMode.OpenOrCreate));
+                int i = 0;
+                bw.Write((String)("ZDD02"));
+                bw.Write((byte)(cboArea.SelectedIndex));
+                gb.BufferLocation = location + ((cboArea.SelectedIndex - 4) * 0x40);
+                bw.Write(gb.ReadBytes(0x40));
+                while (i != 0x40)
+                {
+                    gb.BufferLocation = location + ((cboArea.SelectedIndex - 4) * 0x40) + i;
+                    int room = gb.ReadByte();
+                    bw.Write((byte)(room));
+                    if (room != 0)
+                    {
+                        LoadMap(room, cboArea.SelectedIndex);
+                        bw.Write(mapLoader.room.decompressed);
+                        bw.Write((byte)(nArea.Value));
+                        bw.Write((byte)(nMusic.Value));
+                    }
+                    i++;
+                }
+                bw.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("IO Error.\n\n" + ex.Message, "Error");
+            }
+        }
+
+        private void dungeonDataToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Start:
+            if (mapLoader == null)
+                return;
+            if (mapLoader.room.type != MapLoader.RoomTypes.Dungeon)
+                return;
+            frmDungeonImport import = new frmDungeonImport();
+            //check result
+            if (import.ShowDialog() != DialogResult.OK)
+                return;
+            //Get buttons from form
+            bool iLayout = import.rbLayout.Checked;
+            bool iRooms = import.rbRooms.Checked;
+            bool iIDs = import.rbIDs.Checked;
+            bool iMusic = import.rbMusic.Checked;
+            bool iOrverride = import.rbOverride.Checked;
+            int location = 0x4FCE;
+            if (game == Program.GameTypes.Ages)
+            { location = 0x4FCE; }
+            else
+            { location = 0x4F01; }
+            try
+            {
+                //Open file
+                if (import.filename == null)
+                {
+                    MessageBox.Show("A file needs to be selected.");
+                    goto Start;
+                }
+                BinaryReader br = new BinaryReader(File.OpenRead(import.filename));
+                int i = 1;
+                //Check files identifier
+                if (br.ReadString() != ("ZDD02"))
+                {
+                    MessageBox.Show("This file either isn't a Zelda Dungeon file or it's a diffrent version.");
+                    goto Start;
+                }
+                //Read dungeon number and compare it
+                if (cboArea.SelectedIndex != br.ReadByte() && iOrverride == false)
+                {
+                    MessageBox.Show("The dungeon numbers don't match and the override was not disabled.");
+                    goto Start;
+                }
+                //Find layout position
+                gb.BufferLocation = location + ((cboArea.SelectedIndex - 4) * 0x40);
+                //Write layout
+                if (iLayout == true)
+                    gb.WriteBytes(br.ReadBytes(0x40));
+                else
+                    br.ReadBytes(0x40);
+                //Read all 0x40 rooms in the file
+                while (i <= 0x40)
+                {
+                    int room = br.ReadByte();
+                    if (room != 0)
+                    {
+                        LoadMap(room, cboArea.SelectedIndex);
+                        if (iRooms == true)
+                            mapLoader.room.decompressed = br.ReadBytes(0xB0);
+                        else
+                            br.ReadBytes(0xB0);
+                        if (iIDs == true)
+                            nArea.Value = br.ReadByte();
+                        else
+                            br.ReadByte();
+                        if (iMusic == true)
+                            nMusic.Value = br.ReadByte();
+                        else
+                            br.ReadByte();
+                        save();
+                    }
+                    i++;
+                }
+                bigMaps[cboArea.SelectedIndex] = null;
+                cboArea_SelectedIndexChanged(null, null);
+                br.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("IO Error.\n\n" + ex.Message, "Error");
+            }
+        }
+        
         private void paletteEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (mapLoader == null) return;
