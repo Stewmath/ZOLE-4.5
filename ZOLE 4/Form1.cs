@@ -423,14 +423,16 @@ namespace ZOLE_4
             {
                 frmExport = new frmExportMaps();
                 if (game == Program.GameTypes.Seasons)
-                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 5 ? 512 : 64);
+                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 5 ? 256 : 64);
                 else
-                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 4 ? 512 : 64);
+                    frmExport.pBar.Maximum = (cboArea.SelectedIndex < 4 ? 256 : 64);
                 frmExport.Text = "Generating Map";
                 //exportToFilename = "";
                 exportGroupIndex = cboArea.SelectedIndex;
                 new Thread(getMinimap).Start();
-                frmExport.ShowDialog();
+
+                if (!IsRunningOnMono()) // Mono has a hanging bug with threads
+                    frmExport.ShowDialog();
             }
             else
             {
@@ -2872,5 +2874,10 @@ namespace ZOLE_4
             else
                 chkInteractions.Checked = true;
         }
+
+        public static bool IsRunningOnMono() {
+            return Type.GetType("Mono.Runtime") != null;
+        }
+
     }
 }
