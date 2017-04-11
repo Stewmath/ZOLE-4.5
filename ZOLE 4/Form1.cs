@@ -328,7 +328,7 @@ namespace ZOLE_4
                 nRoomPack.ReadOnly = false;
                 gb.BufferLocation = 0x1075C;
                 gb.BufferLocation += index;
-                gb.BufferLocation += (0xFF * group);
+                gb.BufferLocation += (0x100 * group);
                 nRoomPack.Value = gb.ReadByte();
             }
             else
@@ -780,7 +780,7 @@ namespace ZOLE_4
         {
             if (mapLoader == null)
                 return;
-            int i = (mapLoader.room.type == MapLoader.RoomTypes.Small ? 80 : 0xB0);
+            int i = (mapLoader.room.type == MapLoader.RoomTypes.Small ? 0x50 : 0xB0);
             byte[] b = new byte[i + 1];
             b[0] = (byte)mapLoader.room.type;
             Array.Copy(mapLoader.room.decompressed, 0, b, 1, b.Length - 1);
@@ -798,7 +798,7 @@ namespace ZOLE_4
                 return;
             }
             byte type = b[0];
-            if ((mapLoader.room.type == MapLoader.RoomTypes.Small && type != 0) || (mapLoader.room.type == MapLoader.RoomTypes.Dungeon && type != 1))
+            if ((byte)mapLoader.room.type != type)
             {
                 MessageBox.Show("Incompatible map sizes.", "Error Pasting");
                 return;
@@ -1311,7 +1311,7 @@ namespace ZOLE_4
             {
                 BinaryReader br = new BinaryReader(File.OpenRead(s.FileName));
                 byte type = br.ReadByte();
-                if ((type == 0 && mapLoader.room.type != MapLoader.RoomTypes.Small) || (type == 1 && mapLoader.room.type != MapLoader.RoomTypes.Dungeon))
+                if (type != (byte)mapLoader.room.type)
                 {
                     MessageBox.Show("Room size differs than current map's.", "Size Mismatch");
                     goto Start;
@@ -1346,7 +1346,6 @@ namespace ZOLE_4
             {
                 BinaryWriter bw = new BinaryWriter(File.Open(s.FileName, FileMode.OpenOrCreate));
                 bw.Write((byte)(mapLoader.room.type == MapLoader.RoomTypes.Small ? 0 : 1));
-                //bw.Write(mapLoader.room.decompressed);
                 bw.Write(mapLoader.room.decompressed);
                 bw.Close();
             }
@@ -1398,7 +1397,7 @@ namespace ZOLE_4
             OpenFileDialog s = new OpenFileDialog();
             s.Title = "Import Overworld Data";
             s.Filter = "Overworld Data File (*.ZOW)|*.zow";
-            Start:
+
             if (s.ShowDialog() != DialogResult.OK)
                 return;
             try
@@ -1440,7 +1439,6 @@ namespace ZOLE_4
             catch (Exception ex)
             {
                 MessageBox.Show("IO Error.\n\n" + ex.Message, "Error");
-                goto Start;
             }
         }
 

@@ -36,6 +36,7 @@ namespace ZOLE_4
             areaLoader = new AreaLoader(g);
         }
 
+        // These bytes get saved to files, so don't change this enum
         public enum RoomTypes
         {
             Small=0,
@@ -206,14 +207,6 @@ namespace ZOLE_4
             AreaLoader.Area ar = new AreaLoader.Area();
             ar = areaLoader.loadArea(gb.BufferLocation, area, game);
             room.area = ar;
-        }
-
-        public int getRoomPack(int map, int group, int season, Program.GameTypes game)
-        {
-            gb.BufferLocation = 0x1075C;
-            gb.BufferLocation += map;
-            gb.BufferLocation += (0xFF * group);
-            return gb.ReadByte();
         }
 
         public void loadMapHeader(int index, int group, int season, bool flag, Program.GameTypes game)

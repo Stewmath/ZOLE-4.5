@@ -356,8 +356,7 @@ namespace ZOLE_4
             //gb.BufferLocation = 0x10000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
             gb.BufferLocation = 0x1075C;
             gb.BufferLocation += map;
-            gb.BufferLocation += (0xFF*group);
-            //gb.BufferLocation += (0xFF*group);
+            gb.BufferLocation += (0x100*group);
             gb.WriteByte(roompack);
         }
 
