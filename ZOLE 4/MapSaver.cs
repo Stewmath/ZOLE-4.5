@@ -348,15 +348,17 @@ namespace ZOLE_4
 
         public void saveRoomPack(int map, int group, byte roompack, Program.GameTypes game)
         {
-            if (game == Program.GameTypes.Seasons)
+            if (!((game == Program.GameTypes.Ages && group < 2)
+                    || (game == Program.GameTypes.Seasons && group < 4)))
                 return;
-            if (group >= 2)
-                return;
-            //gb.BufferLocation = (game == Program.GameTypes.Ages ? 0x1095C : 0x1083C) + group * 2;
-            //gb.BufferLocation = 0x10000 + gb.ReadByte() + ((gb.ReadByte() - 0x40) * 0x100);
-            gb.BufferLocation = 0x1075C;
+            if (game == Program.GameTypes.Ages) {
+                gb.BufferLocation = 0x1075C;
+                gb.BufferLocation += (0x100 * group);
+            }
+            else
+                gb.BufferLocation = 0x1073C;
+
             gb.BufferLocation += map;
-            gb.BufferLocation += (0x100*group);
             gb.WriteByte(roompack);
         }
 

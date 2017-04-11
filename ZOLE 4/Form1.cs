@@ -323,18 +323,24 @@ namespace ZOLE_4
             gb.BufferLocation += index;
             nMusic.Value = gb.ReadByte();
 
-            if (game == Program.GameTypes.Ages && group <= 1)
+            if ((game == Program.GameTypes.Ages && group < 2)
+                    || (game == Program.GameTypes.Seasons && group < 4))
             {
-                nRoomPack.ReadOnly = false;
-                gb.BufferLocation = 0x1075C;
+                if (game == Program.GameTypes.Ages) {
+                    gb.BufferLocation = 0x1075C;
+                    gb.BufferLocation += (0x100 * group);
+                }
+                else
+                    gb.BufferLocation = 0x1073C;
+
+                nRoomPack.Enabled = true;
                 gb.BufferLocation += index;
-                gb.BufferLocation += (0x100 * group);
                 nRoomPack.Value = gb.ReadByte();
             }
             else
             {
                 nRoomPack.Value = 0;
-                nRoomPack.ReadOnly = true;
+                nRoomPack.Enabled = false;
             }
             
             staticObjectLoader.staticObjects = new List<StaticObjectLoader.StaticObject>();
