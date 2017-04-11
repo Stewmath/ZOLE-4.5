@@ -1448,6 +1448,9 @@ namespace ZOLE_4
                 return;
             if (mapLoader.room.type != MapLoader.RoomTypes.Dungeon)
                 return;
+            if (cboArea.Text == "Unmapped")
+                return;
+            
             SaveFileDialog s = new SaveFileDialog();
             s.Title = "Export Dungeon Data";
             s.Filter = "Dungeon Data File (*.ZDD)|*.zdd";
@@ -1496,6 +1499,9 @@ namespace ZOLE_4
                 return;
             if (mapLoader.room.type != MapLoader.RoomTypes.Dungeon)
                 return;
+            if (cboArea.Text == "Unmapped")
+                return;
+            
             frmDungeonImport import = new frmDungeonImport();
             //check result
             if (import.ShowDialog() != DialogResult.OK)
