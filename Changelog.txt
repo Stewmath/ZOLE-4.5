@@ -42,3 +42,16 @@ where multiple maps reference the same object data should now work properly.
 - A zoom button has been added to the minimap by YourLocalCultist.
 
 - Object editing has been moved into a separate tab.
+
+ZOLE 4.6.01:
+
+All changes by YourLocalCultist:
+
+- Allow editing "Room packs" to deal with the Animal Companion regions and
+different seasonal areas.
+
+- Added importers and exporters for the overworld and dungeons.
+
+- Added a button to open an external hex editor from within ZOLE.
+
+- Added a "reload ROM" button.
