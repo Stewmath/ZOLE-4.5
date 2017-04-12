@@ -14,6 +14,8 @@ namespace ZOLE_4
         public frmAbout()
         {
             InitializeComponent();
+
+            versionLabel.Text = "ZOLE version " + Form1.versionString;
         }
     }
 }

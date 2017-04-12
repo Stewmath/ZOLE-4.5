@@ -13,6 +13,8 @@ namespace ZOLE_4
         public frmCredits()
         {
             InitializeComponent();
+
+            versionString.Text = "Version " + Form1.versionString;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -18,6 +18,8 @@ namespace ZOLE_4
 {
     public partial class Form1 : Form
     {
+        public static String versionString = "4.6.01";
+
         public Program.GameTypes game = Program.GameTypes.Ages;
 
         public MapLoader mapLoader;
@@ -65,6 +67,8 @@ namespace ZOLE_4
         public Form1()
         {
             InitializeComponent();
+
+            this.Text = "ZOLE " + versionString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
