@@ -11,6 +11,7 @@ using System.Threading;
 
 using System.Configuration;
 using System.Collections.Specialized;
+using System.Reflection;
 
 //using System.Runtime.InteropServices;
 
@@ -18,7 +19,7 @@ namespace ZOLE_4
 {
     public partial class Form1 : Form
     {
-        public static String versionString = "4.6.01";
+        public static String versionString; // Version string is determined from git tags
 
         public Program.GameTypes game = Program.GameTypes.Ages;
 
@@ -66,6 +67,21 @@ namespace ZOLE_4
 
         public Form1()
         {
+            // Get the git version string
+            using (Stream stream = Assembly.GetExecutingAssembly()
+                    .GetManifestResourceStream("ZOLE_4." + "version.txt"))
+            {
+                if (stream == null)
+                    versionString = "(ERROR GETTING VERSION NUMBER)";
+                else
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        versionString = reader.ReadToEnd();
+                    }
+                }
+            }
+
             InitializeComponent();
 
             this.Text = "ZOLE " + versionString;
