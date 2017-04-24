@@ -25,6 +25,7 @@ namespace ZOLE_4
         public frmTilesetEditor(GBHL.GBFile g, Form1 f)
         {
             InitializeComponent();
+
             tilesBmp = new Bitmap(128, 128);
             form = f;
             gb = g;
@@ -357,6 +358,8 @@ namespace ZOLE_4
                         p |= 0x20;
                     if (chkVertical.Checked)
                         p |= 0x40;
+                    if (chkPriority.Checked)
+                        p |= 0x80;
                     formation[address + 4] = p;
                 }
                 else
@@ -380,6 +383,7 @@ namespace ZOLE_4
                 int address = (dy * 16 + dx) * 8 + (e.X / 16 % 2) + (e.Y / 16 % 2) * 2;
                 chkHorizontal.Checked = (formation[address + 4] & 0x20) != 0;
                 chkVertical.Checked = (formation[address + 4] & 0x40) != 0;
+                chkPriority.Checked = (formation[address + 4] & 0x80) != 0;
                 pTiles.SelectedIndex = (byte)(formation[address] - 0x80);
                 pPalette.SelectedIndex = formation[address + 4] & 0x7;
                 DrawColors();

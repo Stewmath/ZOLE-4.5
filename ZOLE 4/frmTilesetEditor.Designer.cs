@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nTileset = new System.Windows.Forms.NumericUpDown();
@@ -43,6 +44,8 @@
             this.pTile = new ZOLE_4.GridBox();
             this.pPalette = new ZOLE_4.GridBox();
             this.pTiles = new ZOLE_4.GridBox();
+            this.chkPriority = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nTileset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPreviewTile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pTileset)).BeginInit();
@@ -267,11 +270,23 @@
             this.pTiles.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pTiles_MouseDown);
             this.pTiles.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pTiles_MouseUp);
             // 
+            // chkPriority
+            // 
+            this.chkPriority.AutoSize = true;
+            this.chkPriority.Location = new System.Drawing.Point(586, 454);
+            this.chkPriority.Name = "chkPriority";
+            this.chkPriority.Size = new System.Drawing.Size(57, 17);
+            this.chkPriority.TabIndex = 26;
+            this.chkPriority.Text = "Priority";
+            this.toolTip1.SetToolTip(this.chkPriority, "Colors 1-3 will be displayed above sprites.");
+            this.chkPriority.UseVisualStyleBackColor = true;
+            // 
             // frmTilesetEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 540);
+            this.Controls.Add(this.chkPriority);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -324,5 +339,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.CheckBox chkPriority;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
