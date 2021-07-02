@@ -90,9 +90,16 @@ namespace ZOLE_4
         private void Form1_Load(object sender, EventArgs e)
         {
             hexEditor = ConfigurationManager.AppSettings.Get("HexEditor");
+            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void openROMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openRomDialog();
+        }
+
+        private void openRomDialog()
         {
             OpenFileDialog o = new OpenFileDialog();
             o.Title = "Open a Zelda Oracles ROM";
